@@ -1,6 +1,6 @@
 package increpas_example02;
 
-public class ifEx1 {
+public class ifEx2 {
 	
 	
 	public String check(int value) {
@@ -8,15 +8,19 @@ public class ifEx1 {
 		
 		if (value >= 50) {
 			res = "50이상";
+		}else {
+			res = "50미만";
 		}
 		return res;
 	}
 	
-	public static void main(String[] args) {
 	
-		ifEx1 i1 = new ifEx1();
-		String res = i1.check(51);
+	public static void main(String[] args) {
+		
+		ifEx2 i2 = new ifEx2();
+		String res = i2.check(51);
 
 		System.out.println(res + " 입니다.");
+		
 	}
 }
