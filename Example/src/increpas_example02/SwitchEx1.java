@@ -3,11 +3,9 @@ package increpas_example02;
 import java.util.Scanner;
 
 public class SwitchEx1 {
-	
-	int val;
-	String res = "";
-	
 	public int check_month(int val) {
+		String res = "";
+		
 		switch (val) {
 		case 1:
 		case 3:
