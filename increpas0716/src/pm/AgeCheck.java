@@ -19,7 +19,6 @@ public class AgeCheck {
 		return res;
 	}
 	
-	
 	public static void main(String[] args) {
 		
 		// 1.키보드로 부터 나이를 입력 받는다.
