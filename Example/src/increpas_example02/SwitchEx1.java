@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class SwitchEx1 {
 
-	public int check_month(int val) {
+	public String check_month(int val) {
 		String res = "";
-		
 		switch (val) {
 		case 1:
 		case 3:
@@ -27,13 +26,7 @@ public class SwitchEx1 {
 			res ="29";
 			break;
 		}
-		
-		if (val >= 13) {
-			System.out.println("유효하지 못한 값.");
-		}else {
-			System.out.println(val + " 월은 " + res + "일 까지 입니다." );
-		}
-		return val;
+		return res;
 	}
 	
 	public static void main(String[] args) {
@@ -41,6 +34,12 @@ public class SwitchEx1 {
 		SwitchEx1 sw1 = new SwitchEx1();
 		
 		int input = scan.nextInt();
-		sw1.check_month(input);
+		String res = sw1.check_month(input);
+		
+		if (input >= 13) {
+			System.out.println("유효하지 못한 값.");
+		}else {
+			System.out.println(input + " 월은 " + res + "일 까지 입니다." );
+		}
 	}
 }
