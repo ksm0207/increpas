@@ -20,9 +20,7 @@ public class ArgsExample {
 			return check[j];
 		}
 		return null;
-		
 }
-	
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		ArgsExample arg = new ArgsExample();
