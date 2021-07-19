@@ -17,7 +17,8 @@ public class Ex5_for {
 		char ch = 'A';
 		for (int i = 1 ; i < 6; i ++) {
 			
-			System.out.println(ch ++);
+//			System.out.print(ch ++);
+			System.out.printf("%2c", ch++);
 		}
 	}
 }
