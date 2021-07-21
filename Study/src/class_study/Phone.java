@@ -22,6 +22,9 @@ public class Phone {
 	
 	public static void main(String[] args) {
 		Phone phone = new Phone();
+		
+		
+		
 		phone.setColor("Yellow");
 		phone.volumeUp(100);
 		phone.volumeDown(43);
