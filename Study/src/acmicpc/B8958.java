@@ -12,11 +12,20 @@ public class B8958 {
 		int count = scan.nextInt();
 		String [] arr = new String [count];
 		
-		
 		for (int i = 0 ; i < arr.length; i ++) {
 			arr[i] = scan.next();
-	
 		}
+
+		int score = 0;
+		for (int i = 0 ; i < arr.length; i ++) {
+			System.out.println(arr[i]);
+			
+			if (arr[i].charAt(i) == 'O') {
+				score ++;
+				System.out.println(score);
+			}
+		}
+		
 
 	}
 }
