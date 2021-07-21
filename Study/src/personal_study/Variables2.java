@@ -4,8 +4,6 @@ public class Variables2 {
 	
 	String name;
 	int age;
-	
-	
 	static int membership = 500;
 	static String favFood = "Bread";
 	
