@@ -14,8 +14,14 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
     <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.ui.SAPanel"/>
+    <fullyQualifiedTypeName name="test.Sample"/>
+    <fullyQualifiedTypeName name="personal_study.Args"/>
+    <fullyQualifiedTypeName name="personal_study.Variables"/>
+    <fullyQualifiedTypeName name="personal_study.Variables2"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.StringUtils"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
