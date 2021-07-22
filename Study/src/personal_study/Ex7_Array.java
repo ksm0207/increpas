@@ -15,28 +15,30 @@ public class Ex7_Array {
 		
 		
 		for (int i = 0 ; i < array.length;  ) {
-			array[i] = (int)(Math.random()* 10) +1;	
+			array[i] = (int)(Math.random()* 9) +1;	
 			flag = true;
-						   
+		
 			for (int j = 0 ; j < i ; j ++) {
 				
 				
 				System.out.println("i === > " + i + " j ===== > " + j);
-				
 				System.out.println("res : " + (j < i) );
-				if (array[i] == array[j])
+				
+				if (array[i] == array[j]) {
 					flag = false;
-					
 					System.out.println("중복값이 존재합니다 " + array[i] + " i 진행 횟수 : " + i);
-					break;
+					break;					
+				}
 			}// end of for loop(2)
 			
-			if (flag)
-				i++;
+			if (flag) {
+				i++;				
+			}
 			
 		} // end of for loop(1)
 		
 		// 출력
+		
 		for (int i = 0 ; i < array.length; i ++) {
 			System.out.println("array[i] ===== > " + array[i]);
 		}
