@@ -19,9 +19,9 @@ public class Ex2_String {
 		
 		// str을 통해 값을 변경해보자
 		// str이 가리키는 문자열에서 '!' 를 '#' 으로 변경한다
-		str = str.replace("!", "#");
+		str.replace("!", "#");
 		
-		System.out.println(str); 
+		System.out.println(str.replace("!", "#") == str2); 
 		
 		// replace를 호출하여 변경된 문자열을 str이
 		// 받은 주소 이후의 주소값 비교
