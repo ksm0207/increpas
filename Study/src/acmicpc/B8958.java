@@ -25,16 +25,24 @@ public class B8958 {
 			sum = 0;
 			
 			for (int j = 0 ; j < arr[i].length() ; j ++) {
+				// 1 2 0 0 1 0 0 1 2 3 = 10
+				// O O X X O X X O O O
+
+				// 1 2 0 0 1 2 0 0 1 2 = 9
+				// O O X X O O X X O O
+
+				// 1 0 1 0 1 0 1 0 1 0 1 0 1 0 = 7
+				// O X O X O X O X O X O X O X
 				
-//				System.out.println("length   : " +arr.length);
-//				System.out.println("length() : " +arr[i].length());
-//				
-				if (arr[i].charAt(i) == 'O') {
+				if (arr[i].charAt(j) == 'O') {
+					System.out.println(arr[i].charAt(j) == 'O');
+					System.out.println(arr[i].charAt(j) == 'X');
 					score ++;
 				}else {
 					score = 0;
 				}
 				sum = sum + score;
+				
 			}// end of for loop(2)
 			
 			System.out.println("Sum =====> "+sum);
@@ -42,14 +50,7 @@ public class B8958 {
 		} // end of for loop (1)
 	}
 }
-// 1 2 0 0 1 0 0 1 2 3 = 10
-// O O X X O X X O O O
 
-// 1 2 0 0 1 2 0 0 1 2 = 9
-// O O X X O O X X O O
-
-// 1 0 1 0 1 0 1 0 1 0 1 0 1 0 = 7
-// O X O X O X O X O X O X O X
 
 
 
