@@ -17,10 +17,7 @@ public class Ex7_Array {
 		for (int i = 0 ; i < array.length;  ) {
 			array[i] = (int)(Math.random()* 10) +1;	
 			flag = true;
-						   //            j < i 
-			               //i = 0 일때 (0 < 0) false
-						   //i = 1       0 < 1  true
-			               //i = 2       0 < 2  true
+						   
 			for (int j = 0 ; j < i ; j ++) {
 				
 				
@@ -40,9 +37,8 @@ public class Ex7_Array {
 		} // end of for loop(1)
 		
 		// 출력
-		
 		for (int i = 0 ; i < array.length; i ++) {
-//			System.out.println("array[i] ===== > " + array[i]);
+			System.out.println("array[i] ===== > " + array[i]);
 		}
 	}
 }
