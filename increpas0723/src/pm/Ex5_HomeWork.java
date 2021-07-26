@@ -8,16 +8,15 @@ public class Ex5_HomeWork {
 		Ex5_HomeWork ex5 = new Ex5_HomeWork();
 		
 		int [] rand = ex5.getRandomValue();
-		boolean gameResult;
+		boolean gameResult = true;
 
 		System.out.println("숫자 야구 게임 입니다.");
 		
 		do {
-			gameResult = false;
 			gameResult = ex5.getGameResult(rand);
 	
 			if(gameResult != true) {
-				System.out.println("다시 입력 하세요");
+				System.out.println("다시 입력 하세요\n");
 			}
 		} while (gameResult != true);
 	}
@@ -77,7 +76,8 @@ public class Ex5_HomeWork {
 //		for(int i = 0 ; i < com.length; i ++) {
 //			System.out.printf("%-3d" ,  com[i]);
 //		}
-		System.out.println("\n"+"\n"+strike + " 스트라이크 " + ball + " 볼 입니다 . \n");
+		System.out.println();
+		System.out.print("게임결과 : " +strike + " 스트라이크 " + ball + " 볼 입니다. \n");
 		
 		return strike == 3;
 	}
@@ -103,7 +103,6 @@ public class Ex5_HomeWork {
 						System.out.println("다시 입력하세요.");
 					}// end of if else	
 				} catch (Exception e) {
-					
 					while(true) {
 					    scan = new Scanner(System.in);
 						System.out.println("문자 및 특수기호 가 포함되었습니다");
@@ -117,7 +116,4 @@ public class Ex5_HomeWork {
 		return userValue;
 	}
 }
-
-
-
 
