@@ -9,7 +9,7 @@ public class VendingMachine {
 	
 	
 	public static void main(String[] args) {
-		
+	
 		VendingMachine vm = new VendingMachine();
 		System.out.println("자판기 테스트");
 		while(true) {
@@ -95,18 +95,13 @@ public class VendingMachine {
 				userMoney = moneyCheck(userMoney,userChoies,coffeeMenu);
 			}else {
 				// y 가 아닌 경우
-				System.out.println("감사합니다.");
+				System.out.println("다른 메뉴로 이동합니다.");
 			}		
 		}else {
-			// 금액이 부족할 경우 충전할 수 있도록 하기
-			if (userMoney <  Integer.parseInt(coffeeMenu[userChoies][1])) {
-				System.out.println("금액을 더 충전해주세요.");
-				userMoney += scan.nextInt();
+			if (userMoney >= Integer.parseInt(coffeeMenu[userChoies][1])) {
 				userMoney = moneyCheck(userMoney,userChoies,coffeeMenu);
-			
-			// 소지하고 있는 금액이 선택한 메뉴의 금액보다 크거나 같다면
-			// 추가 구매할 수 있도록 하기	
-			}else if (userMoney >= Integer.parseInt(coffeeMenu[userChoies][1])) {
+				
+			}else if (userMoney <= Integer.parseInt(coffeeMenu[userChoies][1])) {
 				userMoney = moneyCheck(userMoney,userChoies,coffeeMenu);
 			}
 			
@@ -153,18 +148,13 @@ public class VendingMachine {
 				// y 가 아닌 경우
 				System.out.println("감사합니다.");
 			}		
-		}else {
-			// 금액이 부족할 경우 충전할 수 있도록 하기
-			if (userMoney <  Integer.parseInt(drinkMenu[userChoies][1])) {
-				System.out.println("금액을 더 충전해주세요.");
-				userMoney += scan.nextInt();
+		}else{
+			 if (userMoney >= Integer.parseInt(drinkMenu[userChoies][1])) {
 				userMoney = moneyCheck(userMoney,userChoies,drinkMenu);
-			
-			// 소지하고 있는 금액이 선택한 메뉴의 금액보다 크거나 같다면
-			// 추가 구매할 수 있도록 하기	
-			}else if (userMoney >= Integer.parseInt(drinkMenu[userChoies][1])) {
-				userMoney = moneyCheck(userMoney,userChoies,drinkMenu);
-			}
+			 }
+			 else if (userMoney <= Integer.parseInt(drinkMenu[userChoies][1])) {
+					userMoney = moneyCheck(userMoney,userChoies,drinkMenu);
+			 }			
 			
 		}
 		System.out.println("현재 가지고 있는 금액은 " + userMoney +" 원 입니다");
@@ -211,18 +201,12 @@ public class VendingMachine {
 				System.out.println("감사합니다.");
 			}		
 		}else {
-			// 금액이 부족할 경우 충전할 수 있도록 하기
-			if (userMoney <  Integer.parseInt(snackMenu[userChoies][1])) {
-				System.out.println("금액을 더 충전해주세요.");
-				userMoney += scan.nextInt();
+			 if (userMoney >= Integer.parseInt(snackMenu[userChoies][1])) {
 				userMoney = moneyCheck(userMoney,userChoies,snackMenu);
-			
-			// 소지하고 있는 금액이 선택한 메뉴의 금액보다 크거나 같다면
-			// 추가 구매할 수 있도록 하기	
-			}else if (userMoney >= Integer.parseInt(snackMenu[userChoies][1])) {
-				userMoney = moneyCheck(userMoney,userChoies,snackMenu);
-			}
-			
+			 }
+			 else if (userMoney <= Integer.parseInt(snackMenu[userChoies][1])) {
+					userMoney = moneyCheck(userMoney,userChoies,snackMenu);
+			 }	
 		}
 		System.out.println("현재 가지고 있는 금액은 " + userMoney +" 원 입니다");
 		
@@ -235,10 +219,13 @@ public class VendingMachine {
 		if (userMoney - Integer.parseInt(menu[userChoies][1]) >= 0) {
 			userMoney = userMoney - Integer.parseInt(menu[userChoies][1]);
 //			System.out.println(userMoney + " " + menu[userChoies][0]);
-			System.out.println("주문하신 메뉴가 나왔습니다 감사합니다.");
+			System.out.println("주문하신" + menu[userChoies][0] + " 나왔습니다 감사합니다.");
 		}else {
 			System.out.println("잔액이 부족합니다.");
-			
+			System.out.println("부족한 금액을 채워주세요 :");
+			userMoney += scan.nextInt();
+			userMoney = userMoney - Integer.parseInt(menu[userChoies][1]);
+			System.out.println("주문하신" + menu[userChoies][0] + " 나왔습니다 감사합니다.");
 		}
 		return userMoney;
 	}	
@@ -255,7 +242,7 @@ public class VendingMachine {
 			for (int i=0 ; i <money.length; i ++) {
 				
 				if (userMoney / money[i] > 0) {
-					System.out.println(money[i] + "원" + userMoney/money[i] + "개");
+					System.out.println(money[i] + "원 " + userMoney/money[i] + "개");
 					userMoney %=money[i];
 				}
 			}// end of for
