@@ -11,21 +11,19 @@ public class VendingMachine {
 	public static void main(String[] args) {
 		
 		VendingMachine vm = new VendingMachine();
-		
+		System.out.println("자판기 테스트");
 		while(true) {
 			vm.getMenu();
 		}
-
 	} // end of main
 	
 	
 	// 자판기 메뉴 호출
 	public void getMenu() {
-		System.out.println("자판기 테스트");
+	
 		System.out.println("메뉴를 선택해주세요.");
 
-		
-		int selectNumber = 0;
+		int selectNumber;
 
 //		while(selectNumber < 1 || selectNumber > 4) {
 			System.out.println("1.커피 " + " 2.음료수 " + " 3.과자 " + "4.반환하기" + " 5.종료하기");
@@ -45,14 +43,16 @@ public class VendingMachine {
 				case 4:
 					returnChangeMoney();
 					break;
-//					default:
-//						
+				case 5:
+					System.out.println("감사합니다 또 이용해주세요 !");
+					System.exit(selectNumber);
+					break;
+				default:
 //						System.out.println("Default : 다시 입력해주세요.");
-				
 				}// end of switch
 			} catch (Exception e) {
 				scan = new Scanner(System.in);
-				System.out.println("Catch : 다시 입력해주세요.");
+				System.out.println("에러 : 다시 입력해주세요.");
 			}
 //		}// end of while
 
@@ -74,15 +74,16 @@ public class VendingMachine {
 			System.out.println((i+1)+"."+coffeeMenu[i][0] + "  -----------" + coffeeMenu[i][1] + "원");
 		}
 		
+		// 주문번호 입력
 		System.out.println("무엇을 주문 해 볼까요?");
 		System.out.print("주문번호 : ");
-		int userChoies = scan.nextInt() - 1; // Index - 입력값
+		int userChoies = scan.nextInt() - 1; // ( Index - 입력값 )
 	
 		// 사용자 가 가지고 있는 금액이 0원 일때 체크
 		if (userMoney == 0) {
 			System.out.println("금액을 충전하고 이용하시겠습니까?");
 			System.out.println("선택한 메뉴 :"  +coffeeMenu[userChoies][0] + "\n"
-							 + "필요한 금액 :" +coffeeMenu[userChoies][1]+"원");
+							 + "필요한 금액 :"  +coffeeMenu[userChoies][1]+"원");
 			
 			System.out.print("Y 를누르면 계속 진행합니다.");
 			
@@ -174,7 +175,8 @@ public class VendingMachine {
 	
 	// 과자 메뉴 호출
 	public int getSnack() {
-		System.out.println("Coffee 메뉴");
+		
+		System.out.println("Snack 메뉴");
 		String[][] snackMenu = {
 				{"▦ 꼬북칩 오리지날" , "2000"},
 				{"▦ 꼬북칩 초코" , "2500"},
@@ -240,25 +242,26 @@ public class VendingMachine {
 		}
 		return userMoney;
 	}	
-
+	
 	// 금액 반환
 	public int returnChangeMoney() {
 		
 		int [] money = {10000,5000,1000,500,100,50,10};
 		int remainMoney;
-		System.out.println("거스름돈 금액 : " + userMoney);
-		for (int i=0 ; i <money.length; i ++) {
-			
-			if (userMoney / money[i] > 0)
-				System.out.println(money[i] + "원" + userMoney/money[i] + "개");
-				userMoney %=money[i];
-		}// end of for
 		
-		remainMoney = userMoney - userMoney;
-		System.out.println("자판기에 남은 돈 : " + remainMoney);
-		
+		if (userMoney == 0) {
+			System.out.println("반환하실 금액이 없습니다.");
+		}else {
+			for (int i=0 ; i <money.length; i ++) {
+				
+				if (userMoney / money[i] > 0) {
+					System.out.println(money[i] + "원" + userMoney/money[i] + "개");
+					userMoney %=money[i];
+				}
+			}// end of for
+			remainMoney = userMoney - userMoney;
+			System.out.println("자판기에 남은 돈 : " + remainMoney);
+		}
 		return userMoney;
-	
 	}// end of returnChangeMoney
-	
 }
