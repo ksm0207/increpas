@@ -29,7 +29,6 @@ public class Ex1_Main {
 		m1.t1(ex1); // 주소값 넣기
 
 		System.out.println(ex1.getReturnValue());
-		
-		
+	
 	}
 }

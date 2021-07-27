@@ -32,6 +32,12 @@
     <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.launcher.Main"/>
     <fullyQualifiedTypeName name="pm.Ex1_Class"/>
-    <fullyQualifiedTypeName name="am.Ex1_Class"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="am.Ex1_Class"/>
+    <fullyQualifiedTypeName name="pm.Ex1_Test"/>
+    <fullyQualifiedTypeName name="pm.Ex2_Value"/>
+    <fullyQualifiedTypeName name="pm.Ex3_Test"/>
+    <fullyQualifiedTypeName name="pm.Ex4_Ref"/>
+    <fullyQualifiedTypeName name="pm.Ex5_Data"/>
+    <fullyQualifiedTypeName name="pm.Ex5_Main"/>
 </qualifiedTypeNameHistroy>

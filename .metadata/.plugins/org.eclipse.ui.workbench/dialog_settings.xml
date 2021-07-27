@@ -15,9 +15,23 @@
 	<section name="NewWizardAction">
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="834"/>
-		<item key="DIALOG_Y_ORIGIN" value="122"/>
+		<item key="DIALOG_X_ORIGIN" value="904"/>
+		<item key="DIALOG_Y_ORIGIN" value="135"/>
 	</section>
 	<section name="ImportExportAction">
+	</section>
+	<section name="org.eclipse.ui.internal.dialogs.WorkbenchEditorsDialog">
+		<item key="allPersp" value="false"/>
+		<item key="sort" value="0"/>
+		<list key="bounds">
+			<item value="149"/>
+			<item value="126"/>
+			<item value="798"/>
+			<item value="553"/>
+		</list>
+		<list key="columns">
+			<item value="252"/>
+			<item value="504"/>
+		</list>
 	</section>
 </section>
