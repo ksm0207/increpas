@@ -40,4 +40,7 @@
     <fullyQualifiedTypeName name="pm.Ex4_Ref"/>
     <fullyQualifiedTypeName name="pm.Ex5_Data"/>
     <fullyQualifiedTypeName name="pm.Ex5_Main"/>
+    <fullyQualifiedTypeName name="personal_study.CallbyValueTest"/>
+    <fullyQualifiedTypeName name="personal_study.CallbyReferenceTest.Numbers"/>
+    <fullyQualifiedTypeName name="personal_study.PersonInfo"/>
 </qualifiedTypeNameHistroy>
