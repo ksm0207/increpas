@@ -17,7 +17,6 @@ public class VendingMachine {
 		}
 	} // end of main
 	
-	
 	// 자판기 메뉴 호출
 	public void getMenu() {
 	
