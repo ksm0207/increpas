@@ -28,7 +28,7 @@ public class VendingMachine {
 		int selectNumber = 0;
 
 //		while(selectNumber < 1 || selectNumber > 4) {
-			System.out.println("1.커피 " + " 2.음료수 " + " 3.과자 " + "4.종료하기");
+			System.out.println("1.커피 " + " 2.음료수 " + " 3.과자 " + "4.반환하기" + " 5.종료하기");
 			try {
 				selectNumber = scan.nextInt();
 				// if 문 수정예정
@@ -41,6 +41,9 @@ public class VendingMachine {
 					break;
 				case 3:
 					getSnack();
+					break;
+				case 4:
+					returnChangeMoney();
 					break;
 //					default:
 //						
@@ -238,5 +241,24 @@ public class VendingMachine {
 		return userMoney;
 	}	
 
+	// 금액 반환
+	public int returnChangeMoney() {
+		
+		int [] money = {10000,5000,1000,500,100,50,10};
+		int remainMoney;
+		System.out.println("거스름돈 금액 : " + userMoney);
+		for (int i=0 ; i <money.length; i ++) {
+			
+			if (userMoney / money[i] > 0)
+				System.out.println(money[i] + "원" + userMoney/money[i] + "개");
+				userMoney %=money[i];
+		}// end of for
+		
+		remainMoney = userMoney - userMoney;
+		System.out.println("자판기에 남은 돈 : " + remainMoney);
+		
+		return userMoney;
+	
+	}// end of returnChangeMoney
 	
 }
