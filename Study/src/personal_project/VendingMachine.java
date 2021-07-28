@@ -148,9 +148,11 @@ public class VendingMachine {
 				System.out.println("감사합니다.");
 			}		
 		}else{
+			// 소지금액이 선택한 메뉴의 금액보다 많을 경우 추가 구매 하기
 			 if (userMoney >= Integer.parseInt(drinkMenu[userChoies][1])) {
 				userMoney = moneyCheck(userMoney,userChoies,drinkMenu);
 			 }
+			// 소지금액이 선택한 메뉴의 금액보다 적을 경우 충전하기
 			 else if (userMoney <= Integer.parseInt(drinkMenu[userChoies][1])) {
 					userMoney = moneyCheck(userMoney,userChoies,drinkMenu);
 			 }			

@@ -1,6 +1,7 @@
 package example;
 
 public class Menu {
+	
 	String  menu;
 	String returnMoney;
 	int price;

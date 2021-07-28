@@ -10,12 +10,15 @@ public class CupMain {
 		cup1.setColor("그린");
 		cup1.setCupCapacity(250);
 		cup1.setCupMaterial("유리");
+		
+		
 		System.out.println("========================");
 		System.out.println("타입 : "+cup1.getCupTypes());
 		System.out.println("색상 : "+cup1.getColor());
 		System.out.println("용량 : "+cup1.getCupCapacity() +"ml");
 		System.out.println("재질 : "+cup1.getCupMaterial());
 		System.out.println("========================");
+		
 		Cup cup2 = new Cup();
 		
 		cup2.setCupTypes("맥주잔");
@@ -41,8 +44,6 @@ public class CupMain {
 		System.out.println("용량 : "+cup3.getCupCapacity() + "ml");
 		System.out.println("재질 : "+cup3.getCupMaterial());
 		System.out.println("========================");
-		
-		
 	}
 
 }
