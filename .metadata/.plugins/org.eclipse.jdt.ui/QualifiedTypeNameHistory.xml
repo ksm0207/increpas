@@ -48,6 +48,12 @@
     <fullyQualifiedTypeName name="personal_project2.Snack"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="personal_project2.ReturnMoney"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="am.Ex1_House"/>
+    <fullyQualifiedTypeName name="class_study.Animal"/>
+    <fullyQualifiedTypeName name="am.Cup"/>
+    <fullyQualifiedTypeName name="personal_study.Random"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="example.Menu"/>
+    <fullyQualifiedTypeName name="example.SetItems"/>
+    <fullyQualifiedTypeName name="com.sun.tools.classfile.Opcode.Set"/>
 </qualifiedTypeNameHistroy>
