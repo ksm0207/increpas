@@ -37,6 +37,7 @@ public class VendingMachine{
 					System.out.println("전액 반환 을 하시려면 5번을 눌러주세요");
 					userChoies = scan.nextInt();		
 					rt_money.returnChangeMoney(userMoney);
+					
 			}catch (Exception e) {
 					System.out.println("다시 입력해주세요.");
 					scan = new Scanner(System.in);
