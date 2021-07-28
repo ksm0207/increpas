@@ -71,13 +71,38 @@ public class Ex2_Vend {
 	}
 	
 	// 잔액을 알려주는 동작
-	public void getResult(int userChoies , int money) {
+	public int getResult(int userChoies , int money) {
 		
 		if (ar[userChoies].getPrice() >= 0) {
 			System.out.println("선택한 메뉴는 " + ar[userChoies].getName() +" 입니다");
 			money = money - ar[userChoies].getPrice();
 			System.out.println("총 잔액은 " + money + " 입니다 ");
 		}
+		return money;
+	}
+	// 잔액을 반환하는 동작
+	
+	public static int getChangeMoney(int money) {
+		
+		int[] changeMoney = {10000,5000,1000,500,100,50,10};
+		
+		if (money == 0) {
+			System.out.println("반환하실 금액이 없습니다.");
+		}else {
+			
+			for (int i=0 ; i <changeMoney.length; i++) {
+				
+				if (money / changeMoney[i] > 0) {
+					System.out.println("반환을 시작합니다.");
+					System.out.println(changeMoney[i] + " 원 " + money/changeMoney[i] + " 개 ");
+					money %=changeMoney[i];
+				}
+			}
+			money = money - money;
+			System.out.println("자판기에 남은 돈 : " + money);
+			System.out.println("이용해 주셔서 감사합니다 !");
+		}
+		return money;
 	}
 	
 	public static void main(String[] args) {
@@ -101,6 +126,13 @@ public class Ex2_Vend {
 		// num은 배열의 index값보다 1씩 더 크다. 사용자가 1을 선택했다면
 		// 배열의 index값으로 사용하기 위해 -1을 해야 한다.
 		// num을 전달하여 선택된 음료가 무엇이고 잔액이 얼마인지를 출력하는 함수 호출!
-		vend.getResult(num , money);
+		money = vend.getResult(num , money);
+		
+		System.out.println("남은 잔액 : " + money);
+		System.out.println("잔액을 반환할까요 ?");
+		System.out.println("계속하려면 y를 눌러주세요");
+		if (scan.next().equals("y") || scan.next().equals("Y")) {
+			money = getChangeMoney(money);
+		}
 	}
 }

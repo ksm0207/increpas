@@ -28,7 +28,6 @@
     <fullyQualifiedTypeName name="jdk.nashorn.internal.runtime.regexp.joni.ScanEnvironment"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="pm.Ex5_HomeWork"/>
-    <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.launcher.Main"/>
     <fullyQualifiedTypeName name="pm.Ex1_Class"/>
     <fullyQualifiedTypeName name="am.Ex1_Class"/>
@@ -54,7 +53,10 @@
     <fullyQualifiedTypeName name="personal_study.Random"/>
     <fullyQualifiedTypeName name="example.Menu"/>
     <fullyQualifiedTypeName name="example.SetItems"/>
-    <fullyQualifiedTypeName name="com.sun.tools.classfile.Opcode.Set"/>
     <fullyQualifiedTypeName name="example.ReturnMoney"/>
+    <fullyQualifiedTypeName name="com.sun.tools.classfile.Opcode.Set"/>
+    <fullyQualifiedTypeName name="class_study.SnackItems"/>
+    <fullyQualifiedTypeName name="class_study.Vend"/>
+    <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
