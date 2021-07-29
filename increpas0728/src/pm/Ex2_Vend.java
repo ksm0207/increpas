@@ -71,12 +71,12 @@ public class Ex2_Vend {
 	}
 	
 	// 잔액을 알려주는 동작
-	public int getResult(int userChoies , int money) {
+	public int getResult(int userChoise , int money) {
 		
-		if (ar[userChoies].getPrice() >= 0) {
-			System.out.println("선택한 메뉴는 " + ar[userChoies].getName() +" 입니다");
-			money = money - ar[userChoies].getPrice();
-			System.out.println("총 잔액은 " + money + " 입니다 ");
+		if (ar[userChoise].getPrice() >= 0) {
+			System.out.println("선택한 메뉴는 " + ar[userChoise].getName() +" 입니다");
+			money = money - ar[userChoise].getPrice();
+			System.out.println("총 잔돈은 " + money + " 입니다 ");
 		}
 		return money;
 	}
