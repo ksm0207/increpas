@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="am.Another"/>
-    <fullyQualifiedTypeName name="sun.swing.SwingAccessor"/>
-    <fullyQualifiedTypeName name="increpas_example02.SwitchEx1"/>
-    <fullyQualifiedTypeName name="jdk.internal.util.xml.impl.Input"/>
-    <fullyQualifiedTypeName name="jdk.internal.org.jline.utils.InputStreamReader"/>
-    <fullyQualifiedTypeName name="sun.util.locale.StringTokenIterator"/>
-    <fullyQualifiedTypeName name="java.lang.Character"/>
-    <fullyQualifiedTypeName name="java.awt.Label"/>
-    <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="sun.jvm.hotspot.ui.SAPanel"/>
     <fullyQualifiedTypeName name="test.Sample"/>
@@ -24,7 +13,6 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.time.Year"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="jdk.nashorn.internal.runtime.regexp.joni.ScanEnvironment"/>
     <fullyQualifiedTypeName name="pm.Ex5_HomeWork"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.launcher.Main"/>
@@ -57,7 +45,19 @@
     <fullyQualifiedTypeName name="class_study.SnackItems"/>
     <fullyQualifiedTypeName name="class_study.Vend"/>
     <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.jvm.Items"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="am.Main"/>
+    <fullyQualifiedTypeName name="am.MajorVO"/>
+    <fullyQualifiedTypeName name="am.StudentVO"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.code.Attribute.Array"/>
+    <fullyQualifiedTypeName name="ArrayListTest.BallItems"/>
+    <fullyQualifiedTypeName name="example0730.Company"/>
+    <fullyQualifiedTypeName name="jdk.internal.vm.compiler.collections.EconomicMap"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="example0730.EmployeeVO"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 </qualifiedTypeNameHistroy>
