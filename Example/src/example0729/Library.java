@@ -65,7 +65,8 @@ public class Library {
 
 	public void getFindBooks(String books) {
 		String res = "";
-		
+		boolean flag = false;
+	
 		for (int i=0; i<b_items.length; i++) {
 			if (b_items[i].getName().contains(books)) {
 				if (!b_items[i].isCheck()){
@@ -73,11 +74,41 @@ public class Library {
 				}else {
 					res = "대여가능";
 				}
+				flag = true;
 				System.out.println(b_items[i].getName() + " | " + b_items[i].getPublishing()
 						+ " | "+ b_items[i].getLocation() + " | " + res);
+			}else {
+				if (!flag) {
+					System.out.println("찾으시는 결과가 없습니다.");
+					break;					
+				}
+			}
+			// end of if-else
 		}// end of for loop(1)
+	}
+
+	public String isRental(String books) {
 		
-		}
+		StringBuffer sb = new StringBuffer();
+		Books book;
+		
+		for (int i=0; i<b_items.length; i++) {
+			book = b_items[i];
+			if (b_items[i].getName().contains(books)) {
+				if (b_items[i].isCheck()) {
+					sb.append(book.getName());
+					sb.append("  ");
+					sb.append(book.getPublishing());
+					sb.append("  ");
+					sb.append(book.getLocation());
+					sb.append("\n");
+				}
+			}else {
+				
+			}
+		}// end of for loop(1)
+	
+		return sb.toString();
 	}
 }
 
