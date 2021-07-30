@@ -12,10 +12,6 @@ public class Main {
 	
 		for (int i=0; i<person.length; i++) {
 			person[i] = new StudentVO();
-			// StudentVO 내부에 있는 mvo에 저장해줄
-			// MajorVO객체의 주소를 준비한다
-			MajorVO mvo = new MajorVO();
-			person[i].setMvo(mvo);
 			
 			switch (i) {
 			case 0:
@@ -34,8 +30,7 @@ public class Main {
 	public String getSearch(String name) {
 		StringBuffer sb = new StringBuffer();
 		for (int i=0; i<person.length; i++) {
-			
-			StudentVO search = new StudentVO();
+			StudentVO search;
 			search = person[i];
 		
 			if (search.getName().contains(name)) {

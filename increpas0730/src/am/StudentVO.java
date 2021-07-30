@@ -6,6 +6,23 @@ public class StudentVO{
 	String name;   // 이름
 	MajorVO mvo;
 	
+	
+//      현재클래스는 생성자를 하나도 정의하지 않았다.
+//      이렇게 되면 컴파일러가 알아서 기본생성자를 아래와 같이 정의한다
+//	    public StudentVO() {}
+	
+	public StudentVO() {
+		// StudentVO() 객체가 생성될 때 MajorVO() 객체도 같이 생성된다
+		mvo = new MajorVO();
+	}
+	
+	public StudentVO(String number , String name) {
+		mvo = new MajorVO();
+		this.number = number;
+		this.name = name;
+	}
+	
+	
 	public String getNumber() {
 		return number;
 	}
