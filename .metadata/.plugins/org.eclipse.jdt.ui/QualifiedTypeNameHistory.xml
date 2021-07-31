@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
-    <fullyQualifiedTypeName name="sun.jvm.hotspot.ui.SAPanel"/>
-    <fullyQualifiedTypeName name="test.Sample"/>
     <fullyQualifiedTypeName name="personal_study.Args"/>
     <fullyQualifiedTypeName name="personal_study.Variables"/>
     <fullyQualifiedTypeName name="personal_study.Variables2"/>
@@ -46,18 +43,21 @@
     <fullyQualifiedTypeName name="class_study.Vend"/>
     <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.jvm.Items"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="am.Main"/>
     <fullyQualifiedTypeName name="am.MajorVO"/>
     <fullyQualifiedTypeName name="am.StudentVO"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.code.Attribute.Array"/>
     <fullyQualifiedTypeName name="ArrayListTest.BallItems"/>
-    <fullyQualifiedTypeName name="example0730.Company"/>
     <fullyQualifiedTypeName name="jdk.internal.vm.compiler.collections.EconomicMap"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="example0730.EmployeeVO"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="example0730.EmployeeVO"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="example0730.Company"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="Starcraft.TerranVO"/>
+    <fullyQualifiedTypeName name="Starcraft.Barracks"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="acmicpc.B11719"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
