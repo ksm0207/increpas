@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="personal_study.Args"/>
-    <fullyQualifiedTypeName name="personal_study.Variables"/>
-    <fullyQualifiedTypeName name="personal_study.Variables2"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.util.StringUtils"/>
-    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
-    <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.time.Year"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="jdk.nashorn.internal.runtime.regexp.joni.ScanEnvironment"/>
-    <fullyQualifiedTypeName name="pm.Ex5_HomeWork"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.launcher.Main"/>
     <fullyQualifiedTypeName name="pm.Ex1_Class"/>
     <fullyQualifiedTypeName name="am.Ex1_Class"/>
     <fullyQualifiedTypeName name="pm.Ex1_Test"/>
@@ -29,7 +16,6 @@
     <fullyQualifiedTypeName name="personal_project2.Drink"/>
     <fullyQualifiedTypeName name="personal_project2.VendingMachine"/>
     <fullyQualifiedTypeName name="personal_project2.Snack"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="personal_project2.ReturnMoney"/>
     <fullyQualifiedTypeName name="am.Ex1_House"/>
     <fullyQualifiedTypeName name="class_study.Animal"/>
@@ -41,7 +27,6 @@
     <fullyQualifiedTypeName name="com.sun.tools.classfile.Opcode.Set"/>
     <fullyQualifiedTypeName name="class_study.SnackItems"/>
     <fullyQualifiedTypeName name="class_study.Vend"/>
-    <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.jvm.Items"/>
     <fullyQualifiedTypeName name="am.Main"/>
     <fullyQualifiedTypeName name="am.MajorVO"/>
@@ -54,10 +39,25 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="example0730.Company"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="Starcraft.TerranVO"/>
     <fullyQualifiedTypeName name="Starcraft.Barracks"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="acmicpc.B11719"/>
+    <fullyQualifiedTypeName name="com.sun.tools.jdeprscan.scan.Scan"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="am.EX4_Exception"/>
+    <fullyQualifiedTypeName name="sun.tools.javac.Main"/>
+    <fullyQualifiedTypeName name="am.Ex6_Exception"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javap.TryBlockWriter"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="pm.Ex2_Gen"/>
+    <fullyQualifiedTypeName name="pm.Ex3_List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="pm.Ex5_TreeSet"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.util.TreeSet"/>
 </qualifiedTypeNameHistroy>
