@@ -7,15 +7,18 @@ import java.util.TreeSet;
 public class Ex6_Lotto {
 	public static void main(String[] args) {
 		
-		TreeSet<Integer> items = new TreeSet<>();
-	
+		Ex6_Lotto ex6 = new Ex6_Lotto();
+		ex6.getPrint();
 		
+	}
+	private void getPrint() {
+		TreeSet<Integer> items = new TreeSet<>();
+		int rand;
 		
 		while(items.size() < 6) {
-			items.add((int)(Math.random()*45)+1);
+			rand = (int)(Math.random()* 45)+1;
+			items.add(rand);
 		}	
-		
-		
 		
 		Iterator<Integer> iter = items.iterator();
 		
@@ -23,8 +26,5 @@ public class Ex6_Lotto {
 			int res = iter.next();	
 			System.out.printf("%-4d" , res);
 		}
-		
-	
-		
 	}
 }

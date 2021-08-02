@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 public class Ex6_Lotto2 {
     public Ex6_Lotto2() {
+    	
     }
 
     public void printLotto() {
