@@ -6,7 +6,7 @@ public class Main {
 		
 		Child child = new Child();
 		
-		child.setValue("");
+		child.setValue("Test");
 		System.out.println(child.getValue());
 		
 	}
