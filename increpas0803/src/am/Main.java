@@ -6,7 +6,7 @@ public class Main {
 		
 		Child child = new Child();
 		
-		child.setValue("오경주 오랑우탄새끼");
+		child.setValue("");
 		System.out.println(child.getValue());
 		
 	}
