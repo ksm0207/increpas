@@ -4,6 +4,10 @@ public class Parent {
 	
 	String value;
 	
+//	public Parent() {
+//		System.out.println("Parent Class ");
+//	}
+	
 	public String getValue() {
 		return value;
 	}
@@ -18,4 +22,11 @@ public class Parent {
 		}
 		System.out.println();
 	}
+	
+	
+	public void childPrint() {
+		System.out.println("Parent 의 ChildPrint() 호출 ");
+	}
+
+	
 }
