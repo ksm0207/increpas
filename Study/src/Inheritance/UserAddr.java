@@ -10,8 +10,6 @@ public class UserAddr {
 		getUser.setName("Kim");
 		getUser.setAge(27);
 		getUser.setGender("Man");
-		
-		
 	
 		System.out.println("이름 : " + getUser.getName());
 		System.out.println("나이 : " + getUser.getAge());

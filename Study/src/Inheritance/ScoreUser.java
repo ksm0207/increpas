@@ -7,8 +7,6 @@ public class ScoreUser extends Person{
 	int eng;
 	int his;
 	
-	
-	
 	public int getKor() {
 		return kor;
 	}
