@@ -1,4 +1,4 @@
-package Inheritance;
+package Inheritance.Person;
 
 public class ScoreUser extends Person{
 	

@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="am.Main"/>
-    <fullyQualifiedTypeName name="am.MajorVO"/>
-    <fullyQualifiedTypeName name="am.StudentVO"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.code.Attribute.Array"/>
-    <fullyQualifiedTypeName name="ArrayListTest.BallItems"/>
-    <fullyQualifiedTypeName name="jdk.internal.vm.compiler.collections.EconomicMap"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="example0730.EmployeeVO"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="example0730.Company"/>
     <fullyQualifiedTypeName name="Starcraft.TerranVO"/>
     <fullyQualifiedTypeName name="Starcraft.Barracks"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
@@ -60,4 +49,15 @@
     <fullyQualifiedTypeName name="InheritanceWindow.ConTainers"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="Inheritance.Ex1"/>
+    <fullyQualifiedTypeName name="Inheritance.Ex2"/>
+    <fullyQualifiedTypeName name="Inheritance.AddressUser"/>
+    <fullyQualifiedTypeName name="Inheritance.ScoreUser"/>
+    <fullyQualifiedTypeName name="Inheritance.Ex4Value"/>
+    <fullyQualifiedTypeName name="Inheritance.Ex4Test"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="Inheritance.Child"/>
+    <fullyQualifiedTypeName name="Inheritance.Parent"/>
+    <fullyQualifiedTypeName name="Inheritance.Sub"/>
+    <fullyQualifiedTypeName name="Inheritance.aaa.Hunter"/>
 </qualifiedTypeNameHistroy>

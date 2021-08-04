@@ -1,4 +1,4 @@
-package Inheritance.aaa;
+package Inheritance.Game;
 
 public class Game {
 

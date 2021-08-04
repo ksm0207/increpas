@@ -1,4 +1,4 @@
-package Inheritance;
+package Inheritance.ParentChild;
 
 public class RunTest {
 	public static void main(String[] args) {

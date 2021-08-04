@@ -1,4 +1,4 @@
-package Inheritance;
+package Inheritance.Ex;
 
 public class Ex1 {
 

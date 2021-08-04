@@ -1,4 +1,4 @@
-package Inheritance;
+package Inheritance.SuperSub;
 
 public class Sub  extends Super{
 	
