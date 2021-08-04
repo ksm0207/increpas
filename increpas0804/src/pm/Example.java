@@ -46,7 +46,6 @@ public class Example extends JFrame{
 	}
 	
 	public void init() {
-		
 		grid = new GridLayout(4,1);
 		sou_panel = new JPanel(grid);
 		
@@ -76,7 +75,8 @@ public class Example extends JFrame{
 		p2.setBackground(new Color(250,225,0));
 		
 		btn = new JButton("로그인");
-		
+		btn.setBackground(new Color(82,56,55));
+		btn.setForeground(Color.white);
 		p3.add(btn);
 		p3.setBackground(new Color(250,225,0));
 		
