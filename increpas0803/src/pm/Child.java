@@ -15,9 +15,10 @@ public class Child extends Parent{
 	
 	// 부모의 동작 중 같은 동작을 다시 정의 해보자
 	// 오버라이딩 - 메소드 재정의 기능
-	
+
+	@Override
 	public void print() {
 		System.out.println(value +" :"+" Data = " + data);
 	}
-	
+
 }
