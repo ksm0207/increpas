@@ -37,6 +37,7 @@ public class Example extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setTitle("KaKao Login");
+		
 	}
 
 	public static void main(String[] args) {
@@ -52,6 +53,7 @@ public class Example extends JFrame{
 		img1 = new ImageIcon("src/images/kakao.png");
 		
 		img_label = new JLabel(img1);
+		
 		this.add(img_label);
 		
 		fLayout = new FlowLayout(FlowLayout.CENTER);
@@ -68,7 +70,7 @@ public class Example extends JFrame{
 		
 		pw = new JLabel("비밀번호 : ");
 		pwField = new JPasswordField(9);
-		p2.add(pw)
+		p2.add(pw);
 		p2.add(pwField);
 		
 		p2.setBackground(new Color(250,225,0));
