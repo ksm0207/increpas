@@ -8,7 +8,6 @@ public class Ex1_Main {
 		
 		Scanner scan = new Scanner(System.in);
 		Ex1_Final ex1 = new Ex1_Final();
-		Ex1_Final ex2 = new Ex1_Final();
 		System.out.println("1 ~ 4 입력");
 		int cmd = scan.nextInt();
 		
@@ -20,9 +19,5 @@ public class Ex1_Main {
 		}else {
 			System.out.println("1 ~ 4 수들 중 하나만 입력해야 합니다.");
 		}// end of if-else
-		
-		
-	
 	}
-
 }

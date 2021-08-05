@@ -15,7 +15,7 @@ public class Ex2_Static {
 	// 메소드도 같은 static 영역끼리 붙여야 오류가 발생하지않음
 	// 호출 우선도가 제일 높다
 	public static int getValue() {
-		System.out.println("getValue() Result");
+		System.out.println("getValue()");
 		return 100;
 	}
 
