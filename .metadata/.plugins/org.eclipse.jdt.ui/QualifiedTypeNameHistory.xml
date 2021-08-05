@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="Inheritance.AddressUser"/>
     <fullyQualifiedTypeName name="Inheritance.ScoreUser"/>
     <fullyQualifiedTypeName name="Inheritance.Ex4Value"/>
     <fullyQualifiedTypeName name="Inheritance.Ex4Test"/>
@@ -36,7 +35,6 @@
     <fullyQualifiedTypeName name="am.Ex2_Static"/>
     <fullyQualifiedTypeName name="am.Ex3_IconTest"/>
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="javax.swing.border.BevelBorder"/>
     <fullyQualifiedTypeName name="pm.Final"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
@@ -54,10 +52,12 @@
     <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
-    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
-    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
-    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="Abstract.Keyboard"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
     <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
 </qualifiedTypeNameHistroy>

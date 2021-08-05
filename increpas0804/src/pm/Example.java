@@ -18,7 +18,9 @@ import javax.swing.JTextField;
 public class Example extends JFrame{
 	
 	JLabel employee_id , first_name , phone,job_id,department_name;
-	JPanel sou_panel ,panel1,panel2,panel3,panel4,panel5,panel6;
+	JPanel sou_panel , sou_panel2 ,panel1,panel2,panel3,panel4,panel5,panel6,panel7,
+	panel8;
+	
 	JTextField text1,text2,text3,text4,text5;
 	JButton btn1,btn2,btn3,btn4,btn5;
 	JTextArea area;
@@ -26,19 +28,17 @@ public class Example extends JFrame{
 	ImageIcon img1;
 	
 	GridLayout grid , grid2;
-	FlowLayout fLayout, fLayout2;
-	
-
+	FlowLayout fLayout, fLayout2,fLayout3;
 	
 	public Example() {
 		
 		init();
 
 //		Window Screen
-		this.setBounds(400, 200, 800, 500);
+		this.setBounds(400, 200, 450, 350);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setTitle("KaKao Login");
+		this.setTitle("사원관리");
 		
 	}
 
@@ -48,29 +48,23 @@ public class Example extends JFrame{
 	}
 	
 	public void init() {
-		grid = new GridLayout(11,2);
+		grid = new GridLayout(6,-1);
 		sou_panel = new JPanel(grid);
-		area = new JTextArea();
 		
-
-		btn1 = new JButton();
-		btn2 = new JButton();
-		btn3 = new JButton();
-		btn4 = new JButton();
-		btn5 = new JButton();
+		grid2= new GridLayout(1,10);
+		sou_panel2 = new JPanel(grid2);
 		
 		fLayout = new FlowLayout(FlowLayout.LEFT);
+		fLayout2 = new FlowLayout(FlowLayout.CENTER);
+		
 		panel1 = new JPanel(fLayout);
 		panel2 = new JPanel(fLayout);
 		panel3 = new JPanel(fLayout);
 		panel4 = new JPanel(fLayout);
 		panel5 = new JPanel(fLayout);
 		panel6 = new JPanel(fLayout);
-		
-		
-//		fLayout2 = new FlowLayout(FlowLayout.RIGHT);
-//		right_panel = new JPanel(fLayout2);
-		
+		panel7 = new JPanel(fLayout2);
+		panel8 = new JPanel();
 		
 		
 		employee_id = new JLabel("사번 : ");
@@ -99,40 +93,45 @@ public class Example extends JFrame{
 		panel5.add(department_name);
 		panel5.add(text5);
 		
-		area = new JTextArea("Hello",2, 25);
-		panel6.add(btn1);
-		
-		
-		
-	
-		
-//		btn = new JButton("로그인");
-//		btn.setBackground(new Color(82,56,55));
-//		
-//		
-//		panel3.add(btn);
-//		panel3.setBackground(new Color(250,225,0));
-		
 		sou_panel.add(panel1);
 		sou_panel.add(panel2);
 		sou_panel.add(panel3);
 		sou_panel.add(panel4);
 		sou_panel.add(panel5);
-		sou_panel.add(btn1);
-		sou_panel.add(btn2);
-		sou_panel.add(btn3);
-		sou_panel.add(btn4);
-		sou_panel.add(btn5);
-		
 		sou_panel.add(panel6);
-//		area_panel.add(area);
+
+		area = new JTextArea(20, 30);
+		panel7.add(area);
+		sou_panel2.add(panel7);
 		
-//		sou_panel.setBackground(new Color(250,225,0));
+		btn1 = new JButton("전체");
+		btn1.setBackground(Color.DARK_GRAY);
+		btn1.setForeground(Color.white);
 		
+		btn2 = new JButton("추가");
+		btn2.setBackground(Color.DARK_GRAY);
+		btn2.setForeground(Color.white);
 		
-		this.add(sou_panel, BorderLayout.SOUTH);
-//		this.add(right_panel,BorderLayout.WEST);
+		btn3 = new JButton("검색");
+		btn3.setBackground(Color.DARK_GRAY);
+		btn3.setForeground(Color.white);
+		
+		btn4 = new JButton("삭제");
+		btn4.setBackground(Color.DARK_GRAY);
+		btn4.setForeground(Color.white);
+		
+		btn5 = new JButton("취소");
+		btn5.setBackground(Color.DARK_GRAY);
+		btn5.setForeground(Color.white);
+		
+		panel8.add(btn1);
+		panel8.add(btn2);
+		panel8.add(btn3);
+		panel8.add(btn4);
+		panel8.add(btn5);
+		
+		this.add(panel8,BorderLayout.SOUTH);
+		this.add(sou_panel, BorderLayout.CENTER);
+		this.add(sou_panel2,BorderLayout.EAST);
 	}
 }
-
-//label2.setHorizontalAlignment(JLabel.CENTER);
