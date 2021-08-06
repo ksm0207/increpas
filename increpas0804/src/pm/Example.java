@@ -35,7 +35,7 @@ public class Example extends JFrame{
 		init();
 
 //		Window Screen
-		this.setBounds(400, 200, 450, 350);
+		this.setBounds(400, 200, 420, 380);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setTitle("사원관리");
