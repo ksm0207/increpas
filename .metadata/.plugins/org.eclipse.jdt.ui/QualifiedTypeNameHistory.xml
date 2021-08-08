@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.awt.Label"/>
-    <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
-    <fullyQualifiedTypeName name="sun.tools.tree.BitOrExpression"/>
-    <fullyQualifiedTypeName name="Inheritance.membership.Customer"/>
-    <fullyQualifiedTypeName name="Inheritance.membership.VipCustomer"/>
-    <fullyQualifiedTypeName name="java.awt.Font"/>
     <fullyQualifiedTypeName name="java.util.Stack"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.serializer.utils.MsgKey"/>
     <fullyQualifiedTypeName name="am.Ex1_Static"/>
@@ -31,7 +25,6 @@
     <fullyQualifiedTypeName name="InterFace.Student.Score"/>
     <fullyQualifiedTypeName name="Inheritance.Person.ScoreUser"/>
     <fullyQualifiedTypeName name="InterFace.Student.School"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="am.Ex1_Main"/>
     <fullyQualifiedTypeName name="InterFace.Student.Student"/>
     <fullyQualifiedTypeName name="am.Ex1_Inter"/>
@@ -60,4 +53,11 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="javax.swing.border.Border"/>
     <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+    <fullyQualifiedTypeName name="InterFace.student2.ScoreA"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="InterFace.student2.ScoreB"/>
+    <fullyQualifiedTypeName name="InterFace.student2.Student"/>
+    <fullyQualifiedTypeName name="InterFace.student2.ScoreConversion"/>
+    <fullyQualifiedTypeName name="InterFace.student2.ScoreOutput"/>
+    <fullyQualifiedTypeName name="InterFace.student2.ScoreC"/>
 </qualifiedTypeNameHistroy>

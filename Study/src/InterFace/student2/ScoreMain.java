@@ -22,13 +22,9 @@ public class ScoreMain {
 		**/
 		Scanner scan = new Scanner(System.in);
 		
-		
-		
-		
 		ScoreA sA = new ScoreA();
 		ScoreB sB = new ScoreB();
 		ScoreC sC = new ScoreC();
-		
 		
 		System.out.print("이름 입력 : ");
 		String name = scan.next();
@@ -50,17 +46,16 @@ public class ScoreMain {
 		select = scan.next();
 		if (select.equals("A")) {
 			sA.name = name;
-			sA.score = score ;
-			sA.output();
+			sA.score = score;
+			sA.conversion();
 		}else if (select.equals("B")) {
-			
 			sB.name = name;
 			sB.score = score;
-			sB.output();
+			sB.conversion();
 		}else if (select.equals("C")) {
 			sC.name = name;
 			sC.score = score;
-			sC.output();
+			sC.conversion();
 		}
 	}
 }
