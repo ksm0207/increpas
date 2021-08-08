@@ -4,11 +4,16 @@ import java.util.Scanner;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	public void getConversionResult(ScoreConversion score) {
+		score.conversion();
+	}
+	
+	public void getStart() {
 		
 		ScoreInputA scoreA = new ScoreInputA();
 		ScoreInputB scoreB = new ScoreInputB();
 		ScoreInputC scoreC = new ScoreInputC();
+		Main main = new Main();
 		
 		Scanner scan = new Scanner(System.in);
 		
@@ -39,7 +44,7 @@ public class Main {
 			scoreA.subject = subject;
 			scoreA.score = score;
 			
-			scoreA.conversion();
+			main.getConversionResult(scoreA);
 			
 		}else if (selectCode.equals("B")) {
 			
@@ -50,7 +55,7 @@ public class Main {
 			scoreB.subject = subject;
 			scoreB.score = score;
 			
-			scoreB.conversion();
+			main.getConversionResult(scoreB);
 			
 		}else if (selectCode.equals("C")) {
 			
@@ -61,10 +66,13 @@ public class Main {
 			scoreC.subject = subject;
 			scoreC.score = score;
 			
-			scoreC.conversion();
-			
+			main.getConversionResult(scoreC);
 		}
-		
 	}
-
+	
+	
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.getStart();
+	}
 }
