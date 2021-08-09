@@ -53,7 +53,10 @@ public class Example extends JFrame implements  MouseListener{
 		String value = text.getText(); 
 		int x = Integer.parseInt(value);
 		
+		StringBuilder sb = new StringBuilder();
+		
 		for (int i=1; i<=9; i++) {
+			sb.append(value);
 			area.append(value);
 			area.append(" * ");
 			area.append(Integer.toString(i));
