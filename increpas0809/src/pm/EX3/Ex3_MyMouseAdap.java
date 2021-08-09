@@ -21,6 +21,8 @@ public class Ex3_MyMouseAdap extends MouseAdapter {
 		frame.can.x = x;// 캔버스가 가지고 있는 x,y값을 변경한다.
 		frame.can.y = y;
 		
+		System.out.println(x);
+		
 		//좌표가 변경되었으니... 다시 그림을 그리도록 한다.
 		frame.can.repaint();
 	}

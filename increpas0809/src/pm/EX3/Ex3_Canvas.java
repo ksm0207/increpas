@@ -1,6 +1,7 @@
 package pm.EX3;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -21,7 +22,9 @@ public class Ex3_Canvas extends Canvas {
 	
 	@Override
 	public void paint(Graphics g) {
-		g.drawImage(dog, x, y, this);
+		g.drawLine(10, y, 290, 10);
+		g.setColor(Color.RED);//붓의 색상 변경!
+//		g.drawImage(dog, x, y, this);
 	}
 
 	
