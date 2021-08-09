@@ -19,7 +19,7 @@ public class MoveBall extends JFrame{
 		
 		canvas = new BallCanvas();
 		
-		this.setBounds(300,250,600,550);
+		this.setBounds(300,250,600,750);
 		this.setVisible(true);
 		this.setTitle("Ball Move");
 		
@@ -71,6 +71,7 @@ class GetKeyAdapter extends KeyAdapter{
 	public void keyPressed(KeyEvent e) {
 		System.out.println("Ball canvas getWidth () : "+ball.canvas.getWidth());
 		System.out.println("Ball canvas x : "+ball.canvas.x);
+		System.out.println("Ball canvas y : "+ball.canvas.y);
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
 			ball.canvas.x -=3;
@@ -85,10 +86,26 @@ class GetKeyAdapter extends KeyAdapter{
 				ball.canvas.x = ball.canvas.getWidth() - ball.canvas.ballImages.getWidth(ball);
 			}
 			break;
+		case KeyEvent.VK_UP:
+			ball.canvas.y -=3;
+			if(ball.canvas.y < 0) {
+				ball.canvas.y = 0;
+			}
+			break;
+		case KeyEvent.VK_DOWN:
+			ball.canvas.y +=3;
+			if(ball.canvas.y >= (ball.canvas.getHeight() - ball.canvas.ballImages.getHeight(ball))) {
+				ball.canvas.y =  ball.canvas.getHeight() - ball.canvas.ballImages.getHeight(ball);
+			}
+			break;
+		
+		
 			
 		}
 		ball.canvas.repaint();
-		System.out.println("Ball canvas getWidth ()  - ball canvas Image.getWidth " + (ball.canvas.getWidth() - ball.canvas.ballImages.getWidth(ball)));
+		System.out.println("Ball canvas getWidth ()   - ball canvas Image.getWidth " + (ball.canvas.getWidth() - ball.canvas.ballImages.getWidth(ball)));
+		System.out.println("Ball canvas getHeight ()  - ball canvas Image.getHeight " + (ball.canvas.getHeight() - ball.canvas.ballImages.getHeight(ball)));
+		
 		System.out.println(e.getKeyChar()+":"+e.getKeyCode());
 	}
 	
