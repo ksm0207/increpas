@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -26,11 +27,12 @@ public class LoginView extends JFrame {
 	
 	JPanel card_panel1, card_panel2;
 	JButton btn1, btn2;
-	JLabel idLabel;
+	JLabel id_label,pw_label;
 	CardLayout cl;
-	JTextField id_Text,jText2;
+	JTextField id_text,area_text;
+	JPasswordField pw_text;
 	JTextArea area;
-	JPanel f_penal,l_panel;
+	JPanel first_penal,last_panel;
 	ImageCanvars talkImage;
 	
 //	GridLayout grid;
@@ -43,28 +45,31 @@ public class LoginView extends JFrame {
 		
 		card_panel1 = new JPanel(new BorderLayout());
 		
-		f_penal = new JPanel();
+		first_penal = new JPanel();
 	
-		f_penal.add(idLabel = new JLabel("ID : "));
-		f_penal.add(id_Text = new JTextField(10));
-		f_penal.add(btn1 = new JButton("로그인"));
-		card_panel1.add(f_penal, BorderLayout.SOUTH);
+		first_penal.add(id_label = new JLabel("ID : "));
+		first_penal.add(id_text = new JTextField(10));
+		first_penal.add(pw_label = new JLabel("PW"));
+		first_penal.add(pw_text = new JPasswordField(10));
+		
+		first_penal.add(btn1 = new JButton("로그인"));
+		card_panel1.add(first_penal, BorderLayout.SOUTH);
 		card_panel1.add(talkImage = new ImageCanvars());
 		this.getContentPane().add("FirstLoginView",card_panel1);
 		
 		/* --------------------------------------------------------- */
 	
 		card_panel2 = new JPanel(new BorderLayout());
-		l_panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		l_panel.add(jText2 = new JTextField(40));
-		l_panel.add(btn2 = new JButton("보내기"));
-		card_panel2.add(l_panel, BorderLayout.SOUTH);
+		last_panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		last_panel.add(area_text = new JTextField(40));
+		last_panel.add(btn2 = new JButton("보내기"));
+		card_panel2.add(last_panel, BorderLayout.SOUTH);
 		card_panel2.add(new JScrollPane(area = new JTextArea()));
 		
-		this.getContentPane().add("LastLoginView",card_panel2);
+		this.getContentPane().add("LastAreaView",card_panel2);
 		
 		
-		this.setTitle("Login View ");
+		this.setTitle("LoginView");
 		this.setBounds(110,50,550,450);
 		this.setVisible(true);
 		
@@ -74,7 +79,8 @@ public class LoginView extends JFrame {
 		/* Action Event */
 		btn1.addActionListener(new LoginCheck(this));
 		btn2.addActionListener(new LoginCheck(this));
-		jText2.addActionListener(new LoginCheck(this));
+		area_text.addActionListener(new LoginCheck(this));
+		pw_text.addActionListener(new LoginCheck(this));
 	
 		
 	}
@@ -95,23 +101,39 @@ class LoginCheck implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		
-		String check_id = login.id_Text.getText();
-		String output = login.jText2.getText();
+		String check_id = login.id_text.getText();
+		String check_pw = login.pw_text.getText();
+		
+		String ioArea = login.area_text.getText();
+		
 		
 		if (obj == login.btn1) {
 			if (check_id.trim().isEmpty()) {
-				System.out.println("아이디 공백 탐지 : " + login.id_Text.getText());
+				System.out.println("아이디 미입력 확인");
 				login.cl.show(login.getContentPane(), "FirstLoginView");
-			}else {
-				System.out.println("아이디 확인 : "+ login.id_Text.getText());
-				login.cl.show(login.getContentPane(), "LastLoginView");
+			}else if (check_pw.isEmpty()) {
+				System.out.println("패스워드 미입력 확인");
+			}else{
+				System.out.println("로그인");
+				System.out.println("아이디 확인 : "+ check_id);
+				System.out.println("패스워드 확인 : " + check_pw);
+				
+				login.cl.show(login.getContentPane(), "LastAreaView");
+				login.setTitle("LastView");
+				login.area.append(check_id);
+				login.area.append(" 님 안녕하세요 ?");
+				login.area.append("\n");
+				login.area.append("==========================");
+				login.area.append("\n");
 			}
 		}else if (obj == login.btn2) {
-			login.area.append(output);
+			login.area.append(check_id);
+			login.area.append(" : ");
+			login.area.append(ioArea);
 			login.area.append("\n");
-		}// end of Id Check if-else
+		}// end of ID PW Check if-else
 		
-		login.jText2.setText("");
+		login.area_text.setText("");
 	}
 }
 
@@ -129,4 +151,4 @@ class ImageCanvars extends Canvas {
 	
 		g.drawImage(talk, 100, 15, this);
 	}
-	}
+}
