@@ -49,6 +49,8 @@ public class LoginView extends JFrame {
 	public LoginView() {
 		cl = new CardLayout();
 		this.getContentPane().setLayout(cl);
+		
+		
 	
 		card_panel1 = new JPanel(new BorderLayout());
 		first_penal = new JPanel(new GridLayout(2,1));
