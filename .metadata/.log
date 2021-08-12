@@ -4457,3 +4457,6 @@ Java Model Exception: Java Model Status [RunThreadTest [in Thread02 [in Thread02
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1468)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2021-08-13 06:24:06.408
 !MESSAGE RunThreadTest [in Thread02 [in Thread02.java [in Thread [in src [in Study]]]]] does not exist
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2021-08-13 06:58:18.594
+!MESSAGE No repository found at http://dl.bintray.com/testng-team/testng-p2-release/.

@@ -1,9 +1,9 @@
-package Thread;
+package Thread.example1;
 
 import java.util.Scanner;
 
 public class Multiplication {
-
+	
 	Thread thread;
 	
 	public Multiplication() {

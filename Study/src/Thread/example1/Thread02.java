@@ -1,4 +1,4 @@
-package Thread;
+package Thread.example1;
 
 public class Thread02 {
 	
