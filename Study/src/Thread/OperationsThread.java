@@ -31,16 +31,20 @@ public class OperationsThread {
 			// TODO: handle exception
 		}
 		
-		System.out.println("합 : ");
+		System.out.println("합 : " + thread1.getOperations());
 	}
 }
 class StartOperations extends Thread{
 	
-	int sum;
+	static int res =0;
 	
-	int turn,start,end;
+	int sum = 0;
 	
-	public StartOperations(int turn, int start, int end ) {
+	int turn=0;
+	int start=0;
+	int end = 0;
+	
+	StartOperations(int turn, int start, int end ) {
 		this.turn = turn;
 		this.start = start;
 		this.end = end;
@@ -50,22 +54,26 @@ class StartOperations extends Thread{
 	public void run() {
 		
 		try {
-			sleep(1000);
-			for(int i=start; i<=end; i++) {
+			
+			for(int i=start; i<= end; i++) {
+				System.out.println("스레드 진행중 :" + this.turn + " i = " + i);		
 				sum = sum + i;
-//				System.out.println("스레드 진행중 :" + turn + " i = " + i);
-				
+				sleep(1000);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		setOperations(sum);
 	}
 	
-	
-
+	public void setOperations(int value) {
+		
+		res = res + value;
+		
+	}
 	public int getOperations() {
 			
-		return sum;
+		return res;
 	}
 
 }
