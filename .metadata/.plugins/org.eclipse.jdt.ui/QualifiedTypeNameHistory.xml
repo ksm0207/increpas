@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="am.GetCanvars"/>
-    <fullyQualifiedTypeName name="pm.LoginView"/>
-    <fullyQualifiedTypeName name="pm.Ex1_Inner"/>
-    <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.classfile.InnerClass"/>
-    <fullyQualifiedTypeName name="pm.Ex1_Main"/>
     <fullyQualifiedTypeName name="pm.Ex1_Inner.Inner"/>
     <fullyQualifiedTypeName name="pm.Ex2.Ex2_Interface"/>
     <fullyQualifiedTypeName name="pm.Ex2.Ex2_Outer"/>
@@ -22,7 +17,6 @@
     <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
     <fullyQualifiedTypeName name="Inheritance.ParentChild.RunTest"/>
     <fullyQualifiedTypeName name="Thread.Example"/>
-    <fullyQualifiedTypeName name="java.lang.Runnable"/>
     <fullyQualifiedTypeName name="javax.swing.plaf.SliderUI"/>
     <fullyQualifiedTypeName name="Inheritance.Game.Game"/>
     <fullyQualifiedTypeName name="Thread.Thread02.RunThreadTest"/>
@@ -57,7 +51,13 @@
     <fullyQualifiedTypeName name="javax.swing.JProgressBar"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="pm.Ex6_Frame"/>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.awt.event.KeyAdapter"/>
     <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
+    <fullyQualifiedTypeName name="Thread.Multiplication"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="org.graalvm.compiler.nodeinfo.StructuralInput.Memory"/>
+    <fullyQualifiedTypeName name="Thread.blog.ThreadTest"/>
+    <fullyQualifiedTypeName name="java.lang.Runnable"/>
+    <fullyQualifiedTypeName name="Thread.blog.A"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>
