@@ -16,7 +16,7 @@ public class A extends B implements Runnable{
 	public static void main(String[] args) {
 		A a = new A();
 		
-		Thread thread = new Thread(a);
+		Thread thread = new Thread();
 		thread.start();
 	}
 
