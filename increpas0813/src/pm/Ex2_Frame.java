@@ -20,11 +20,11 @@ import javax.swing.JPanel;
 public class Ex2_Frame extends JFrame{
 	
 	final static int METEORSCORE = 100;
+	
 	int scoreM;
 	int count;
+	
 	JPanel game_panel;
-	
-	
 	
 	Ex2_me me;
 	Dimension d = new Dimension(400,600);
@@ -226,10 +226,12 @@ public class Ex2_Frame extends JFrame{
 	
 		/* 사용자 이미지의 너비 지정 */
 		int img_width = user_img.getWidth(this);
+		System.out.println(img_width);
 		int img_height = user_img.getHeight(this);
 		
 		/* Rectangle 의 너비 와 높이를 지정하기 */
 		me.pos.x =  (d.width/2) - (img_width /2);
+		System.out.println(me.pos.x);
 		me.pos.y =  (d.height - (img_height - 5));
 		
 //		game_panel.getHeight()
@@ -415,7 +417,5 @@ class Exploslon{
 			interval = gap;
 		
 		return index >= 27;
-		
 	}
-	
 }
