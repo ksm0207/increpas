@@ -11,11 +11,18 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
 public class Ex2_Frame extends JFrame{
+	
+	final static int METEORSCORE = 100;
+	int scoreM;
+	int count;
 	JPanel game_panel;
+	
+	
 	
 	Ex2_me me;
 	Dimension d = new Dimension(400,600);
@@ -40,7 +47,7 @@ public class Ex2_Frame extends JFrame{
 		meteor_img = new ImageIcon("src/images/meteor.png").getImage();
 		
 		
-		// 이미지 추가
+		// 폭발이미지 추가
 		for (int i=0; i<exp_img.length; i++) {
 			
 			String fname = String.format("src/images/exp_enemy_1/exp_%d.png", i+1);
@@ -98,6 +105,7 @@ public class Ex2_Frame extends JFrame{
 			@Override
 			public void run() {
 				while(flag) {
+					
 					Ex2_Meteor m = new Ex2_Meteor(Ex2_Frame.this, 35, 30);	
 				// 운석의 x 좌표를 난수로 발생하여 생기게하기
 					int rand = (int)(Math.random() * game_panel.getSize().width-35);
@@ -109,7 +117,11 @@ public class Ex2_Frame extends JFrame{
 					list.add(m);
 					m.start();
 					try {
-						sleep(1500);
+						sleep(1000);
+						if(count == 5) {
+							m.suspend();
+							
+						}	
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
@@ -124,13 +136,18 @@ public class Ex2_Frame extends JFrame{
 			
 			@Override
 			protected void paintComponent(Graphics g) {
+				
+				int meteor_score = Ex2_Frame.METEORSCORE;
 			
 				g.drawImage(bg_img, 0, 0, this);
 				g.drawImage(user_img, me.pos.x, me.pos.y, this);
 				
+				g.drawString("Score" + Integer.toString(scoreM), me.pos.x, me.pos.y);
+				
 				for (int i=0; i<list.size(); i++) {
 					Ex2_Meteor ex2 = list.get(i);
 					g.drawImage(meteor_img, ex2.pos.x, ex2.pos.y, this);
+					
 				}
 				
 				for (int i=0; i< exploslon_List.size(); i++) {
@@ -178,8 +195,11 @@ class Ex2_Meteor extends Thread{
 	
 	Rectangle pos = new Rectangle();
 	
-	int speed = 1;
-	int count = 0;
+	int speed = 5;
+	int score;
+	
+	
+	boolean flag = true;
 	
 	Ex2_Frame frame; // 운석객체가 생성된 후 패널에 다시 그린다.
 //						y좌표를 확인하여 객체를 ArrayList에 담고 삭제한다	
@@ -204,18 +224,27 @@ class Ex2_Meteor extends Thread{
 			
 			frame.game_panel.repaint();
 			
+			
 			// 사용자 이미지와 현재 운석이 충돌했거나
 			// 운석이 바닥에 도달했다면 탈출하기
 			if(frame.me.pos.intersects(pos)						//운석높이
 				|| pos.y >= frame.game_panel.getSize().getHeight() -(30)) {
-				count ++;
-				System.out.println(count);
-				if (count == 5) {
-					System.out.println("게임 종료 !");
-				}
+				score =  Ex2_Frame.METEORSCORE;
 				
-				break;
+				if(flag) {
+					frame.count ++;
+					frame.scoreM = frame. scoreM + Ex2_Frame.METEORSCORE;
+					
+					System.out.println("점수 : "+frame.scoreM);
+				
+					if(frame.count == 5) {
+						JOptionPane.showMessageDialog(frame, "is Dead");
+					}
+					break;
+				}
+			
 			}
+			
 				
 			
 		}
