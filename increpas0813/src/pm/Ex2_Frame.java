@@ -70,12 +70,12 @@ public class Ex2_Frame extends JFrame{
 		
 		this.setLocation(300,50);
 		this.pack();
-		this.setResizable(false);
+//		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("게임");
 		thread.start();
-		thread2.start();
+//		thread2.start();
 		
 		this.addKeyListener(new KeyAdapter() {
 			
@@ -282,7 +282,7 @@ class Ex2_Meteor extends Thread{
 			// 사용자 이미지와 현재 운석이 충돌했거나
 			// 운석이 바닥에 도달했다면 탈출하기
 			if(frame.me.pos.intersects(pos)	) {					//운석높이 || pos.y >= frame.game_panel.getSize().getHeight() -(30)
-	
+				
 				score =  Ex2_Frame.METEORSCORE;
 				
 				if(flag) {

@@ -6,12 +6,13 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GameFrame extends JFrame{
+public class GameFrame extends JFrame  {
 	
 	JPanel game_panel;
 	Rectangle pos = new Rectangle();
@@ -19,34 +20,47 @@ public class GameFrame extends JFrame{
 	
 	Image bg , user, default_meteor,unique_meteor;
 	
+	/* ArrayList */
+	ArrayList<DefaultMeteorControllor> default_list = new ArrayList<DefaultMeteorControllor>();
+	
+	/* Class */
+	GetRectangle gr;
+	 
+	
 
 	public GameFrame() {
+		gr = new GetRectangle();
 		
 		images();
 		initPanel();
 		initUserPos();
 		initWindow();
 		
-		this.addKeyListener(new KeyListener() {
+		while(true) {
+			System.out.println("Test");
+																	// 운석의 떨어지는 시작점
+			DefaultMeteorControllor dmc = new DefaultMeteorControllor(GameFrame.this, 35, 30);
+			default_list.add(dmc);
 			
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
+			int rand = (int)(Math.random() * game_panel.getSize().width-35);
+			dmc.rect.x = rand;
+			
+			default_list.add(dmc);
+			
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				
-				
-			}
-		});
+		}
+	
+		
+		
+		
+		
+		
 		
 		
 	}
@@ -61,7 +75,7 @@ public class GameFrame extends JFrame{
 	private void initWindow() {
 		this.setLocation(300,50);
 		this.pack();
-		this.setResizable(false);
+//		this.setResizable(false);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("하늘에서 떨어지는 운석 캐기");
@@ -95,6 +109,12 @@ public class GameFrame extends JFrame{
 				g.drawImage(bg, 0, 0, this);
 				g.drawImage(user, pos.x, pos.y, this);
 				g.drawString("Score", pos.x, pos.y);
+				
+				for(int i=0; i<default_list.size(); i++) {
+					DefaultMeteorControllor dmc = default_list.get(i);
+					g.drawImage(default_meteor, dmc.rect.x , dmc.rect.y, this);
+					                          // 운석의 떨어지는 시작점
+				}
 			}
 			
 		};
@@ -108,6 +128,5 @@ public class GameFrame extends JFrame{
 		new GameFrame();
 		
 	}
-	
 	
 }
