@@ -8,6 +8,8 @@ import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -26,13 +28,17 @@ public class Ex2_Frame extends JFrame{
 	
 	Ex2_me me;
 	Dimension d = new Dimension(400,600);
-	Thread thread;
+	Thread thread , thread2;
 	
 	boolean flag = true;
-	Image bg_img , user_img , meteor_img;
+	Image bg_img , user_img , meteor_img,unique_meteor_img;
 	
 	ArrayList<Ex2_Meteor> list = new ArrayList<Ex2_Meteor>();
+	ArrayList<UniqueMeteor> u_list = new ArrayList<UniqueMeteor>();
 	ArrayList<Exploslon> exploslon_List = new ArrayList<Exploslon>();
+	
+	Timer timer = new Timer();
+	TimerTask timer_task ;
 	
 	// 폭발 이미지
 	Image[] exp_img = new Image[27];
@@ -45,7 +51,7 @@ public class Ex2_Frame extends JFrame{
 		bg_img = new ImageIcon("src/images/back.jpg").getImage();
 		user_img = new ImageIcon("src/images/me.png").getImage();
 		meteor_img = new ImageIcon("src/images/meteor.png").getImage();
-		
+		unique_meteor_img = new ImageIcon("src/images/unique_meteor.png").getImage();
 		
 		// 폭발이미지 추가
 		for (int i=0; i<exp_img.length; i++) {
@@ -60,7 +66,7 @@ public class Ex2_Frame extends JFrame{
 		init_gamePan(); // 게임판 초기화
 		init_me_pos(); // 사용자 위치 초기화
 		startMeteorThread();
-		
+		uniqueThread();
 		
 		this.setLocation(300,50);
 		this.pack();
@@ -69,6 +75,7 @@ public class Ex2_Frame extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("게임");
 		thread.start();
+		thread2.start();
 		
 		this.addKeyListener(new KeyAdapter() {
 			
@@ -99,6 +106,8 @@ public class Ex2_Frame extends JFrame{
 		});
 	}
 	
+	
+	
 	private void startMeteorThread() {
 		thread = new Thread() {
 			
@@ -113,6 +122,7 @@ public class Ex2_Frame extends JFrame{
 				// 위 난수를 가지고 m의 Rectangle로 지정하기.
 					m.pos.x = rand;
 					
+					
 				// 운석 저장
 					list.add(m);
 					m.start();
@@ -120,7 +130,6 @@ public class Ex2_Frame extends JFrame{
 						sleep(1000);
 						if(count == 5) {
 							m.suspend();
-							
 						}	
 					} catch (Exception e) {
 						// TODO: handle exception
@@ -131,13 +140,52 @@ public class Ex2_Frame extends JFrame{
 		
 	}
 	
+	private void uniqueThread() {
+		thread2 = new Thread() {
+			
+			@Override
+			public void run() {
+				while(flag) {
+					
+					UniqueMeteor u = new UniqueMeteor(Ex2_Frame.this, 35, 30);	
+				// 운석의 x 좌표를 난수로 발생하여 생기게하기
+					int rand = (int)(Math.random() * game_panel.getSize().width-35);
+					
+				// 위 난수를 가지고 m의 Rectangle로 지정하기.
+					u.pos.x = rand;
+					
+					UniqueMeteor unique = new UniqueMeteor(Ex2_Frame.this, 35, 30);
+					int rand2 = (int)(Math.random() * game_panel.getSize().width-35);
+					
+					unique.pos.x = rand2;
+					
+				// 운석 저장
+					
+					u_list.add(unique);
+					
+					unique.start();
+					
+					try {
+						sleep(5000);
+						if(count == 5) {
+							unique.suspend();
+							
+						}	
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+			}
+		};	
+	}
+	
 	private void init_gamePan(){
 		game_panel = new JPanel() {
 			
 			@Override
 			protected void paintComponent(Graphics g) {
 				
-				int meteor_score = Ex2_Frame.METEORSCORE;
+				
 			
 				g.drawImage(bg_img, 0, 0, this);
 				g.drawImage(user_img, me.pos.x, me.pos.y, this);
@@ -147,9 +195,13 @@ public class Ex2_Frame extends JFrame{
 				for (int i=0; i<list.size(); i++) {
 					Ex2_Meteor ex2 = list.get(i);
 					g.drawImage(meteor_img, ex2.pos.x, ex2.pos.y, this);
-					
 				}
 				
+				for(int i=0; i < u_list.size(); i ++) {
+					UniqueMeteor unique = u_list.get(i);
+					g.drawImage(unique_meteor_img,unique.pos.x, unique.pos.y,this);
+				}
+		
 				for (int i=0; i< exploslon_List.size(); i++) {
 					Exploslon func = exploslon_List.get(i);
 					g.drawImage(exp_img[func.index],func.pt.x, func.pt.y,this);
@@ -227,8 +279,8 @@ class Ex2_Meteor extends Thread{
 			
 			// 사용자 이미지와 현재 운석이 충돌했거나
 			// 운석이 바닥에 도달했다면 탈출하기
-			if(frame.me.pos.intersects(pos)						//운석높이
-				|| pos.y >= frame.game_panel.getSize().getHeight() -(30)) {
+			if(frame.me.pos.intersects(pos)	) {					//운석높이 || pos.y >= frame.game_panel.getSize().getHeight() -(30)
+	
 				score =  Ex2_Frame.METEORSCORE;
 				
 				if(flag) {
@@ -262,6 +314,84 @@ class Ex2_Meteor extends Thread{
 		
 	}
 }
+
+class UniqueMeteor extends Thread{
+	
+	Rectangle pos = new Rectangle();
+	
+	int speed = 5;
+	int score;
+	
+	
+	boolean flag = true;
+	
+	Ex2_Frame frame; // 운석객체가 생성된 후 패널에 다시 그린다.
+//						y좌표를 확인하여 객체를 ArrayList에 담고 삭제한다	
+
+	public UniqueMeteor(Ex2_Frame frame , int w , int h) {
+		this.frame = frame;
+		this.pos.width = w;
+		this.pos.height = h;
+	}
+	
+	@Override
+	public void run() {
+		
+		while(true) {
+			pos.y+=speed;
+			
+			try {
+				sleep(10);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			frame.game_panel.repaint();
+			
+			
+			// 사용자 이미지와 현재 운석이 충돌했거나
+			// 운석이 바닥에 도달했다면 탈출하기
+			if(frame.me.pos.intersects(pos)	) {					//운석높이 || pos.y >= frame.game_panel.getSize().getHeight() -(30)
+	
+				score =  Ex2_Frame.METEORSCORE;
+				
+				if(flag) {
+					frame.count ++;
+					frame.scoreM = frame. scoreM + Ex2_Frame.METEORSCORE;
+					
+					System.out.println("점수 : "+frame.scoreM);
+				
+					if(frame.count == 5) {
+						JOptionPane.showMessageDialog(frame, "is Dead");
+					}
+					break;
+				}
+			
+			}
+			
+				
+			
+		}
+		
+		/* ArrayList - 삭제 작업 */
+		frame.list.remove(this);
+		
+		frame.u_list.remove(this);
+		
+		// 폭발 객체 생성
+		Exploslon func = new Exploslon();
+		
+		func.pt.x = (int)pos.getCenterX() - func.size/2;
+		func.pt.y = (int)pos.getCenterY() - func.size/2;
+		
+		frame.exploslon_List.add(func);
+		
+	}
+}
+
+
+
+
 
 class Exploslon{
 	int size = 128;
