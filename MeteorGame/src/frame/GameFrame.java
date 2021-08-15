@@ -190,7 +190,7 @@ public class GameFrame extends JFrame  {
 		user = new ImageIcon("src/images/user.png").getImage();
 		default_meteor = new ImageIcon("src/images/meteor.png").getImage();
 		unique_meteor = new ImageIcon("src/images/unique_meteor.png").getImage();
-		bomb_meteor = new ImageIcon("src/images/bomb.png").getImage();
+		bomb_meteor = new ImageIcon("src/images/bomb2.png").getImage();
 		
 		
 	}
