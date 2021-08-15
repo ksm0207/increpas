@@ -45,7 +45,7 @@ public class UniqueMeteorThread extends Thread{
 //			System.out.println(g_frame.gr.pos);
 			if(g_frame.gr.pos.intersects(rect)){
 				if(flag) {
-					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.DEFAULTMETEO;
+					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.UNIQUEMETEO;
 					System.out.println(g_frame.meteor_score);
 					break;
 				}
@@ -56,8 +56,6 @@ public class UniqueMeteorThread extends Thread{
 		
 		g_frame.default_list.remove(this);
 		g_frame.unique_list.remove(this);
-		
-		System.out.println(g_frame.default_list.remove(this));
 	
 	}
 	
