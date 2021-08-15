@@ -8,7 +8,7 @@ public class BombMeteorThread extends Thread{
 	
 	Rectangle rect = new Rectangle();
 	
-	int speed = 3;
+	int speed = 5;
 	boolean flag = true;
 	
 	GameFrame g_frame;

@@ -169,7 +169,7 @@ public class GameFrame extends JFrame  {
 					bmc.start();
 					
 					try {
-						sleep(10000);
+						sleep(500);
 						if(user_life == 0) {
 							
 							bmc.suspend();
@@ -186,11 +186,12 @@ public class GameFrame extends JFrame  {
 	}
 	
 	private void images() {
-		bg = new ImageIcon("src/images/back.png").getImage();
+		bg = new ImageIcon("src/images/back3.png").getImage();
 		user = new ImageIcon("src/images/user.png").getImage();
 		default_meteor = new ImageIcon("src/images/meteor.png").getImage();
 		unique_meteor = new ImageIcon("src/images/unique_meteor.png").getImage();
 		bomb_meteor = new ImageIcon("src/images/bomb.png").getImage();
+		
 		
 	}
 	
@@ -233,6 +234,8 @@ public class GameFrame extends JFrame  {
 				g.drawString("Score : " + meteor_score  , gr.pos.x, gr.pos.y);
 				g.drawString("Life : " +  user_life  , 325, 540);
 				
+				
+				
 				for(int i=0; i<default_list.size(); i++) {
 					DefaultMeteorThread dmc = default_list.get(i);
 					g.drawImage(default_meteor, dmc.rect.x , dmc.rect.y, this);
@@ -259,8 +262,5 @@ public class GameFrame extends JFrame  {
 		this.add(game_panel);
 	}
 	
-	public static void main(String[] args) {
-		new GameFrame();
-		
-	}
+	
 }
