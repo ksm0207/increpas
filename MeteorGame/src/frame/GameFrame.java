@@ -3,10 +3,10 @@ package frame;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Rectangle;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -16,18 +16,20 @@ import javax.swing.JPanel;
 public class GameFrame extends JFrame  {
 	
 	JPanel game_panel;
-	
 	Dimension d = new Dimension(671,600);
 	
 	Image bg , user, default_meteor,unique_meteor;
 	
 	/* ArrayList */
 	ArrayList<DefaultMeteorThread> default_list = new ArrayList<DefaultMeteorThread>();
+	ArrayList<UniqueMeteorThread> unique_list = new ArrayList<UniqueMeteorThread>();
+	
 	
 	/* Class */
 	GetRectangle gr;
-	Thread startThread;
+	Thread startThread , unique_meteor_thread;
 	 
+	int meteor_score = 0;
 	
 
 	public GameFrame() {
@@ -71,26 +73,54 @@ public class GameFrame extends JFrame  {
 			
 			}
 		};
+		
+		
+		unique_meteor_thread = new Thread() {
+			@Override
+			public void run() {
+				
+				while(true) {
+					System.out.println("Test");
+					// 운석의 떨어지는 시작점
+					UniqueMeteorThread umc = new UniqueMeteorThread(GameFrame.this, 35, 30);
+					
+					int rand = (int)(Math.random() * game_panel.getSize().width-35);
+					
+					
+					umc.rect.x = rand;
+					
+					unique_list.add(umc);
+				
+					umc.start();
+					
+					try {
+						sleep(10000);
+					} catch (InterruptedException e) {
+					e.printStackTrace();
+					}
+					
+				}	
+			}
+		};
+		
 		startThread.start();
+		unique_meteor_thread.start();
 		
 		this.addKeyListener(new KeyAdapter() {
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println(gr.pos.x);
-				System.out.println("Game Panel Width : "+ game_panel.getWidth());
-				System.out.println("BackGround Width : " + bg.getWidth(game_panel));
 				
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					gr.pos.x-=5;
+					gr.pos.x-=7;
 					if(gr.pos.x <= game_panel.getWidth() - bg.getWidth(game_panel)) {
 						// me.pos.x = 0 ; // 벽에 붙어있게 만들기.
 						gr.pos.x = 368;   // 0이되면 오른쪽으로 즉시 이동
 					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					gr.pos.x+=5;
+					gr.pos.x+=7;
 
 					game_panel.repaint();
 				}
@@ -143,12 +173,17 @@ public class GameFrame extends JFrame  {
 				
 				g.drawImage(bg, 0, 0, this);
 				g.drawImage(user, gr.pos.x, gr.pos.y, this);
-				g.drawString("Score", gr.pos.x, gr.pos.y);
+				g.drawString("Score : " + meteor_score  , gr.pos.x, gr.pos.y);
 				
 				for(int i=0; i<default_list.size(); i++) {
 					DefaultMeteorThread dmc = default_list.get(i);
 					g.drawImage(default_meteor, dmc.rect.x , dmc.rect.y, this);
 					                          // 운석의 떨어지는 시작점
+				}
+				for(int i=0; i<unique_list.size(); i++) {
+					UniqueMeteorThread umc = unique_list.get(i);
+					g.drawImage(unique_meteor, umc.rect.x , umc.rect.y, this);
+					                         
 				}
 			}
 			

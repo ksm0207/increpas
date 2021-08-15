@@ -9,6 +9,7 @@ public class DefaultMeteorThread extends Thread{
 	Rectangle rect = new Rectangle();
 	
 	int speed = 3;
+	boolean flag = true;
 	
 	GameFrame g_frame;
 	
@@ -20,9 +21,9 @@ public class DefaultMeteorThread extends Thread{
 		this.rect.width = x;
 		this.rect.height = y;	
 		
-		System.out.println("DefaultMeteorThread : " + this.g_frame.gr.pos);
-		System.out.println("DefaultMeteorThread : " + this.rect.width);
-		System.out.println("DefaultMeteorThread : " + this.rect.height);
+//		System.out.println("DefaultMeteorThread : " + this.g_frame.gr.pos);
+//		System.out.println("DefaultMeteorThread : " + this.rect.width);
+//		System.out.println("DefaultMeteorThread : " + this.rect.height);
 	}
 	
 	@Override
@@ -42,11 +43,14 @@ public class DefaultMeteorThread extends Thread{
 			
 //			java.awt.Rectangle[x=185,y=559,width=30,height=46]
 //			System.out.println("이미지 : "+g_frame.gr.pos);
-			System.out.println("운석 : " + rect);
-			System.out.println(g_frame.gr.pos);
-			if(g_frame.gr.pos.intersects(rect)){	
-				
-				System.out.println("이미지 충돌 발생");
+//			System.out.println("운석 : " + rect);
+//			System.out.println(g_frame.gr.pos);
+			if(g_frame.gr.pos.intersects(rect)){
+				if(flag) {
+					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.DEFAULTMETEO;
+					System.out.println(g_frame.meteor_score);
+					break;
+				}
 				break;
 			}
 			
