@@ -49,6 +49,7 @@ public class BombMeteorThread extends Thread{
 					if(g_frame.user_life == 0) {
 						JOptionPane.showMessageDialog(g_frame, "is Dead");
 						System.out.println("게임 종료 222!");
+						System.exit(0);
 					}
 					break;
 				}
