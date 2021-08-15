@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -15,16 +16,17 @@ import javax.swing.JPanel;
 public class GameFrame extends JFrame  {
 	
 	JPanel game_panel;
-	Rectangle pos = new Rectangle();
+	
 	Dimension d = new Dimension(671,600);
 	
 	Image bg , user, default_meteor,unique_meteor;
 	
 	/* ArrayList */
-	ArrayList<DefaultMeteorControllor> default_list = new ArrayList<DefaultMeteorControllor>();
+	ArrayList<DefaultMeteorThread> default_list = new ArrayList<DefaultMeteorThread>();
 	
 	/* Class */
 	GetRectangle gr;
+	Thread startThread;
 	 
 	
 
@@ -36,31 +38,64 @@ public class GameFrame extends JFrame  {
 		initUserPos();
 		initWindow();
 		
-		while(true) {
-			System.out.println("Test");
-																	// 운석의 떨어지는 시작점
-			DefaultMeteorControllor dmc = new DefaultMeteorControllor(GameFrame.this, 35, 30);
-			default_list.add(dmc);
+		startThread = new Thread() {
 			
-			int rand = (int)(Math.random() * game_panel.getSize().width-35);
-			dmc.rect.x = rand;
+			@Override
+			public void run() {
+				
+				while(true) {
+					System.out.println("Test");
+					// 운석의 떨어지는 시작점
+					DefaultMeteorThread dmc = new DefaultMeteorThread(GameFrame.this, 35, 30);
+					
+					int rand = (int)(Math.random() * game_panel.getSize().width-35);
+					
+					
+					dmc.rect.x = rand;
+					
+					default_list.add(dmc);
+				
+					dmc.start();
+					
+					try {
+						
+						sleep(1000);
+					} catch (InterruptedException e) {
+					e.printStackTrace();
+					}
+					setTitle(default_list.size() + "개");
+				}
+				
+				
+				
 			
-			default_list.add(dmc);
-			
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
+		};
+		startThread.start();
+		
+		this.addKeyListener(new KeyAdapter() {
 			
-		}
-	
-		
-		
-		
-		
-		
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println(gr.pos.x);
+				System.out.println("Game Panel Width : "+ game_panel.getWidth());
+				System.out.println("BackGround Width : " + bg.getWidth(game_panel));
+				
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					gr.pos.x-=5;
+					if(gr.pos.x <= game_panel.getWidth() - bg.getWidth(game_panel)) {
+						// me.pos.x = 0 ; // 벽에 붙어있게 만들기.
+						gr.pos.x = 368;   // 0이되면 오른쪽으로 즉시 이동
+					}
+					break;
+				case KeyEvent.VK_RIGHT:
+					gr.pos.x+=5;
+
+					game_panel.repaint();
+				}
+			}
+		});
 		
 		
 	}
@@ -88,14 +123,14 @@ public class GameFrame extends JFrame  {
 		
 		int img_height = user.getHeight(this);
 		
-		pos.x =  (d.width/2) - (img_width /2);
+		gr.pos.x =  (d.width/2) - (img_width /2);
 
-		pos.y =  (d.height - (img_height - (-1)));
+		gr.pos.y =  (d.height - (img_height - (-1)));
 		
-		System.out.println(pos.y);
 		
-		pos.width = img_width;
-		pos.height = img_height;
+		
+		gr.pos.width = img_width;
+		gr.pos.height = img_height;
 		
 	}
 	
@@ -107,11 +142,11 @@ public class GameFrame extends JFrame  {
 			protected void paintComponent(Graphics g) {
 				
 				g.drawImage(bg, 0, 0, this);
-				g.drawImage(user, pos.x, pos.y, this);
-				g.drawString("Score", pos.x, pos.y);
+				g.drawImage(user, gr.pos.x, gr.pos.y, this);
+				g.drawString("Score", gr.pos.x, gr.pos.y);
 				
 				for(int i=0; i<default_list.size(); i++) {
-					DefaultMeteorControllor dmc = default_list.get(i);
+					DefaultMeteorThread dmc = default_list.get(i);
 					g.drawImage(default_meteor, dmc.rect.x , dmc.rect.y, this);
 					                          // 운석의 떨어지는 시작점
 				}

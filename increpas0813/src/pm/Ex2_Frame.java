@@ -113,7 +113,7 @@ public class Ex2_Frame extends JFrame{
 			
 			@Override
 			public void run() {
-				while(flag) {
+				while(true) {
 					
 					Ex2_Meteor m = new Ex2_Meteor(Ex2_Frame.this, 35, 30);	
 				// 운석의 x 좌표를 난수로 발생하여 생기게하기
@@ -134,6 +134,7 @@ public class Ex2_Frame extends JFrame{
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
+					setTitle(list.size() + "개");
 				}
 			}
 		};
@@ -174,6 +175,7 @@ public class Ex2_Frame extends JFrame{
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
+					
 				}
 			}
 		};	
@@ -262,6 +264,7 @@ class Ex2_Meteor extends Thread{
 		this.frame = frame;
 		this.pos.width = w;
 		this.pos.height = h;
+		
 	}
 	
 	@Override
@@ -281,8 +284,11 @@ class Ex2_Meteor extends Thread{
 			
 			// 사용자 이미지와 현재 운석이 충돌했거나
 			// 운석이 바닥에 도달했다면 탈출하기
+//			System.out.println(frame.me.pos.intersects(pos));
+			System.out.println("이미지 : "+frame.me.pos);
+			System.out.println("운석 :"+pos);
 			if(frame.me.pos.intersects(pos)	) {					//운석높이 || pos.y >= frame.game_panel.getSize().getHeight() -(30)
-				
+				System.out.println("충돌발생!!");
 				score =  Ex2_Frame.METEORSCORE;
 				
 				if(flag) {
