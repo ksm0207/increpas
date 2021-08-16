@@ -1,7 +1,11 @@
 package frame;
 
 import java.awt.Rectangle;
+import java.io.File;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JOptionPane;
 
 public class DefaultMeteorThread extends Thread{
@@ -48,6 +52,7 @@ public class DefaultMeteorThread extends Thread{
 			if(g_frame.gr.pos.intersects(rect)){
 				System.out.println(g_frame.user_life);
 				if(flag) {
+					getDefaultSound();
 					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.DEFAULTMETEO;
 					System.out.println("User Life : " + g_frame.user_life);
 					
@@ -61,6 +66,21 @@ public class DefaultMeteorThread extends Thread{
 		g_frame.default_list.remove(this);
 		System.out.println(g_frame.default_list.remove(this));
 	
+	}
+	
+	private void getDefaultSound() {
+		
+		g_frame.get_wav = new File("src/music/default_meteor.wav");
+		try {
+			g_frame.stream = AudioSystem.getAudioInputStream(g_frame.get_wav);
+			g_frame.foramt = g_frame.stream.getFormat();
+			g_frame.info = new DataLine.Info(Clip.class, g_frame.foramt);
+			g_frame.clip = (Clip)AudioSystem.getLine(g_frame.info);
+			g_frame.clip.open(g_frame.stream);
+			g_frame.clip.start();			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 

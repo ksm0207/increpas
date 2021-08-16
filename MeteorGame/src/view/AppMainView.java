@@ -1,119 +1,69 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import frame.GameFrame;
-import javax.swing.UIManager;
-import java.awt.Font;
 
 public class AppMainView extends JFrame {
 	
-	/* Jpanel */
-	JPanel card_panel1, card_panel2,p1,p2;
-	JPanel first_penal,last_panel;
-	/* JButton */
-	JButton btn1, btn2;
-	/* JLabel */
-	JLabel icon_label;
-	/* CardLayout */
-	CardLayout cl;
-	
-	/* Area */
-	ImageIcon icon;	
-	
-	boolean check = true;
+	JPanel background;
+	JButton gamebtn;
+	Image bg ;
 	
 	public AppMainView() {
-		cl = new CardLayout();
-		this.getContentPane().setLayout(cl);
 		
-		card_panel1 = new JPanel(new BorderLayout());
-		first_penal = new JPanel();
+		bg = new ImageIcon("src/images/back3.png").getImage();
+		background = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				
+				g.drawImage(bg,0,0,this);
+			}
+		};
 		
-		p1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		p2 = new JPanel();
+		gamebtn = new JButton("Start!");
 		
+		this.setTitle("Home");
+		this.setSize(400,600);
+//		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setLayout(null);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		p2.add(btn1 = new JButton(" Start "));
-	
-		first_penal.add(p2,BorderLayout.NORTH);
-		btn1.addActionListener(new ActionListener() {
+		background.setLayout(null);
+		background.setBounds(0,0,400,600);
+		
+		gamebtn.setBounds(0,515,395,50);
+		gamebtn.setBackground(new Color(20,29,40));
+		gamebtn.setForeground(Color.WHITE);
+		
+		this.add(gamebtn,BorderLayout.NORTH);
+		this.add(background);
+		
+		gamebtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(check) {
-					JOptionPane.showMessageDialog(AppMainView.this, "Game Start!");
+				if(gamebtn == e.getSource())
 					AppMainView.this.dispose();
 					new GameFrame();
-				}
-	
 			}
 		});
-		
-		first_penal.add(p1);
-		
-		icon = new ImageIcon("src/images/back2.png");
-		card_panel1.add(icon_label = new JLabel(icon));
-		card_panel1.add(first_penal, BorderLayout.SOUTH);
-		this.getContentPane().add("FirstLoginView",card_panel1);
-
-		/* --------------------------------------------------------- */
-	
-		/* 화면 영역 설정 */
-		this.setTitle("ViewTest1");
-		this.setBounds(110,50,600,550);
-		this.setVisible(true);
-		
-		/* Window Event */
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		/* Action Event */
-		
-	
-		
 	}
-	
 	public static void main(String[] args) {
 		new AppMainView();
 	}
 }
 
-class StartButton implements ActionListener{
-	
-	AppMainView view;
-	
-	
-	public StartButton(AppMainView view) {
-		this.view = view;
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		
-				
-		
-		
-	}
-	
-}

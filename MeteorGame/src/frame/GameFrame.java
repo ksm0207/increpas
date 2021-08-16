@@ -6,9 +6,13 @@ import java.awt.Image;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.io.File;
 import java.util.ArrayList;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,7 +41,16 @@ public class GameFrame extends JFrame  {
 	int unique_score = 0;
 	
 	/* Life */
-	int user_life = 1;
+	int user_life = 10;
+	
+	/* Audio */
+	File get_wav;
+	AudioInputStream stream;
+	AudioFormat foramt;
+	DataLine.Info info;
+	Clip clip;
+	
+	
 	
 	public GameFrame() {
 		gr = new GetRectangle();

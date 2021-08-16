@@ -1,6 +1,11 @@
 package frame;
 
 import java.awt.Rectangle;
+import java.io.File;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 
 public class UniqueMeteorThread extends Thread{
 	
@@ -45,18 +50,32 @@ public class UniqueMeteorThread extends Thread{
 //			System.out.println(g_frame.gr.pos);
 			if(g_frame.gr.pos.intersects(rect)){
 				if(flag) {
+					getUniqueSound();
 					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.UNIQUEMETEO;
 					System.out.println(g_frame.meteor_score);
 					break;
 				}
 				break;
 			}
-			
 		}// end of while
 		
 		g_frame.default_list.remove(this);
 		g_frame.unique_list.remove(this);
 	
+	}
+	private void getUniqueSound() {
+		
+		g_frame.get_wav = new File("src/music/unique_meteor.wav");
+		try {
+			g_frame.stream = AudioSystem.getAudioInputStream(g_frame.get_wav);
+			g_frame.foramt = g_frame.stream.getFormat();
+			g_frame.info = new DataLine.Info(Clip.class, g_frame.foramt);
+			g_frame.clip = (Clip)AudioSystem.getLine(g_frame.info);
+			g_frame.clip.open(g_frame.stream);
+			g_frame.clip.start();			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 

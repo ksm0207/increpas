@@ -1,7 +1,11 @@
 package frame;
 
 import java.awt.Rectangle;
+import java.io.File;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JOptionPane;
 
 public class BombMeteorThread extends Thread{
@@ -46,9 +50,10 @@ public class BombMeteorThread extends Thread{
 			if(g_frame.gr.pos.intersects(rect)){
 				if(flag) {
 					g_frame.user_life = g_frame.user_life - MeteorScoreValue.BOMBMETEOR;
+					getBombSound();
 					if(g_frame.user_life == 0) {
+						
 						JOptionPane.showMessageDialog(g_frame, "is Dead");
-						System.out.println("게임 종료 222!");
 						System.exit(0);
 					}
 					break;
@@ -61,8 +66,21 @@ public class BombMeteorThread extends Thread{
 		g_frame.default_list.remove(this);
 		g_frame.unique_list.remove(this);
 		g_frame.bomb_list.remove(this);
-		
+	}
 	
+	private void getBombSound() {
+		
+		g_frame.get_wav = new File("src/music/bomb.wav");
+		try {
+			g_frame.stream = AudioSystem.getAudioInputStream(g_frame.get_wav);
+			g_frame.foramt = g_frame.stream.getFormat();
+			g_frame.info = new DataLine.Info(Clip.class, g_frame.foramt);
+			g_frame.clip = (Clip)AudioSystem.getLine(g_frame.info);
+			g_frame.clip.open(g_frame.stream);
+			g_frame.clip.start();			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 
