@@ -25,16 +25,17 @@ public class GameFrame extends JFrame  {
 	Dimension d = new Dimension(671,600);
 	
 	/* 이미지 선언*/
-	Image bg , user, default_meteor,unique_meteor,bomb_meteor;
+	Image bg , user, default_meteor,unique_meteor,bomb_meteor,life;
 	
 	/* ArrayList */
 	ArrayList<DefaultMeteorThread> default_list = new ArrayList<DefaultMeteorThread>();
 	ArrayList<UniqueMeteorThread> unique_list = new ArrayList<UniqueMeteorThread>();
 	ArrayList<BombMeteorThread> bomb_list = new ArrayList<BombMeteorThread>();
+	ArrayList<HeartLifeUpThread> life_up = new ArrayList<HeartLifeUpThread>();
 	
 	/* Class */
 	GetRectangle gr;
-	Thread startThread , unique_meteor_thread , bomb_thread;
+	Thread startThread , unique_meteor_thread , bomb_thread , heart_thread;
 	 
 	/* Score */
 	int meteor_score = 0;
@@ -65,10 +66,12 @@ public class GameFrame extends JFrame  {
 		defautMeteorThread();
 		uniqueMeteorThread();
 		bombMeteorThread();
+		heartLifeUp();
 		
 		startThread.start();
 		unique_meteor_thread.start();
 		bomb_thread.start();
+		heart_thread.start();
 		
 		/* 유저 키 이벤트 */
 		this.addKeyListener(new KeyAdapter() {
@@ -198,12 +201,49 @@ public class GameFrame extends JFrame  {
 		
 	}
 	
+	private void heartLifeUp() {
+		
+		heart_thread = new Thread() {
+			@Override
+			public void run() {
+				
+				while(true) {
+					
+					// 운석의 떨어지는 시작점
+					HeartLifeUpThread hmc = new HeartLifeUpThread(GameFrame.this, 50, 40);
+					
+					int rand = (int)(Math.random() * game_panel.getSize().width-35);
+					
+					
+					hmc.rect.x = rand;
+					
+					life_up.add(hmc);
+				
+					hmc.start();
+					
+					try {
+						sleep(10000);
+						if(user_life == 0) {
+							hmc.suspend();
+						}
+					} catch (InterruptedException e) {
+					e.printStackTrace();
+					}
+					
+				}	
+			}
+		};
+	}
+	
+	
 	private void images() {
 		bg = new ImageIcon("src/images/back3.png").getImage();
 		user = new ImageIcon("src/images/user.png").getImage();
 		default_meteor = new ImageIcon("src/images/meteor.png").getImage();
 		unique_meteor = new ImageIcon("src/images/unique_meteor.png").getImage();
 		bomb_meteor = new ImageIcon("src/images/bomb2.png").getImage();
+		life = new ImageIcon("src/images/heart.png").getImage();
+		
 		
 		
 	}
@@ -263,6 +303,12 @@ public class GameFrame extends JFrame  {
 				for(int i=0; i<bomb_list.size(); i++) {
 					BombMeteorThread bmc = bomb_list.get(i);
 					g.drawImage(bomb_meteor, bmc.rect.x , bmc.rect.y, this);
+					                         
+				}
+				
+				for(int i=0; i<life_up.size(); i++) {
+				    HeartLifeUpThread hmc =  life_up.get(i);
+					g.drawImage(life, hmc.rect.x , hmc.rect.y, this);
 					                         
 				}
 				
