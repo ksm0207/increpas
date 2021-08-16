@@ -58,8 +58,7 @@ public class UniqueMeteorThread extends Thread{
 				break;
 			}
 		}// end of while
-		
-		g_frame.default_list.remove(this);
+	
 		g_frame.unique_list.remove(this);
 	
 	}

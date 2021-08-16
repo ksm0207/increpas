@@ -38,6 +38,7 @@ public class GameFrame extends JFrame  {
 	Thread startThread , unique_meteor_thread , bomb_thread , heart_thread;
 	 
 	/* Score */
+	int stage = 1;
 	int meteor_score = 0;
 	int unique_score = 0;
 	
@@ -80,14 +81,14 @@ public class GameFrame extends JFrame  {
 				
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					gr.pos.x-=10;
+					gr.pos.x-=20;
 					if(gr.pos.x <= game_panel.getWidth() - bg.getWidth(game_panel)) {
 						// me.pos.x = 0 ; // 벽에 붙어있게 만들기.
 						gr.pos.x = 368;   // 0이되면 오른쪽으로 즉시 이동
 					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					gr.pos.x+=10;
+					gr.pos.x+=20;
 
 					game_panel.repaint();
 				}
@@ -185,7 +186,7 @@ public class GameFrame extends JFrame  {
 					bmc.start();
 					
 					try {
-						sleep(500);
+						sleep(130);
 						if(user_life == 0) {
 							
 							bmc.suspend();
@@ -283,17 +284,17 @@ public class GameFrame extends JFrame  {
 				
 				g.drawImage(bg, 0, 0, this);
 				g.drawImage(user, gr.pos.x, gr.pos.y, this);
-				
+
+				g.drawString("Stage : " +  stage  , 325, 530);
 				g.drawString("Score : " + meteor_score  , gr.pos.x, gr.pos.y);
 				g.drawString("Life : " +  user_life  , 325, 540);
-				
-				
 				
 				for(int i=0; i<default_list.size(); i++) {
 					DefaultMeteorThread dmc = default_list.get(i);
 					g.drawImage(default_meteor, dmc.rect.x , dmc.rect.y, this);
 					                          // 운석의 떨어지는 시작점
 				}
+				
 				for(int i=0; i<unique_list.size(); i++) {
 					UniqueMeteorThread umc = unique_list.get(i);
 					g.drawImage(unique_meteor, umc.rect.x , umc.rect.y, this);
@@ -303,7 +304,7 @@ public class GameFrame extends JFrame  {
 				for(int i=0; i<bomb_list.size(); i++) {
 					BombMeteorThread bmc = bomb_list.get(i);
 					g.drawImage(bomb_meteor, bmc.rect.x , bmc.rect.y, this);
-					                         
+					                       
 				}
 				
 				for(int i=0; i<life_up.size(); i++) {
@@ -311,10 +312,7 @@ public class GameFrame extends JFrame  {
 					g.drawImage(life, hmc.rect.x , hmc.rect.y, this);
 					                         
 				}
-				
-				
 			}
-			
 		};
 		
 		game_panel.setPreferredSize(d);

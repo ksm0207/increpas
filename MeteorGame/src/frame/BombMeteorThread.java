@@ -12,7 +12,7 @@ public class BombMeteorThread extends Thread{
 	
 	Rectangle rect = new Rectangle();
 	
-	int speed = 5;
+	int speed = 7;
 	boolean flag = true;
 	
 	GameFrame g_frame;
@@ -52,7 +52,6 @@ public class BombMeteorThread extends Thread{
 					g_frame.user_life = g_frame.user_life - MeteorScoreValue.BOMBMETEOR;
 					getBombSound();
 					if(g_frame.user_life == 0) {
-						
 						JOptionPane.showMessageDialog(g_frame, "is Dead");
 						System.exit(0);
 					}
@@ -62,9 +61,7 @@ public class BombMeteorThread extends Thread{
 			}
 			
 		}// end of while
-		
-		g_frame.default_list.remove(this);
-		g_frame.unique_list.remove(this);
+	
 		g_frame.bomb_list.remove(this);
 	}
 	

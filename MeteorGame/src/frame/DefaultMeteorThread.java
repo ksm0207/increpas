@@ -55,7 +55,6 @@ public class DefaultMeteorThread extends Thread{
 					getDefaultSound();
 					g_frame.meteor_score = g_frame.meteor_score + MeteorScoreValue.DEFAULTMETEO;
 					System.out.println("User Life : " + g_frame.user_life);
-					
 					break;
 				}
 				break;
