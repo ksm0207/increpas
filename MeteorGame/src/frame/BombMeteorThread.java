@@ -51,6 +51,7 @@ public class BombMeteorThread extends Thread{
 				if(flag) {
 					g_frame.user_life = g_frame.user_life - MeteorScoreValue.BOMBMETEOR;
 					getBombSound();
+					
 					if(g_frame.user_life == 0) {
 						JOptionPane.showMessageDialog(g_frame, "is Dead");
 						System.exit(0);
@@ -61,8 +62,20 @@ public class BombMeteorThread extends Thread{
 			}
 			
 		}// end of while
-	
+		
 		g_frame.bomb_list.remove(this);
+		kaBoom();
+		
+		
+	}
+	private void kaBoom() {
+		
+		Boom b = new Boom();
+		
+		b.pt.x = (int)rect.getCenterX() - b.size/2;
+		b.pt.y = (int)rect.getCenterY() - b.size/2;
+		
+		g_frame.boom_list.add(b);
 	}
 	
 	private void getBombSound() {

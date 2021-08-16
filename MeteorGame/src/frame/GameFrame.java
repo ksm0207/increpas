@@ -24,14 +24,19 @@ public class GameFrame extends JFrame  {
 	JPanel game_panel;
 	Dimension d = new Dimension(671,600);
 	
-	/* 이미지 선언*/
+	/* 이미지 - 배경,유저,기본운석,희귀운석,폭탄운석,하트운석*/
 	Image bg , user, default_meteor,unique_meteor,bomb_meteor,life;
+	
+	/* 폭발 이미지 */
+	Image[] boom = new Image[27];
 	
 	/* ArrayList */
 	ArrayList<DefaultMeteorThread> default_list = new ArrayList<DefaultMeteorThread>();
 	ArrayList<UniqueMeteorThread> unique_list = new ArrayList<UniqueMeteorThread>();
 	ArrayList<BombMeteorThread> bomb_list = new ArrayList<BombMeteorThread>();
 	ArrayList<HeartLifeUpThread> life_up = new ArrayList<HeartLifeUpThread>();
+	ArrayList<Boom> boom_list = new ArrayList<Boom>();
+	
 	
 	/* Class */
 	GetRectangle gr;
@@ -57,17 +62,30 @@ public class GameFrame extends JFrame  {
 	public GameFrame() {
 		gr = new GetRectangle();
 		
+		for(int i=0; i< boom.length; i++) {
+			
+			String bFile = String.format("src/images/exp_enemy_1/exp_%d.png", i+1);
+			Image exp = new ImageIcon(bFile).getImage();
+			
+			boom[i] = exp;
+		}
+		
 		/*이미지, 패널, 유저위치,화면 */
 		images();
 		initPanel();
 		initUserPos();
 		initWindow();
 		
+		
+		
 		/* 운석 스레드 */
 		defautMeteorThread();
 		uniqueMeteorThread();
 		bombMeteorThread();
 		heartLifeUp();
+		
+		
+		
 		
 		startThread.start();
 		unique_meteor_thread.start();
@@ -164,8 +182,7 @@ public class GameFrame extends JFrame  {
 			}
 		};
 	}
-	
-	
+
 	private void bombMeteorThread() {
 		
 		bomb_thread = new Thread() {
@@ -236,6 +253,11 @@ public class GameFrame extends JFrame  {
 		};
 	}
 	
+	private void boomImages() {
+		
+		
+		
+	}
 	
 	private void images() {
 		bg = new ImageIcon("src/images/back3.png").getImage();
@@ -303,14 +325,22 @@ public class GameFrame extends JFrame  {
 				
 				for(int i=0; i<bomb_list.size(); i++) {
 					BombMeteorThread bmc = bomb_list.get(i);
-					g.drawImage(bomb_meteor, bmc.rect.x , bmc.rect.y, this);
-					                       
+					g.drawImage(bomb_meteor, bmc.rect.x , bmc.rect.y, this);		                       
 				}
 				
 				for(int i=0; i<life_up.size(); i++) {
 				    HeartLifeUpThread hmc =  life_up.get(i);
 					g.drawImage(life, hmc.rect.x , hmc.rect.y, this);
 					                         
+				}
+				
+				for (int i=0; i< boom_list.size(); i++) {		
+					Boom b = boom_list.get(i);
+					g.drawImage(boom[b.index],b.pt.x, b.pt.y,this);
+					
+					if(b.boomIndex()) {
+						boom_list.remove(i);
+					}
 				}
 			}
 		};
