@@ -12,7 +12,7 @@ public class BombMeteorThread extends Thread{
 	
 	Rectangle rect = new Rectangle();
 	
-	int speed = 7;
+	int speed = 6;
 	boolean flag = true;
 	
 	GameFrame g_frame;

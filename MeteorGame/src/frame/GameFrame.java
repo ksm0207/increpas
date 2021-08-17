@@ -40,7 +40,7 @@ public class GameFrame extends JFrame  {
 	
 	/* Class */
 	GetRectangle gr;
-	Thread startThread , unique_meteor_thread , bomb_thread , heart_thread;
+	Thread default_thread , unique_meteor_thread , bomb_thread , heart_thread;
 	 
 	/* Score */
 	int stage = 1;
@@ -87,7 +87,7 @@ public class GameFrame extends JFrame  {
 		
 		
 		
-		startThread.start();
+		default_thread.start();
 		unique_meteor_thread.start();
 		bomb_thread.start();
 		heart_thread.start();
@@ -99,14 +99,14 @@ public class GameFrame extends JFrame  {
 				
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					gr.pos.x-=20;
+					gr.pos.x-=35;
 					if(gr.pos.x <= game_panel.getWidth() - bg.getWidth(game_panel)) {
 						// me.pos.x = 0 ; // 벽에 붙어있게 만들기.
 						gr.pos.x = 368;   // 0이되면 오른쪽으로 즉시 이동
 					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					gr.pos.x+=20;
+					gr.pos.x+=35;
 
 					game_panel.repaint();
 				}
@@ -118,7 +118,7 @@ public class GameFrame extends JFrame  {
 	
 	private void defautMeteorThread() {
 		
-		startThread = new Thread() {
+		default_thread = new Thread() {
 		
 		@Override
 		public void run() {
@@ -240,7 +240,7 @@ public class GameFrame extends JFrame  {
 					hmc.start();
 					
 					try {
-						sleep(10000);
+						sleep(18000);
 						if(user_life == 0) {
 							hmc.suspend();
 						}
