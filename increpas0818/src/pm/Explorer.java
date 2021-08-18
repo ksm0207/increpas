@@ -12,7 +12,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -25,8 +24,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import org.graalvm.compiler.java.JsrScope;
-
 public class Explorer extends JFrame{
 	
 	JPanel west_panel; /* BorderLayout */
@@ -34,7 +31,7 @@ public class Explorer extends JFrame{
 	JTextField path_text;
 	JButton confirm;
 	
-	JList<String> j_list,frame_list;
+	JList<String> j_list;
 	
 	
 	public Explorer() {
@@ -47,16 +44,6 @@ public class Explorer extends JFrame{
 			public void windowClosing(WindowEvent e) {
 				
 				System.exit(0);
-			}
-		});
-		
-	
-		path_text.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showList();
-				
 			}
 		});
 		confirm.addActionListener(new ActionListener() {
@@ -144,7 +131,6 @@ public class Explorer extends JFrame{
 			}
 		});
 		
-		this.add(new JScrollPane(frame_list = new JList<String>()));
 	}
 	
 	void showList() {
@@ -154,7 +140,7 @@ public class Explorer extends JFrame{
 		
 		if(file.isDirectory()) {
 			
-			String[] frame_items = file.list();
+//			String[] items = file.list();
 			
 			File[] list = file.listFiles();
 			
@@ -177,7 +163,6 @@ public class Explorer extends JFrame{
 //			f.toArray(change);
 			
 			j_list.setListData(v);
-			frame_list.setListData(frame_items);
 			
 			
 
