@@ -89,6 +89,7 @@ public class Explorer2 extends JFrame{
 				}			
 			}
 		});
+		
 		j_list.addMouseListener(new MouseAdapter() {
 			
 			@Override
@@ -114,7 +115,28 @@ public class Explorer2 extends JFrame{
 		});
 		
 		this.add(new JScrollPane(frame_list = new JList<String>()));
-		
+		frame_list.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				int status = e.getClickCount();
+				
+				String get = path_text.getText();
+				String selected = frame_list.getSelectedValue();
+			
+				if (status == 2) {
+					StringBuffer sb = new StringBuffer();
+					
+					sb.append(get);
+					if(selected.length() > 0 ) {
+						sb.append(selected);
+						sb.append("/");
+					}
+					path_text.setText(sb.toString());	
+					showList();
+				}
+			}
+		});
 	
 	}
 	
@@ -172,5 +194,7 @@ public class Explorer2 extends JFrame{
 			
 		}		
 	}
-
+	void lastList() {
+		showList();
+	}
 }

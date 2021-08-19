@@ -19,9 +19,12 @@ public class FileInput {
 			try {
 				fileStream = new  FileInputStream(f);
 				
-				int data = -1;
+				int data = 0;
 				
 				System.out.println("Result");
+				
+				int set = (data = fileStream.read());
+				System.out.println("Set = > "+set);
 				
 				while((data = fileStream.read()) != -1 )
 					System.out.write(data);

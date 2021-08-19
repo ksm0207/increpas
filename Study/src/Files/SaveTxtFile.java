@@ -23,7 +23,7 @@ public class SaveTxtFile {
 		
 		save = sb.toString();
 		
-		File file = new File(path , save);
+		File file = new File(path , ".txt");
 		
 				/* txt 파일로 데이터 저장하기 예제 */
 		try {
@@ -48,6 +48,7 @@ public class SaveTxtFile {
 				
 				String text = scan.nextLine();
 				byte[] encoded = text.getBytes();
+				System.out.println(encoded);
 				output.write(encoded);
 			}
 		} catch (Exception e) {
