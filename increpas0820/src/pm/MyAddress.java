@@ -110,39 +110,34 @@ public class MyAddress extends JFrame {
 				
 				 String search = area.getText();
 				 System.out.println("검색 : " + search);
+				 String text = "";
 				 
-				boolean check = false;
 				try {
+					
 					fis = new FileInputStream(path);
 					br = new BufferedReader(new InputStreamReader(fis));	
-					String text = "";
 					
 					Vector<String> vector = new Vector<String>();
 					
+//					JOptionPane.showMessageDialog(MyAddress.this, search +" 결과 입니다.");
 					
-					while( (text = br.readLine()) != null) {
+					boolean check = true;
+					while((text = br.readLine()) != null) {
 						StringBuffer sb = new StringBuffer();
-						if(search.isEmpty() || search.contains(" ")) {
+						
+						if(text.contains(search)) {	
 							
-							JOptionPane.showMessageDialog(MyAddress.this, search +" 는 없는 결과입니다.");
+							String[] sp =  text.split("\\|");
+							
+							sb.append(sp[0]);
+							sb.append(":");
+							sb.append(sp[8]);
+							vector.add(sb.toString());
 							area.setText("");
-							break;
 							
-						}else {
-							if(text.contains(search)) {			
-								String[] sp =  text.split("\\|");
-								
-								sb.append(sp[0]);
-								sb.append(":");
-								sb.append(sp[8]);
-								vector.add(sb.toString());
-								check = true;
-								area.setText("");
-							}						
-							list.setListData(vector);
-						}
+							list.setListData(vector);	
+						}	
 					}
-					
 					fis.close();
 					br.close();
 				} catch (Exception e1) {
