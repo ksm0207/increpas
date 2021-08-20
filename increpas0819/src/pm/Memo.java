@@ -68,7 +68,7 @@ public class Memo extends JFrame {
 	public Memo() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 890, 709);
-		setTitle("제목없음 - Java Swing 메모장");
+		setTitle("제목없음 - Java Swing 메모장  - by Kim");
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -192,45 +192,32 @@ public class Memo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				boolean flag = true;
+				int status = 0 ;
 				
-				if(file.isFile()) {
+				if (file != null) {
+					System.out.println("File Null");
+					JFileChooser jfc = new JFileChooser(file);
+					status = jfc.showSaveDialog(Memo.this);
 					
-					JFileChooser jfc = new JFileChooser(path);
-					int status = jfc.showSaveDialog(Memo.this);
-					
-					if ( status == JFileChooser.APPROVE_OPTION) {
-						
-						StringBuffer sb = new StringBuffer();
-						
-						String save = jfc.getSelectedFile().toString();
-						
-						sb.append(save);
-						sb.append(".txt");
-						
-						String res = sb.toString();
-						
-						file = jfc.getSelectedFile();
-						
-						try {
-							fos = new FileOutputStream(res);
-							
-							String content = ta.getText();
-							
-							byte[] encoding = content.getBytes();
-											
-							if(!ta.getText().isEmpty()) {
-								status = 0;
-								System.out.println("비어있지 않습니다.");
-								fos.write(encoding);
-								fos.flush();
-							}
-							
-						} catch (Exception e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+					if (!ta.getText().isEmpty()) {
+						int choice = JOptionPane.showConfirmDialog(Memo.this, "변경된 내용이 있습니다 덮어 씌울까요?", "확인창",
+								JOptionPane.YES_NO_CANCEL_OPTION);
+						if(choice == 0) {
+							JOptionPane.showMessageDialog(Memo.this, "저장하였습니다.");
+							saveFile();
+						}	
 					}
+					if (status != JFileChooser.APPROVE_OPTION) {
+						flag = false;
+					}else {				
+						file = jfc.getSelectedFile();	
+					}
+					
 				}
+				if(flag)
+					saveFile();
+			
 			}
 		});
 	
@@ -247,40 +234,62 @@ public class Memo extends JFrame {
 	}
 	void savsAs() {
 		
-		JFileChooser jfc = new JFileChooser(path);
-		int status = jfc.showSaveDialog(Memo.this);
-	
-		if (status == JFileChooser.APPROVE_OPTION) {
+			JFileChooser jfc = new JFileChooser(path);
+			int status = jfc.showSaveDialog(Memo.this);
 			
-			StringBuffer sb = new StringBuffer();
-			
-			String save = jfc.getSelectedFile().toString();
-			
-			sb.append(save);
-			sb.append(".txt");
-			
-			String res = sb.toString();
-			
-			file = jfc.getSelectedFile();
-			
-			try {
+			if (file != null ) {
+				System.out.println(file);
+				if (status == JFileChooser.APPROVE_OPTION) {
+					
+					StringBuffer sb = new StringBuffer();
+					
+					String save = jfc.getSelectedFile().toString();
+					
+					sb.append(save);
+					sb.append(".txt");
+					
+					String res = sb.toString();
+					
+					file = jfc.getSelectedFile();
+					
+					try {
+						
+						fos = new FileOutputStream(res);
+						String content = ta.getText();
+						
+						byte[] encoding = content.getBytes();
+						if(status == JFileChooser.APPROVE_OPTION) {		
+							fos.write(encoding);
+							fos.flush();
+						}
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				
-				fos = new FileOutputStream(res);
-				String content = ta.getText();
-				
-				byte[] encoding = content.getBytes();
-				if(status == JFileChooser.APPROVE_OPTION) {		
-					fos.write(encoding);
-					fos.flush();
 				}
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
+	}
+	void saveFile() {
 		
+		String text = ta.getText();
+		
+		try {
+			
+			fos = new FileOutputStream(file);
+			
+			byte[] encoding = text.getBytes();
+			
+			fos.write(encoding);
+			fos.flush();
+			
+			setTitle(file.getAbsolutePath());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
-
+	
 	void bufClose() {
 		if (fis != null) {
 			try {

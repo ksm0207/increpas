@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="java.lang.Runnable"/>
-    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
-    <fullyQualifiedTypeName name="pm.SingleRun"/>
-    <fullyQualifiedTypeName name="pm.ThreadSync"/>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="pm.file.Ex5_File"/>
-    <fullyQualifiedTypeName name="pm.file.Ex6_File"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.parser.Scanner"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="am.FileExample"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
-    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollBar"/>
     <fullyQualifiedTypeName name="pm.Explorer"/>
     <fullyQualifiedTypeName name="java.awt.event.KeyAdapter"/>
@@ -21,7 +8,6 @@
     <fullyQualifiedTypeName name="org.graalvm.compiler.java.JsrScope"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
     <fullyQualifiedTypeName name="javax.swing.JList"/>
-    <fullyQualifiedTypeName name="java.awt.event.WindowListener"/>
     <fullyQualifiedTypeName name="Files.Explorer2"/>
     <fullyQualifiedTypeName name="java.lang.VerifyError"/>
     <fullyQualifiedTypeName name="java.util.Vector"/>
@@ -34,7 +20,6 @@
     <fullyQualifiedTypeName name="am.FileInput"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.io.PrintStream"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="jdk.internal.jimage.ImageStream"/>
     <fullyQualifiedTypeName name="javax.imageio.stream.ImageInputStream"/>
     <fullyQualifiedTypeName name="pm.ImageStreamTest"/>
@@ -49,15 +34,30 @@
     <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="pm.Images"/>
-    <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
-    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="pm.FileOutput"/>
     <fullyQualifiedTypeName name="pm.Ex4_Frame"/>
-    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="am.BufferedInputStreamTest"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
     <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
+    <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+    <fullyQualifiedTypeName name="java.net.Socket"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="jdk.internal.org.jline.utils.InputStreamReader"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="sun.security.jca.GetInstance"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
+    <fullyQualifiedTypeName name="org.graalvm.compiler.debug.CSVUtil.Escape"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="java.awt.event.WindowListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="pm.MyAddress"/>
 </qualifiedTypeNameHistroy>
