@@ -149,12 +149,11 @@ public class MyAddress extends JFrame {
 		
 					}// end of while
 					
-					list.setListData(vector);
-					
 					if (vector.isEmpty()) {
 						JOptionPane.showMessageDialog(MyAddress.this, "검색하신 "+search + " 는 없는 결과 입니다.");	
 					}else {
 						JOptionPane.showMessageDialog(MyAddress.this, search + " 결과 입니다. ");	
+						list.setListData(vector);
 					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
