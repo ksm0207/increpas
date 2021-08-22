@@ -156,9 +156,6 @@ public class MyAddress extends JFrame {
 					}else {
 						JOptionPane.showMessageDialog(MyAddress.this, search + " 결과 입니다. ");	
 					}
-					
-					fis.close();
-					br.close();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}			
