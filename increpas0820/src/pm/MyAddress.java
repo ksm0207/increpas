@@ -12,6 +12,7 @@ import java.awt.event.WindowListener;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Vector;
 
@@ -99,6 +100,21 @@ public class MyAddress extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
+				
+				try {
+					fis.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					br.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 			}
 		});
 		
@@ -109,38 +125,38 @@ public class MyAddress extends JFrame {
 			
 				 String search = area.getText();
 				 String text = "";
-				 boolean check ;
-				 
+		
 				 System.out.println("검색 : " + search);
 			 
 				try {
-					
 					fis = new FileInputStream(path);
 					br = new BufferedReader(new InputStreamReader(fis));	
 					
 					Vector<String> vector = new Vector<String>();
-				
-					check = br.readLine().contains(search);
-					System.out.println("Text = br.readLine() : "+ (check = br.readLine().contains(search)));
-					
-					if (!check) {
-						JOptionPane.showMessageDialog(MyAddress.this, search + "는 없는 결과 입니다.");		
-					}else {
-						JOptionPane.showMessageDialog(MyAddress.this, search + " 검색 결과 입니다.");	
-						while((text = br.readLine()) != null ) {
-	
+					JOptionPane.showMessageDialog(MyAddress.this, "검색중...");	
+						
+					while((text = br.readLine()) != null ) {	
+						if(text.contains(search)) {
 							StringBuffer sb = new StringBuffer();	
-					
+							
 							String[] sp =  text.split("\\|");
 							sb.append(sp[0]);
 							sb.append(":");
 							sb.append(sp[8]);
 							vector.add(sb.toString());
 							area.setText("");
-							
-						}// end of while
-					}
+						}
+		
+					}// end of while
+					
 					list.setListData(vector);
+					
+					if (vector.isEmpty()) {
+						JOptionPane.showMessageDialog(MyAddress.this, "검색하신 "+search + " 는 없는 결과 입니다.");	
+					}else {
+						JOptionPane.showMessageDialog(MyAddress.this, search + " 결과 입니다. ");	
+					}
+					
 					fis.close();
 					br.close();
 				} catch (Exception e1) {
@@ -164,4 +180,5 @@ public class MyAddress extends JFrame {
 			}
 		});
 	}
+	
 }

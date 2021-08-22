@@ -32,7 +32,6 @@
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="pm.Images"/>
     <fullyQualifiedTypeName name="pm.FileOutput"/>
-    <fullyQualifiedTypeName name="pm.Ex4_Frame"/>
     <fullyQualifiedTypeName name="am.BufferedInputStreamTest"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
@@ -58,6 +57,7 @@
     <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+    <fullyQualifiedTypeName name="pm.Ex4_Frame"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="pm.MyAddress"/>
 </qualifiedTypeNameHistroy>
