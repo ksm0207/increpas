@@ -106,38 +106,41 @@ public class MyAddress extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("버튼 클릭");
-				
+			
 				 String search = area.getText();
-				 System.out.println("검색 : " + search);
 				 String text = "";
+				 boolean check ;
 				 
+				 System.out.println("검색 : " + search);
+			 
 				try {
 					
 					fis = new FileInputStream(path);
 					br = new BufferedReader(new InputStreamReader(fis));	
 					
 					Vector<String> vector = new Vector<String>();
+				
+					check = br.readLine().contains(search);
+					System.out.println("Text = br.readLine() : "+ (check = br.readLine().contains(search)));
 					
-//					JOptionPane.showMessageDialog(MyAddress.this, search +" 결과 입니다.");
+					if (!check) {
+						JOptionPane.showMessageDialog(MyAddress.this, search + "는 없는 결과 입니다.");		
+					}else {
+						JOptionPane.showMessageDialog(MyAddress.this, search + " 검색 결과 입니다.");	
+						while((text = br.readLine()) != null ) {
+	
+							StringBuffer sb = new StringBuffer();	
 					
-					boolean check = true;
-					while((text = br.readLine()) != null) {
-						StringBuffer sb = new StringBuffer();
-						
-						if(text.contains(search)) {	
-							
 							String[] sp =  text.split("\\|");
-							
 							sb.append(sp[0]);
 							sb.append(":");
 							sb.append(sp[8]);
 							vector.add(sb.toString());
 							area.setText("");
 							
-							list.setListData(vector);	
-						}	
+						}// end of while
 					}
+					list.setListData(vector);
 					fis.close();
 					br.close();
 				} catch (Exception e1) {
