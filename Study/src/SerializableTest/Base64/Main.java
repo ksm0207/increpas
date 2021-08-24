@@ -1,4 +1,4 @@
-package SerializableTest;
+package SerializableTest.Base64;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;

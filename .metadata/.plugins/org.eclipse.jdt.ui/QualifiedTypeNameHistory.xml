@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JButton"/>
-    <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
-    <fullyQualifiedTypeName name="pm.ImageDownload"/>
-    <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="pm.Images"/>
     <fullyQualifiedTypeName name="pm.FileOutput"/>
@@ -23,7 +19,6 @@
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="Files.Address"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
-    <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="jdk.internal.org.jline.utils.InputStreamReader"/>
     <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
     <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
@@ -44,8 +39,6 @@
     <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="pm.Employees"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.utils.StringBufferPool"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
@@ -55,9 +48,16 @@
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="sun.tools.jconsole.Tab"/>
     <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="SerializableTest.SerialDTO"/>
+    <fullyQualifiedTypeName name="SerializableTest.FirstExample.SerialDTO"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
-    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="SerializableTest.ArrayListExample.MemberSave"/>
+    <fullyQualifiedTypeName name="java.lang.VerifyError"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
 </qualifiedTypeNameHistroy>
