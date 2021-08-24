@@ -254,7 +254,17 @@ public class Example extends JFrame {
 			}
 		});
 	
+		search_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
+	
+	
+	
 	private void loadFile() {
 		
 		file = new File(path);
