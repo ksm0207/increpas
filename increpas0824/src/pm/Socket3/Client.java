@@ -25,9 +25,10 @@ public static void main(String[] args) {
 				Socket socket = new Socket("192.168.0.17", 3000);
 				
 				
+				
 				PrintWriter writer = new PrintWriter(socket.getOutputStream(),true);
 				
-				writer.println("writer.println() : "+message);
+				writer.println(message);
 
 				
 				
@@ -36,7 +37,7 @@ public static void main(String[] args) {
 				
 				String str = br.readLine();
 				
-				System.out.println("String str = br.readLine() : " +str);
+				System.out.println(str);
 				
 				
 				

@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jdk.internal.org.jline.utils.InputStreamReader"/>
-    <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
-    <fullyQualifiedTypeName name="am.Ex2_Output"/>
-    <fullyQualifiedTypeName name="SerializableTest.Member"/>
-    <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
-    <fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
-    <fullyQualifiedTypeName name="java.util.Base64"/>
-    <fullyQualifiedTypeName name="SerializableTest.Main"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="pm.Ex1_Object"/>
     <fullyQualifiedTypeName name="pm.Ex1_Input"/>
     <fullyQualifiedTypeName name="am.Ex2_Data"/>
@@ -29,7 +20,6 @@
     <fullyQualifiedTypeName name="java.awt.Canvas"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="java.io.File"/>
-    <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
     <fullyQualifiedTypeName name="java.awt.event.WindowListener"/>
     <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
@@ -40,9 +30,7 @@
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="am.OvalPaint"/>
     <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
-    <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="am.Ex1_Paint"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
@@ -60,4 +48,16 @@
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
+    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
+    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
+    <fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
+    <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.awt.CardLayout"/>
+    <fullyQualifiedTypeName name="pm.Protocol"/>
+    <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
+    <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
 </qualifiedTypeNameHistroy>
