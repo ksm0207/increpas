@@ -21,7 +21,6 @@ public class Ex2_Input {
 		ArrayList<Ex2_Data> res = (ArrayList<Ex2_Data>) obj;
 		ois.close();
 		
-		
 		for(int i=0; i< res.size(); i++) {
 			Ex2_Data data = res.get(i);
 			System.out.println(data.getName() + " / " + data.getAge());
