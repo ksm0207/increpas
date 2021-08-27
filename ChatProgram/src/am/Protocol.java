@@ -14,7 +14,7 @@ public class Protocol implements Serializable {
 	 * */
 	
 	private static final long serialVersionUID = 1L;
-	final static int HOST = 1;
+	final static int SUPERUSER = 1;
 	
 	int status;
 	String userMessage;

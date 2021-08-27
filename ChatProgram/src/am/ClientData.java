@@ -43,6 +43,29 @@ public class ClientData extends Thread {
 						object_out.writeObject(protocol);
 						break exit;
 					case 1:
+						
+						break;
+					case 2:
+						name = protocol.getUserMessage();
+						protocol.setUsers(server.getRoomUserList());
+						
+						protocol.setRooms(server.getRoomList());
+						
+						server.sendMessage(protocol);
+						break;
+						
+					case 3:
+						present_room = new ChatRooms(protocol.getUserMessage());
+						present_room.join(this);
+						
+						server.deleteRoom(this);
+						server.addRoomList(present_room);
+						server.roomRefresh();
+						server.sendMessage(protocol);
+						break;
+						
+					case 4:
+						
 						break;
 					}
 				}

@@ -24,25 +24,21 @@ public class Server {
 		room_list = new ArrayList<ChatRooms>();
 		
 		try {
+			server = new ServerSocket(3030);
 			System.out.println("Server On");
-			server = new ServerSocket(3000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 	
 	public void clientAccept() {
-		Socket socket;
 		while(true) {
 			try {
-				socket = server.accept();
-				object_out = new ObjectOutputStream(socket.getOutputStream());
-				object_in = new ObjectInputStream(socket.getInputStream());
 				
+				Socket socket = server.accept();
 				ClientData data = new ClientData(socket , this);
-				data_list.add(data);
 				data.start();
-				
+				data_list.add(data);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -85,8 +81,8 @@ public class Server {
 		Protocol protocol = new Protocol();
 		protocol.setStatus(2);
 		
-		protocol.setRooms(getRoomList()); /* 대기자들 명단 갱신 */
 		protocol.setUsers(getRoomUserList()); /* 방 목록 갱신 */
+		protocol.setRooms(getRoomList()); /* 대기자들 명단 갱신 */
 		
 //		getRoomList();
 //		getRoomUserList();
@@ -117,8 +113,8 @@ public class Server {
 	
 	/* 특정 방에서 방 나가기로 인해 대기실에 오게되면
 	 * 다시 대기자명단에 저장 */
-	public void addRoomList(ClientData data) {
-		data_list.add(data);
+	public void addRoomList(ChatRooms room) {
+		room_list.add(room);
 	}
 	
 	public static void main(String[] args) {
