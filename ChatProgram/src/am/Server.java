@@ -24,7 +24,7 @@ public class Server {
 		room_list = new ArrayList<ChatRooms>();
 		
 		try {
-			server = new ServerSocket(3030);
+			server = new ServerSocket(3000);
 			System.out.println("Server On");
 		} catch (Exception e) {
 			// TODO: handle exception

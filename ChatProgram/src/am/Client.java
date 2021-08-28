@@ -44,7 +44,7 @@ public class Client extends JFrame {
 	ObjectInputStream obj_in;
 
 	
-	private final static int PORT = 3030;
+	private final static int PORT = 3000;
 	private final static String SERVERIP = "192.168.0.17";
 	
 	private JPanel contentPane;
@@ -76,20 +76,27 @@ public class Client extends JFrame {
 			bk:while(true) {
 				try {
 					//서버로부터 자원을 받을 때까지 대기한다.
-					Object obj = obj_in.readObject();
-					
-					Protocol p = (Protocol) obj;
-					
+					Object obj = obj_in.readObject();	
+					Protocol p = (Protocol) obj;	
 					switch(p.getStatus()) {
 						case 0: //종료
 							break bk;
-							
 						case 2: //접속 및 갱신
-							//대기자 명단 갱신
+							System.out.println("Case 2");
+							//대기자 명단 갱신							
 							user_list.setListData(p.getUsers());
-							
 							//방 목록 갱신
 							room_list.setListData(p.getRooms());
+							break;
+						case 3:
+							System.out.println("Case 3");
+							join_list.setListData(p.getUsers());
+							break;
+							
+						case 4:
+							System.out.println("Case 4");
+							join_list.setListData(p.getUsers());
+							area.append(p.getUserMessage());
 							break;
 					}
 				} catch (Exception e) {
@@ -118,7 +125,8 @@ public class Client extends JFrame {
 	};
 	
 
-	/**
+	
+	private JTextArea area;/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -250,7 +258,7 @@ public class Client extends JFrame {
 		JScrollPane scrollPane_11 = new JScrollPane();
 		area_panel.add(scrollPane_11, BorderLayout.CENTER);
 		
-		JTextArea area = new JTextArea();
+		area = new JTextArea();
 		area.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		area.setRows(23);
 		scrollPane_11.setViewportView(area);
@@ -292,41 +300,36 @@ public class Client extends JFrame {
 				
 				/* 서버접속 */
 				String chkName = name_tf.getText();
+				System.out.println("Login Button");
 				try {
-					socket = new Socket(Client.SERVERIP, Client.PORT);
-					
-					if (socket.isConnected()) {
-						
-						obj_out = new ObjectOutputStream(socket.getOutputStream());
-						obj_in = new ObjectInputStream(socket.getInputStream());
-						thread.start();
-						System.out.println("클라이언트 접속 On");
-						
-						if (chkName.isEmpty() || chkName.contains(" ")) {
-							JOptionPane.showMessageDialog(Client.this, "아이디에 공백이 포함되었습니다 다시 입력해주세요.");
-							name_tf.setText("");
-							name_tf.requestFocus();
-						}else {
-							setTitle(getTimeZone());
-							StringBuffer sb = new StringBuffer();
-							
-							Protocol protocol = new Protocol();
-							protocol.setStatus(2);
-							
-							sb.append(chkName);
-							sb.append(loginDate());
-							
-							protocol.setUserMessage(sb.toString());
-							obj_out.writeObject(protocol);
-							cl.show(contentPane, "wait_room");
-						}
-					
+					if (chkName.length() > 0) {
+						cl.show(contentPane, "wait_room");
+						if(getAcceptData()) {
+							try {
+								setTitle(getTimeZone());
+								StringBuffer sb = new StringBuffer();		
+								Protocol protocol = new Protocol();
+								protocol.setStatus(2);	
+								sb.append(chkName);		
+								protocol.setUserMessage(sb.toString());
+								obj_out.writeObject(protocol);
+							} catch (Exception e2) {
+								// TODO: handle exception
+							}
+						}	
+					}else {
+						JOptionPane.showMessageDialog(Client.this, "아이디에 공백이 포함되었습니다 다시 입력해주세요.");
+						name_tf.requestFocus();
+						name_tf.setText("");
 					}
+						
 					
 					
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
+				
+				
 				
 			}
 		});
@@ -340,33 +343,20 @@ public class Client extends JFrame {
 				String roomTitle = JOptionPane.showInputDialog(Client.this," 방 제목을 입력하세요.");
 				
 				if(roomTitle != null && ! roomTitle.trim().isEmpty()) {
-					
-					StringBuffer sb = new StringBuffer();
-					sb.append(roomTitle);
-					sb.append(" - ");
-					sb.append("Host : ");
-					sb.append(name_tf.getText());
-					
-					
+				
 					System.out.println("Create Room");
-					
-					cl.show(contentPane, "join");
 					Protocol protocol = new Protocol();
-					
-					if (isCheck()) {
-						protocol.setStatus(3);
-						protocol.setUserMessage(sb.toString());
+					protocol.setStatus(4);
+					protocol.setUserMessage(name_tf.getText());
+					try {
 						
-						try {
-							obj_out.writeObject(protocol);
-							obj_out.flush();
-							
-						} catch (Exception e2) {
-							e2.printStackTrace();
-						}
-					}else {
-						System.out.println("Error");
-					}	
+						obj_out.writeObject(protocol);
+						cl.show(contentPane, "join");
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+					
 				}
 			}
 		});
@@ -379,28 +369,40 @@ public class Client extends JFrame {
 				int click = e.getClickCount();
 				
 				if (click == 2) {
-					cl.show(contentPane, "join");
+					
+					System.out.println("Room Click");
+					Protocol protocol= new Protocol();
+					protocol.setStatus(4);
+					protocol.setUserMessage(name_tf.getText());
+					
+					try {
+						obj_out.writeObject(protocol);
+						obj_out.flush();
+						cl.show(contentPane, "join");
+						
+					} catch (Exception e2) {
+						e2.printStackTrace();
+					}
+			
 				}
 				
-				System.out.println("Room Click");
 				
 			}
 		});
 	}
 	
-	private boolean isCheck() {
+	private boolean getAcceptData() {
 		boolean flag = true;
 		try {
-			socket = new Socket("192.168.0.17", 3000);
+			socket = new Socket(Client.SERVERIP , Client.PORT);
 			obj_out = new ObjectOutputStream(socket.getOutputStream());
 			obj_in = new ObjectInputStream(socket.getInputStream());
 			thread.start();
-			
 		} catch (Exception e) {
+			e.printStackTrace();
 			return flag = false;
 		}
 		return flag;
-		
 		
 	}
 	
