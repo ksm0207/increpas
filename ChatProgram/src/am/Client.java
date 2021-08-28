@@ -16,6 +16,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JFrame;
@@ -63,6 +64,9 @@ public class Client extends JFrame {
 	
 	SimpleDateFormat simpleDate;
 	Date date;
+	ChatRooms chatRooms;
+	ArrayList<Protocol> pro_list = new ArrayList<Protocol>();
+	Protocol proto;
 	
 	CardLayout cl;
 	
@@ -77,26 +81,27 @@ public class Client extends JFrame {
 				try {
 					//서버로부터 자원을 받을 때까지 대기한다.
 					Object obj = obj_in.readObject();	
-					Protocol p = (Protocol) obj;	
-					switch(p.getStatus()) {
+					proto = (Protocol) obj;	
+					switch(proto.getStatus()) {
 						case 0: //종료
 							break bk;
 						case 2: //접속 및 갱신
-							System.out.println("Case 2");
+							System.out.println("Client Switch : Case 2");
 							//대기자 명단 갱신							
-							user_list.setListData(p.getUsers());
+							user_list.setListData(proto.getUsers());
 							//방 목록 갱신
-							room_list.setListData(p.getRooms());
+							room_list.setListData(proto.getRooms());
 							break;
 						case 3:
 							System.out.println("Case 3");
-							join_list.setListData(p.getUsers());
+							join_list.setListData(proto.getUsers());
 							break;
 							
 						case 4:
 							System.out.println("Case 4");
-							join_list.setListData(p.getUsers());
-							area.append(p.getUserMessage());
+							join_list.setListData(proto.getUsers());
+							area.append(proto.getUserMessage());
+							area.append("\n");
 							break;
 					}
 				} catch (Exception e) {
@@ -308,11 +313,12 @@ public class Client extends JFrame {
 							try {
 								setTitle(getTimeZone());
 								StringBuffer sb = new StringBuffer();		
-								Protocol protocol = new Protocol();
-								protocol.setStatus(2);	
-								sb.append(chkName);		
-								protocol.setUserMessage(sb.toString());
-								obj_out.writeObject(protocol);
+								proto = new Protocol();
+								proto.setStatus(2);	
+								sb.append(chkName);	
+								
+								proto.setUserMessage(sb.toString());
+								obj_out.writeObject(proto);
 							} catch (Exception e2) {
 								// TODO: handle exception
 							}
@@ -343,14 +349,18 @@ public class Client extends JFrame {
 				String roomTitle = JOptionPane.showInputDialog(Client.this," 방 제목을 입력하세요.");
 				
 				if(roomTitle != null && ! roomTitle.trim().isEmpty()) {
-				
 					System.out.println("Create Room");
-					Protocol protocol = new Protocol();
-					protocol.setStatus(4);
-					protocol.setUserMessage(name_tf.getText());
+					
+					
+					proto = new Protocol();
+					proto.setStatus(3);
+					proto.setUserMessage(roomTitle);
+					pro_list.add(proto);
+					
+					
+					setTitle(pro_list.toString());
 					try {
-						
-						obj_out.writeObject(protocol);
+						obj_out.writeObject(pro_list);
 						cl.show(contentPane, "join");
 						
 					} catch (Exception e2) {
@@ -371,12 +381,12 @@ public class Client extends JFrame {
 				if (click == 2) {
 					
 					System.out.println("Room Click");
-					Protocol protocol= new Protocol();
-					protocol.setStatus(4);
-					protocol.setUserMessage(name_tf.getText());
 					
+					proto.setStatus(3);
+					
+			
 					try {
-						obj_out.writeObject(protocol);
+						obj_out.writeObject(proto);
 						obj_out.flush();
 						cl.show(contentPane, "join");
 						

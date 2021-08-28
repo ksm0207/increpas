@@ -187,6 +187,7 @@ public class Ch_Client extends JFrame {
 						Protocol p = new Protocol();
 						p.setCmd(1);
 						p.setMsg(name);
+						setTitle(p.toString());
 					
 						try {
 							out.writeObject(p);

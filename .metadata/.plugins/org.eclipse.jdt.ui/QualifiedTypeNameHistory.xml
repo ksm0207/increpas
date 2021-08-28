@@ -54,10 +54,10 @@
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="com.sun.tools.classfile.StackMapTable_attribute.Object_variable_info"/>
-    <fullyQualifiedTypeName name="am.Client"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
     <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
     <fullyQualifiedTypeName name="java.net.Socket"/>
     <fullyQualifiedTypeName name="am.Protocol"/>
+    <fullyQualifiedTypeName name="am.Client"/>
 </qualifiedTypeNameHistroy>

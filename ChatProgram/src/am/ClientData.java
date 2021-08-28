@@ -44,11 +44,14 @@ public class ClientData extends Thread {
 						break exit;
 					case 1:
 						break;
+						
 					case 2:
 						name = protocol.getUserMessage();
 						protocol.setUsers(server.getRoomUserList());
 						protocol.setRooms(server.getRoomList());
+						server.roomRefresh();
 						server.sendMessage(protocol);
+
 						break;
 						
 					case 3:
@@ -56,21 +59,18 @@ public class ClientData extends Thread {
 						System.out.println("ClientData Case 3 작동");
 						present_room = new ChatRooms(protocol.getUserMessage());
 						present_room.join(this);
-				
+						
+						
+						name = protocol.getUserMessage();
+						protocol.setUsers(server.getRoomUserList());
 						
 						server.deleteRoom(this);
 						server.addRoomList(present_room);
 						server.roomRefresh();
-						server.sendMessage(protocol);
-						protocol.setStatus(4);
 						break;
 					
 					case 4:
 						System.out.println("ClientData Case 4 작동");
-						present_room = new ChatRooms(protocol.getUserMessage());
-						present_room.join(this);
-					
-						protocol.setUsers(server.getRoomUserList());
 						server.sendMessage(protocol);
 						break;
 					}
