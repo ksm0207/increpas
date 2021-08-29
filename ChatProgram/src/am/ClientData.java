@@ -14,7 +14,7 @@ public class ClientData extends Thread {
 	
 	Server server;
 	
-	ChatRooms present_room;
+	ChatRoom present_room;
 	
 	
 	public ClientData(Socket socket, Server server) {
@@ -38,7 +38,9 @@ public class ClientData extends Thread {
 				Object obj = object_in.readObject();
 				if(obj != null) {
 					Protocol protocol = (Protocol)obj;
+					
 					switch (protocol.getStatus()) {
+					
 					case 0:
 						object_out.writeObject(protocol);
 						break exit;
@@ -46,31 +48,39 @@ public class ClientData extends Thread {
 						break;
 						
 					case 2:
+						
+						System.out.println("ClientData Case 2 O5n");
 						name = protocol.getUserMessage();
 						protocol.setUsers(server.getRoomUserList());
 						protocol.setRooms(server.getRoomList());
 						server.roomRefresh();
 						server.sendMessage(protocol);
-
 						break;
 						
 					case 3:
 						
-						System.out.println("ClientData Case 3 작동");
-						present_room = new ChatRooms(protocol.getUserMessage());
-						present_room.join(this);
+						System.out.println("ClientData Case 3 On");
 						
+						present_room = new ChatRoom(protocol.getUserMessage());
 						
-						name = protocol.getUserMessage();
-						protocol.setUsers(server.getRoomUserList());
+						present_room.join(this); // 현 객체 방에 참여
 						
-						server.deleteRoom(this);
-						server.addRoomList(present_room);
-						server.roomRefresh();
+						server.removeClient(this); 
+						
+						server.addRoom(present_room); // 서버에 생성된 방 객체 추가
+						
+						server.roomRefresh();// 대기실 갱신
+		
 						break;
 					
 					case 4:
-						System.out.println("ClientData Case 4 작동");
+						present_room.getTitle();
+						server.removeClient(this);
+						server.roomRefresh();
+						break;
+					case 5:
+						System.out.println("Client Data Case 5 On");
+						present_room.join(this);
 						server.sendMessage(protocol);
 						break;
 					}

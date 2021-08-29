@@ -11,8 +11,9 @@ public class Server {
 	
 	/* 클라이언트 객체를 저장 */
 	ArrayList<ClientData> data_list;
+	
 	/* 대화방 관리 */
-	ArrayList<ChatRooms> room_list;
+	ArrayList<ChatRoom> room_list;
 	
 	ServerSocket server;
 	
@@ -21,20 +22,20 @@ public class Server {
 	
 	public Server() {
 		data_list = new ArrayList<ClientData>();
-		room_list = new ArrayList<ChatRooms>();
+		room_list = new ArrayList<ChatRoom>();
 		
 		try {
 			server = new ServerSocket(3000);
-			System.out.println("Server On");
+			System.out.println("Server Oan");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 	
+	
 	public void clientAccept() {
 		while(true) {
 			try {
-				
 				Socket socket = server.accept();
 				ClientData data = new ClientData(socket , this);
 				data.start();
@@ -45,7 +46,7 @@ public class Server {
 			}
 		}
 	}
-	
+	 
 	// 대기실 명단을 반환하는 기능
 	public String[] getRoomUserList() {
 		
@@ -66,7 +67,7 @@ public class Server {
 		String [] array = new String[room_list.size()];
 
 		int i=0;
-		for(ChatRooms rooms : room_list) {
+		for(ChatRoom rooms : room_list) {
 			array[i] = rooms.getTitle();
 			i++;
 		}
@@ -84,13 +85,12 @@ public class Server {
 		protocol.setUsers(getRoomUserList()); /* 방 목록 갱신 */
 		protocol.setRooms(getRoomList()); /* 대기자들 명단 갱신 */
 		
-//		getRoomList();
-//		getRoomUserList();
-		
 		/* 마무리 sendMessage 호출 */
 		sendMessage(protocol);
 		
 	} 
+	
+	
 	/* 위 Protocol을 대기실에 있는 클라이언트에게 전달하기 */
 	public void sendMessage(Protocol protocol) {
 		try {
@@ -106,15 +106,25 @@ public class Server {
 	
 	/* A클라이언트가 대기실에 대기 하고 있고
 	 * B방 클라이언트 방에 들어갔을 때 A의 현재 위치를 삭제하기 */
-	public void deleteRoom(ClientData data) {
+	public void removeClient(ClientData data) {
 		data_list.remove(data);
 		roomRefresh(); /* 갱신 */
 	}
 	
 	/* 특정 방에서 방 나가기로 인해 대기실에 오게되면
 	 * 다시 대기자명단에 저장 */
-	public void addRoomList(ChatRooms room) {
+	public void addClient(ClientData data) {
+		data_list.add(data);
+		roomRefresh();
+	}
+	
+	/* 방 객체를 인자로 받아 room_list에서 추가하기.*/
+	public void addRoom(ChatRoom room) {
 		room_list.add(room);
+	}
+	
+	public void removeRoom(ChatRoom room) {
+		room_list.remove(room);
 	}
 	
 	public static void main(String[] args) {

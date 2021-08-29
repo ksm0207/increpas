@@ -73,6 +73,7 @@ public class CopyClient extends Thread {
 						server.addRoom(c_room);//서버에 생성된 방 객체 추가 
 						
 						server.refresh();//대기실 갱신
+			
 						break;
 				}//switch의 끝
 				

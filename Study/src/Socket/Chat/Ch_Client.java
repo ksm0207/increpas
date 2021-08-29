@@ -210,14 +210,14 @@ public class Ch_Client extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				sendMessage();
+	//			sendMessage();
 			}
 		});
 		send_bt.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				sendMessage();
+//				sendMessage();
 			}
 		});
 	}

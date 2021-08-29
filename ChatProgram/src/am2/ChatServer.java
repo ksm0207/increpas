@@ -109,6 +109,13 @@ public class ChatServer {
 		r_list.remove(room);
 	}
 	
+	public void getList(ChatRoom room) {
+		for(int i=0; i < c_list.size(); i ++) {
+			
+			
+		}
+	}
+	
 	public static void main(String[] args) {
 		// 프로그램 시작
 		new ChatServer().exe();

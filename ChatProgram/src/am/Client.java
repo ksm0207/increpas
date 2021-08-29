@@ -51,8 +51,9 @@ public class Client extends JFrame {
 	private JPanel contentPane;
 	private JButton exit_bt;
 	private JButton create_Room;
+	private JButton join_bt;
 	private JList user_list;
-	private JList room_list;
+	private JList<String> room_list;
 	private JPanel wait_p;
 	private JPanel login_p;
 	private JTextField name_tf;
@@ -64,7 +65,8 @@ public class Client extends JFrame {
 	
 	SimpleDateFormat simpleDate;
 	Date date;
-	ChatRooms chatRooms;
+	
+	
 	ArrayList<Protocol> pro_list = new ArrayList<Protocol>();
 	Protocol proto;
 	
@@ -82,6 +84,7 @@ public class Client extends JFrame {
 					//서버로부터 자원을 받을 때까지 대기한다.
 					Object obj = obj_in.readObject();	
 					proto = (Protocol) obj;	
+				
 					switch(proto.getStatus()) {
 						case 0: //종료
 							break bk;
@@ -92,16 +95,15 @@ public class Client extends JFrame {
 							//방 목록 갱신
 							room_list.setListData(proto.getRooms());
 							break;
+							
 						case 3:
-							System.out.println("Case 3");
-							join_list.setListData(proto.getUsers());
 							break;
 							
 						case 4:
 							System.out.println("Case 4");
-							join_list.setListData(proto.getUsers());
-							area.append(proto.getUserMessage());
-							area.append("\n");
+							area.append(proto.getUserMessage()+"\r\n");
+							area.setCaretPosition(
+								area.getText().length());
 							break;
 					}
 				} catch (Exception e) {
@@ -176,7 +178,7 @@ public class Client extends JFrame {
 		east_p.add(panel_2, BorderLayout.SOUTH);
 		panel_2.setLayout(new GridLayout(3, 1, 0, 0));
 		
-		JButton join_bt = new JButton("방 참여");
+		join_bt = new JButton("방 참여");
 		panel_2.add(join_bt);
 		
 		create_Room = new JButton("방만들기");
@@ -307,9 +309,10 @@ public class Client extends JFrame {
 				String chkName = name_tf.getText();
 				System.out.println("Login Button");
 				try {
+					
 					if (chkName.length() > 0) {
 						cl.show(contentPane, "wait_room");
-						if(getAcceptData()) {
+						if(checkAccept()) {
 							try {
 								setTitle(getTimeZone());
 								StringBuffer sb = new StringBuffer();		
@@ -329,13 +332,9 @@ public class Client extends JFrame {
 						name_tf.setText("");
 					}
 						
-					
-					
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
-				
-				
 				
 			}
 		});
@@ -350,18 +349,16 @@ public class Client extends JFrame {
 				
 				if(roomTitle != null && ! roomTitle.trim().isEmpty()) {
 					System.out.println("Create Room");
-					
-					
-					proto = new Protocol();
-					proto.setStatus(3);
-					proto.setUserMessage(roomTitle);
-					pro_list.add(proto);
-					
-					
-					setTitle(pro_list.toString());
 					try {
-						obj_out.writeObject(pro_list);
+						proto = new Protocol();
+						proto.setStatus(3);
+						proto.setUserMessage(roomTitle);
+						
+						setTitle(roomTitle);
+						area.append(proto.toString());
+						obj_out.writeObject(proto);
 						cl.show(contentPane, "join");
+						
 						
 					} catch (Exception e2) {
 						e2.printStackTrace();
@@ -370,38 +367,34 @@ public class Client extends JFrame {
 				}
 			}
 		});
-	
-		room_list.addMouseListener(new MouseAdapter() {
+		
+		join_bt.addActionListener(new ActionListener() {
 			
 			@Override
-			public void mousePressed(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				
-				int click = e.getClickCount();
+				String select_room = room_list.getSelectedValue();
+				setTitle("Room Name : "+select_room);
 				
-				if (click == 2) {
-					
-					System.out.println("Room Click");
-					
-					proto.setStatus(3);
-					
-			
+				if(select_room == null) {
+					JOptionPane.showMessageDialog(Client.this, "방을 선택하세요 !");
+				}else {
 					try {
-						obj_out.writeObject(proto);
-						obj_out.flush();
-						cl.show(contentPane, "join");
 						
+						obj_out.writeObject(proto);
+						cl.show(contentPane, "join");
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
-			
-				}
-				
+				}	
 				
 			}
 		});
+	
+		
 	}
 	
-	private boolean getAcceptData() {
+	private boolean checkAccept() {
 		boolean flag = true;
 		try {
 			socket = new Socket(Client.SERVERIP , Client.PORT);

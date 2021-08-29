@@ -2,15 +2,16 @@ package am;
 
 import java.util.ArrayList;
 
+
 /* 참여자들의 방을 관리하는 클래스 */
-public class ChatRooms {
+public class ChatRoom {
 	
 	/* 나가기 , 접속해제시 데이터를 삭제하는 ArrayList */
 	ArrayList<ClientData> client_list;
 	
 	String title; /* Protocol rooms 에 전달하여 방 제목 띄우기*/
 	
-	public ChatRooms(String title) {
+	public ChatRoom(String title) {
 		this.title = title;
 		client_list = new ArrayList<ClientData>();
 	}
@@ -81,7 +82,9 @@ public class ChatRooms {
 	}
 	// 1. 방 참여기능
 	public void join(ClientData data) {
+		
 		client_list.add(data);
+		
 		Protocol protocol = new Protocol();
 		protocol.setStatus(4);
 		protocol.setUserMessage(data.name + " 님이 입장 하였습니다.");
