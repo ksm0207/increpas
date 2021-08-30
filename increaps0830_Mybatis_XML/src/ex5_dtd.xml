@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Computer[
+	<!ELEMENT Computer (CPU,VGA,RAN,HDD,ODD)>
+	<!ELEMENT CPU (#PCDATA)>
+	<!ELEMENT VGA (#PCDATA)>
+	<!ELEMENT RAN (#PCDATA)>
+	<!ELEMENT HDD (#PCDATA)>
+	<!ELEMENT ODD (#PCDATA)>
+]>
+
+<Computer>
+
+<CPU>CPU</CPU>
+<VGA>VGA</VGA>
+<RAN>RAN</RAN>
+<HDD>HDD</HDD>
+<ODD>ODD</ODD>
+
+</Computer>

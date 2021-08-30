@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 현재 문서는 친구들의 비상 연락망을 나타내는 XML 파일 이다. -->
+<contactInfo>
+
+<person>
+<idx>1</idx>
+<name>Nam</name>
+<phone>01012341234</phone>
+<relationship>여자친구</relationship>
+</person>
+
+<person>
+<idx>2</idx>
+<name>Seo</name>
+<phone>01012341234</phone>
+<relationship>개발하는 형</relationship>
+</person>
+
+<person>
+<idx>3</idx>
+<name>Kim</name>
+<phone>01012341234</phone>
+<relationship>개발하는 동생 </relationship>
+</person>
+
+</contactInfo>

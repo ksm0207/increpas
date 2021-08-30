@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	D : Document
+	T : Type
+	D : Definition
+	
+	DTD : XML 문서의 형식을 규칙을 정정정의하는 문서를 의미
+ -->
+ 
+ <!-- total 이라는 엘리먼트가 배열로 왔음. -->
+<!DOCTYPE total [
+ 	<!ELEMENT total (test1,test2)> <!--test1, test2 순차적인 데이터 -->
+ 	<!ELEMENT test1 (#PCDATA)> <!-- 파싱을 필요로 하는 문자 데이터를 의미 -->
+	<!ELEMENT test2 (#PCDATA)>
+]>
+<total>
+
+<test1>연습 1</test1>
+<test2>연습 2</test2>
+
+</total>

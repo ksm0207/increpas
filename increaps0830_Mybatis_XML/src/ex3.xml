@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 자동차 정보 XML 모델명 제조사 가격  -->
+
+<root>
+
+<car_info>
+	<car_model>코나</car_model>
+	<kind>SUV</kind>
+	<price>1962만원</price>
+	<company>현대</company>
+</car_info>
+
+<car_info>
+	<car_model>쏘나타</car_model>
+	<kind>승용</kind>
+	<price>2547만원</price>
+	<company>현대</company>
+</car_info>
+
+
+</root>
+

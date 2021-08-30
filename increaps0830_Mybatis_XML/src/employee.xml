@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- employee.dtd 파일을 연결하기 -->
+<!-- PUBLIC 사용처 : 전 세계인들이 employee.dtd 파일을 사용할 수 있도록 접근권한(?) 부여 -->
+<!-- SYSTEM PUBLIC 의 반대개념 사용은 하되 관계자들끼리만 사용 -->
+
+<!DOCTYPE 사원 SYSTEM 'employee.dtd'>
+<사원>
+	<명함>
+		<!-- ENTITY 사용할땐 &ENTITY; 으로 작성해야함 -->
+		<회사명>&inc;</회사명>
+		<부서>&lt;개발&gt;</부서>
+		<성명 employee="A001">&quot;홍길동&quot;</성명>
+		<주소>&apos;서울시&apos;</주소>
+		<전화>010</전화>
+		<팩스></팩스>
+	</명함>
+</사원>
