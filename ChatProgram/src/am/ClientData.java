@@ -42,13 +42,20 @@ public class ClientData extends Thread {
 					switch (protocol.getStatus()) {
 					
 					case 0:
+						// != null 은 현재 창에서 X 버튼을 눌렀을때
+						// 현재 방에 참여하고 있는 상태인지 확인하기.
+						if(present_room != null) {
+							outRoom();
+						}
+						
 						object_out.writeObject(protocol);
 						break exit;
 					case 1:
+						System.out.println("ClientData Case 1 On");
+						protocol.setUserMessage(name + " : " + protocol.getUserMessage());
+						present_room.setProtocol(protocol);
 						break;
-						
 					case 2:
-						
 						System.out.println("ClientData Case 2 O5n");
 						name = protocol.getUserMessage();
 						protocol.setUsers(server.getRoomUserList());
@@ -56,7 +63,6 @@ public class ClientData extends Thread {
 						server.roomRefresh();
 						server.sendMessage(protocol);
 						break;
-						
 					case 3:
 						
 						System.out.println("ClientData Case 3 On");
@@ -74,14 +80,22 @@ public class ClientData extends Thread {
 						break;
 					
 					case 4:
-						present_room.getTitle();
-						server.removeClient(this);
-						server.roomRefresh();
-						break;
-					case 5:
-						System.out.println("Client Data Case 5 On");
+						
+						// 프로토콜에 있는 room_index 값을 가지고
+						// 서버에 있는 room_list 값을 가지고 방객체를 가져오기
+						present_room = server.getRoom(protocol.getRoom_index());
+						
+						// 참여
 						present_room.join(this);
-						server.sendMessage(protocol);
+						
+						// 남아있는 대기실에서 현재 객체 삭제 
+						server.removeClient(this);
+						break;
+						
+					case 5:
+						outRoom();
+						server.addClient(this);
+						
 						break;
 					}
 				}
@@ -101,8 +115,16 @@ public class ClientData extends Thread {
 		// TODO: handle exception
 	}
 	
-	
-	
-	
+	}
+
+	// 현재 방의 접속자 수가 없다면 방 삭제하기.
+	private void outRoom() {
+		present_room.exitRoom(this);
+		
+		int cnt = present_room.getJoinCount(); // getJoinCount() : 참여 인원수
+		if (cnt == 0) {
+			server.removeRoom(present_room);
+		}
+		present_room = null;
 	}
 }

@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -36,6 +37,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.ScrollPaneConstants;
 
 public class Client extends JFrame {
 
@@ -52,15 +54,18 @@ public class Client extends JFrame {
 	private JButton exit_bt;
 	private JButton create_Room;
 	private JButton join_bt;
+	private JButton out_bt;
 	private JList user_list;
-	private JList<String> room_list;
+	private JList room_list;
 	private JPanel wait_p;
 	private JPanel login_p;
 	private JTextField name_tf;
 	private JButton login_bt;
+	private JTextArea area;
+	private JButton send_btn;
 	
 	private JList join_list;
-	private JPanel area_panel;
+	private JPanel chat_panel;
 	private JTextField send_text;
 	
 	SimpleDateFormat simpleDate;
@@ -88,19 +93,21 @@ public class Client extends JFrame {
 					switch(proto.getStatus()) {
 						case 0: //종료
 							break bk;
+						case 1:
+							area.append(proto.getUserMessage()+"\r\n");
+							area.setCaretPosition(area.getText().length());
+							break;
 						case 2: //접속 및 갱신
 							System.out.println("Client Switch : Case 2");
 							//대기자 명단 갱신							
 							user_list.setListData(proto.getUsers());
 							//방 목록 갱신
 							room_list.setListData(proto.getRooms());
-							break;
-							
-						case 3:
-							break;
+							break;				
 							
 						case 4:
 							System.out.println("Case 4");
+							join_list.setListData(proto.getUsers());
 							area.append(proto.getUserMessage()+"\r\n");
 							area.setCaretPosition(
 								area.getText().length());
@@ -132,10 +139,6 @@ public class Client extends JFrame {
 	};
 	
 
-	
-	private JTextArea area;/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -159,6 +162,7 @@ public class Client extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(cl = new CardLayout(0, 0));
+		
 		
 		wait_p = new JPanel();
 		contentPane.add(wait_p, "wait_room");
@@ -234,13 +238,13 @@ public class Client extends JFrame {
 		
 		/*================================================================================*/
 		
-		area_panel = new JPanel();
-		contentPane.add(area_panel,"join");
-		area_panel.setLayout(new BorderLayout(0, 0));
-		area_panel.setPreferredSize(new Dimension(110,300));
+		chat_panel = new JPanel();
+		contentPane.add(chat_panel, "join");
+		chat_panel.setLayout(new BorderLayout(0, 0));
+		chat_panel.setPreferredSize(new Dimension(110,300));
 		
 		JPanel join_panel = new JPanel();
-		area_panel.add(join_panel, BorderLayout.EAST);
+		chat_panel.add(join_panel, BorderLayout.EAST);
 		join_panel.setLayout(new BorderLayout(0, 0));
 		
 		join_panel.setPreferredSize(new Dimension(110, 250));
@@ -253,8 +257,8 @@ public class Client extends JFrame {
 		join_panel.add(panel_21, BorderLayout.SOUTH);
 		panel_21.setLayout(new GridLayout(1, 1, 0, 0));
 		
-		JButton exit_room = new JButton("나가기");
-		panel_21.add(exit_room);
+		out_bt = new JButton("나가기");
+		panel_21.add(out_bt);
 		
 		JScrollPane scrollPane1 = new JScrollPane();
 		join_panel.add(scrollPane1, BorderLayout.CENTER);
@@ -263,20 +267,24 @@ public class Client extends JFrame {
 		scrollPane1.setViewportView(join_list);
 		
 		JScrollPane scrollPane_11 = new JScrollPane();
-		area_panel.add(scrollPane_11, BorderLayout.CENTER);
+		chat_panel.add(scrollPane_11, BorderLayout.CENTER);
 		
 		area = new JTextArea();
+		area.setLineWrap(true);
 		area.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		area.setRows(23);
 		scrollPane_11.setViewportView(area);
 		
+		JPanel panel1 = new JPanel();
+		chat_panel.add(panel1, BorderLayout.SOUTH);
+		panel1.setLayout(new BorderLayout(0, 0));
+		
 		send_text = new JTextField();
-		area_panel.add(send_text, BorderLayout.SOUTH);
+		panel1.add(send_text, BorderLayout.CENTER);
 		send_text.setColumns(10);
 		
-		JPanel panel1 = new JPanel();
-		area_panel.add(panel1, BorderLayout.NORTH);
-		panel1.setLayout(new BorderLayout(0, 0));
+		send_btn = new JButton("전송");
+		panel1.add(send_btn, BorderLayout.EAST);
 		
 		
 		cl.show(contentPane, "login");// contentPane에 등록된
@@ -287,6 +295,7 @@ public class Client extends JFrame {
 			
 			@Override
 			public void windowClosing(WindowEvent e) {
+				
 				Protocol p = new Protocol();
 				p.setStatus(0);
 				
@@ -346,7 +355,7 @@ public class Client extends JFrame {
 				
 				
 				String roomTitle = JOptionPane.showInputDialog(Client.this," 방 제목을 입력하세요.");
-				
+				setTitle(roomTitle);
 				if(roomTitle != null && ! roomTitle.trim().isEmpty()) {
 					System.out.println("Create Room");
 					try {
@@ -354,8 +363,6 @@ public class Client extends JFrame {
 						proto.setStatus(3);
 						proto.setUserMessage(roomTitle);
 						
-						setTitle(roomTitle);
-						area.append(proto.toString());
 						obj_out.writeObject(proto);
 						cl.show(contentPane, "join");
 						
@@ -373,20 +380,75 @@ public class Client extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				String select_room = room_list.getSelectedValue();
+				/* room_list에서 선택한 방 정보에 참여하기. */
+				
+				int select_room = room_list.getSelectedIndex();
+				
+				System.out.println(select_room);
 				setTitle("Room Name : "+select_room);
 				
-				if(select_room == null) {
+				if (select_room < 0) {
 					JOptionPane.showMessageDialog(Client.this, "방을 선택하세요 !");
 				}else {
-					try {
-						
-						obj_out.writeObject(proto);
-						cl.show(contentPane, "join");
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
-				}	
+					
+					joinRoom();
+				}
+				
+				
+			}
+		});
+		
+		room_list.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				int click_count = e.getClickCount();
+				
+				if(click_count == 2)
+					joinRoom();
+				
+			}
+		});
+		
+		out_bt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("방 나가기 버튼");
+				
+				area.setText(""); // --> 방 나가기를 했을때 채팅한 내용을 모두 청소하기.
+				
+				proto = new Protocol();
+				proto.setStatus(5);
+				
+				try {
+					obj_out.writeObject(proto);
+					obj_out.flush();
+					cl.show(contentPane, "wait_room");
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+	
+			}
+		});
+		
+		send_btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("메세지 버튼");
+				
+				sendMessage();
+				
+			}
+		});
+		
+		send_text.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				sendMessage();
 				
 			}
 		});
@@ -408,6 +470,38 @@ public class Client extends JFrame {
 		return flag;
 		
 	}
+	private void sendMessage() {
+		
+		String text = send_text.getText().trim();
+		proto = new Protocol();
+		proto.setStatus(1);
+		proto.setUserMessage(text);
+		
+		try {
+			obj_out.writeObject(proto);
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+		send_text.setText("");
+	}
+	
+	private void joinRoom() {
+	      /* 사용자가 room_list에서 선택한 Index 값을 가져와서 참여하기 */
+	      int room_index = room_list.getSelectedIndex();
+	      
+	      /* room_index로 부터 N번째 있는 방 정보를 얻어내기. */
+	      /* 그 후 서버로 프로토콜을 만들어서 보내기 */
+	      proto = new Protocol();
+	      proto.setStatus(4);
+	      proto.setRoom_index(room_index);
+ 
+	      try {
+			obj_out.writeObject(proto);
+			cl.show(contentPane, "join");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	   }
 	
 	private String getTimeZone() {
 		simpleDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -425,7 +519,6 @@ public class Client extends JFrame {
 		sb.append("로그인 날짜 : ");
 		sb.append(getTimeZone());
 		sb.append("\n");
-		
 		
 		return sb.toString();
 	}

@@ -30,7 +30,6 @@ public class ChatRoom {
 	
 //   6. 현재 방에 참여자들의 수를 반환하는 기능
 //	(방 나갈때 마지막에 남은 사람이 나가기를 했을때 방이 삭제되야함)
-	
 	public int getJoinCount() {
 		return client_list.size();
 	}

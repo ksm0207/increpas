@@ -23,6 +23,16 @@ public class Protocol implements Serializable {
 	String[] rooms; /* 방 목록 */
 	int userCount; /* 방 목록에 있는 유저 수*/
 	
+	int room_index;
+	
+	
+	public int getRoom_index() {
+		return room_index;
+	}
+	
+	public void setRoom_index(int room_index) {
+		this.room_index = room_index;
+	}
 	
 	public int getStatus() {
 		return status;

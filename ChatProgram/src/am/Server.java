@@ -127,6 +127,12 @@ public class Server {
 		room_list.remove(room);
 	}
 	
+	// 인자로 Index 값을 받아 room_list로부터 방 객체를 반환하는 기능
+	public ChatRoom getRoom(int index) {
+		return room_list.get(index);
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		new Server().clientAccept();
