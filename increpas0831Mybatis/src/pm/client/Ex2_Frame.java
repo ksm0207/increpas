@@ -230,14 +230,14 @@ public class Ex2_Frame extends JFrame {
 		
 		// INSERT 성공시 추가된 레코드 수가 status에 저장됨.
 		int status = session.insert("emp.add",list);
-		System.out.println("Status : "+status);
+		System.out.println("Status: "+status);
 		
 		if(status > 0) {
 			JOptionPane.showMessageDialog(this, "추가 완료");
 		}else {
 			JOptionPane.showMessageDialog(this, "추가 실패");
 		}
-		
+		 
 	}
 
 }
