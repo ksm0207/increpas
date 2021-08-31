@@ -226,7 +226,7 @@ public class Ex2_Frame extends JFrame {
 		
 		System.out.println("addData : " + list);
 		
-		SqlSession session = factory.openSession(); // AutoCommit
+		SqlSession session = factory.openSession(true); // AutoCommit
 		
 		// INSERT 성공시 추가된 레코드 수가 status에 저장됨.
 		int status = session.insert("emp.add",list);

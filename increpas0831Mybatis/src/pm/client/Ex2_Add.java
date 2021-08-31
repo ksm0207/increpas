@@ -231,10 +231,7 @@ public class Ex2_Add extends JDialog {
 				String job_id = job_tf.getText();
 				String department_id = department_tf.getText();
 			
-			
-				
 				Map<String, String> list = new LinkedHashMap<String, String>();
-				
 				
 				list.put("employee_id",employee_id);
 				list.put("first_name", first_name);
