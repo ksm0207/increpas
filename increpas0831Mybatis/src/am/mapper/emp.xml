@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="emp">
+  <select id="all" resultType="am.vo.EmpVO">
+    select * from employees
+  </select>
+  
+  <!-- 사번으로 검색하는 SELECT 절      parameterType 데이터유형-->
+  <!-- 파라미터타입 String으로 받고 #{no}에 저장 -->
+  <!-- #{} Mybatis 변수를 의미하고 변수가 있을때 자바에서 호출시 인자를 줘야함. -->
+  <!-- resultType : 결과유형 -->
+  
+  <select id = "search_empno"
+          parameterType="String"  
+ 		  resultType ="am.vo.EmpVO"> 
+  	select * from employees where employee_id = #{no}
+  <!-- 자바로 따지면 아래와 같음 -->
+  <!-- public EmpVO search_empno(String no) -->
+  </select>
+  
+  <select id = "search_name"
+          parameterType="String"
+          resultType="am.vo.EmpVO">
+  select * from employees where first_name LIKE '%'|| #{name} ||'%'
+  </select>
+  <!-- LIKE : 문자가 포함된 자료를 쉽게 검색할 수 있다 -->
+  <!-- public EmpVO search_name(String name) -->
+  
+  <insert id="add" parameterType="java.util.Map"> 
+   INSERT INTO employees(employee_id, first_name, last_name, hire_date, email, job_id, department_id)
+   VALUES(#{employee_id}, #{first_name}, #{last_name}, #{hire_date}, #{email}, #{job_id}, #{department_id})
+   
+  </insert>
+  
+</mapper>

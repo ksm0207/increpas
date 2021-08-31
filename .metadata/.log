@@ -13492,3 +13492,173 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2021-08-30 16:52:53.274
 !MESSAGE No repository found at http://dl.bintray.com/testng-team/testng-p2-release/.
+!SESSION 2021-08-30 21:15:06.871 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=11.0.11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-08-30 21:15:45.765
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\user'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2021-08-30 21:26:22.603
+!MESSAGE No repository found at http://dl.bintray.com/testng-team/testng-p2-release/.
+!SESSION 2021-08-31 09:35:27.739 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=11.0.11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-08-31 09:36:13.877
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\user'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2021-08-31 10:13:37.014
+!MESSAGE No repository found at http://dl.bintray.com/testng-team/testng-p2-release/.
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 14:21:43.173
+!MESSAGE An internal error occurred during: "Launching emp.xml".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 14:23:17.624
+!MESSAGE An internal error occurred during: "Launching emp.xml (1)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 14:25:32.146
+!MESSAGE An internal error occurred during: "Launching emp.xml (2)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2021-08-31 19:33:17.184 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=11.0.11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data file:/C:/Users/user/Documents/GitHub/increpas/ -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-08-31 19:33:48.031
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\user'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 19:35:46.942
+!MESSAGE An internal error occurred during: "Launching emp.xml (3)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 19:54:30.146
+!MESSAGE An internal error occurred during: "Launching emp.xml (4)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2021-08-31 20:00:08.488
+!MESSAGE HTTP Server 'Gateway Timeout': http://dl.bintray.com/testng-team/testng-p2-release/compositeContent.xml
+!STACK 1
+org.eclipse.ecf.filetransfer.BrowseFileTransferException: HttpComponents connection error response code 504.
+	at org.eclipse.ecf.provider.filetransfer.httpclient45.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:276)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ecf.identity 4 0 2021-08-31 20:00:08.489
+!MESSAGE HttpComponents connection error response code 504.
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 20:24:10.698
+!MESSAGE An internal error occurred during: "Launching emp.xml (5)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 20:24:13.358
+!MESSAGE An internal error occurred during: "Launching emp.xml (5)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2021-08-31 20:31:53.283
+!MESSAGE An internal error occurred during: "Launching emp.xml (6)".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.getClasspath(JAXPJavaLaunchConfigurationDelegate.java:357)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.getVMRunnerConfiguration(JavaLaunchDelegate.java:96)
+	at org.eclipse.jdt.launching.JavaLaunchDelegate.launch(JavaLaunchDelegate.java:153)
+	at org.eclipse.wst.xsl.jaxp.launching.internal.JAXPJavaLaunchConfigurationDelegate.launch(JAXPJavaLaunchConfigurationDelegate.java:84)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:860)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:719)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1017)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$2.run(DebugUIPlugin.java:1220)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
