@@ -233,6 +233,8 @@ public class Ex2_Add extends JDialog {
 			
 				Map<String, String> list = new LinkedHashMap<String, String>();
 				
+				/* Key 값은 SQL 쿼리문에 사용한 변수명과 일치할것 ! */
+				
 				list.put("employee_id",employee_id);
 				list.put("first_name", first_name);
 				list.put("last_name", last_name);
@@ -240,11 +242,28 @@ public class Ex2_Add extends JDialog {
 				list.put("email", email);
 				list.put("job_id", job_id);
 				list.put("department_id", department_id);
-
 				
-				parent.addData(list);
+				
 //				
+				int status = parent.addData(list);
 				
+				if(status > 0) {
+					JOptionPane.showMessageDialog(Ex2_Add.this, "추가 완료");
+					clearTF();
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(Ex2_Add.this, "추가 실패");
+				}
+			}
+			
+			private void clearTF() {
+				empno_tf.setText("");
+				name_tf.setText("");
+				lname_tf.setText("");
+				hire_tf.setText("");
+				email_tf.setText("");
+				job_tf.setText("");
+				department_tf.setText("");
 			}
 		});
 	}

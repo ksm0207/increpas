@@ -222,7 +222,7 @@ public class Ex2_Frame extends JFrame {
 		}
 	}
 	
-	public void addData(Map<String, String> list) {
+	public int addData(Map<String, String> list) {
 		
 		System.out.println("addData : " + list);
 		
@@ -232,11 +232,9 @@ public class Ex2_Frame extends JFrame {
 		int status = session.insert("emp.add",list);
 		System.out.println("Status: "+status);
 		
-		if(status > 0) {
-			JOptionPane.showMessageDialog(this, "추가 완료");
-		}else {
-			JOptionPane.showMessageDialog(this, "추가 실패");
-		}
+		
+		
+		return status;
 		 
 	}
 

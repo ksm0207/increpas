@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="emp2">
+
+<select id="search" 
+		resultType="pm.vo.EmpVO" 
+		parameterType="java.util.Map">
+select * from employees
+
+<where>
+	<choose> <!-- searchType : Map의 Key값 -->
+	         <!-- choose : 선택해라 -->
+	         <!-- when : if문과 같은 조건식 -->
+	         <!-- 검색된 값에 따라 컬럼을 비교함 -->
+	         
+		<when test="searchType == 0"> 
+			upper(job_id) = upper(#{searchValue})
+		</when>
+		
+		<when test="searchType == 1"> 
+			lower(first_name) LIKE '%'||#{searchValue} || '%'
+		</when>
+		
+		<when test="searchType == 2"> 
+			department_id = #{searchValue}
+		</when>
+
+	</choose>
+</where>
+</select>
+
+<!-- for 반복문  -->
+<select id ="getEmp"
+		resultType="pm.vo.EmpVO"
+        parameterType="java.util.Map">
+
+select * from employees
+
+<!--  where employee_id in(100,120,170,200); -->
+where employee_id IN
+
+<!-- collection : 배열 혹은 컬렉션 List의 이름 (Key값) -->
+<!-- item : 배열 또는 컬렉션 List의 요소를 하나씩 추출하여 저장할 변수를 가리킴 -->
+<!--        변수명 #{evo} -->
+<!--        for(Integer evo : empno_ar) -->
+
+<!-- open :  for문이 시작하기 전에 출력할 문장  -->
+<!-- close : for문이 끝날 때 출력 할 문장 -->
+<!-- separator : ',' 반복되는 사이에 출력 할 구문자 문장  -->
+<!-- index : 반복되는 index 값  -->
+
+<foreach collection="empno_ar"
+         item="evo"
+         open="(" close=")" separator=",">
+		 #{evo}	
+</foreach>
+
+
+</select>
+
+<!-- foreach를 이용한 다중 추가 방법 : 오라클 -->
+<insert id="add_list" parameterType="java.util.Map">
+
+	<foreach collection="list"
+    	     item="evo"
+        	 open="INSERT ALL "
+         	 close="SELECT * FROM dual"
+         	 separator=" ">
+         	 
+       	INTO employees
+       	(employee_id,last_name,hire_date,email,job_id,department_id)
+       	VALUES(#{evo.employee_id},#{evo.last_name},#{evo.hire_date},
+       	#{evo.email},#{evo.job_id},#{evo.department_id})
+       	  
+    </foreach>
+</insert>
+  
+</mapper>

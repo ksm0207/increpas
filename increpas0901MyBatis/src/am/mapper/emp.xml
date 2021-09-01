@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="emp">
+  <!-- 부서코드를 인자로 받아서 검색된 결과를 List<EmpVO>로 반환한다. -->
+  <select id="searchDept" 
+          resultType="am.vo.EmpVO"
+  		  parameterType ="int">
+    select * from employees
+    where department_id = #{department_id}
+  
+  </select>
+  
+  <!-- department_id2 데이터가 존재하는지 if문으로 구분짓는 방법 -->
+  <select id = "searchDept2"
+          resultType = "am.vo.EmpVO"
+          parameterType="java.util.Map">
+            	
+  	select * from employees
+  	<if test="department_id2 != null"> <!-- Map구조에 키가 있을때만 where절을
+  	                                                                                수행하는 비교문 추가     -->
+  	where department_id = #{department_id2}    	
+  	</if>          
+  </select>
+  
+  <!-- 해당 부서에서 급여가 일정금액보다 많은 사원들을 검색 -->
+  <select id = "searchDept3"
+          resultType = "am.vo.EmpVO"
+          parameterType="java.util.Map">
+            	
+  	select * from employees
+  	<if test="department_id3 != null and salary != null">                                      
+  	where department_id = #{department_id3}
+  	AND salary > #{salary}    	
+  	</if>          
+  </select>
+  
+   <select id = "searchDept4"
+          resultType = "am.vo.EmpVO"
+          parameterType="java.util.Map">
+            	
+  	select * from employees
+  	<if test="aa != null">                                      
+  	where department_id = #{aa}
+  	<if test="sa != null">
+  		AND salary >= #{sa}
+  	</if>
+  	
+  	</if>          
+  </select>
+  
+  <!-- Map구조에 키가 deptno가 있다면 부서코드에 조건을 건다.
+       키가 존재하지 않고 job_id가 있다면 직종에 조건을 걸기 -->
+  <select id ="search" resultType ="am.vo.EmpVO" parameterType="java.util.Map">
+	
+	SELECT * FROM employees
+	
+	<where> <!-- where 태그안에 기술하고자 하는 문장을 수행하지만 문장이 없다면 
+	             where 태그는 사라진다. -->
+	
+	<if test="deptno != null">
+		department_id = #{deptno}
+	</if>
+	
+	<if test="job_id != null">
+		job_id = #{job_id}
+	</if>
+	</where>
+	  
+  </select>
+  
+</mapper>
