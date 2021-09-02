@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.Reader;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,10 @@ public class EmpMain extends JFrame {
 	private JMenuItem exit_item;
 	
 	SqlSessionFactory factory;
-	
+	EmpDialog ed;
 	String[] cname = {"사번","성씨","직종","이메일","입사일","부서코드"};
 	String [][] data;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -62,7 +64,7 @@ public class EmpMain extends JFrame {
 	 */
 	public EmpMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 484, 642);
+		setBounds(100, 100, 872, 642);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -124,15 +126,78 @@ public class EmpMain extends JFrame {
 		});
 		 
 		table.addMouseListener(new MouseAdapter() {
-		
 			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				int click = e.getClickCount();
+				
+				if(click == 2) {
+					
+					/* 더블 클릭한 레코드의 행 번호를 얻어내기 */
+					int index = table.getSelectedRow();
+					
+					String empno = (String)table.getValueAt(index, 0);
+					/*
+						String lname = (String)table.getValueAt(index, 1);
+						String job = (String)table.getValueAt(index, 2);
+						String email = (String)table.getValueAt(index, 3);
+						String hire = (String)table.getValueAt(index, 4);
+						String dptno = (String)table.getValueAt(index, 5);
+						
+						EmpVO evo = new EmpVO();
+						
+						evo.setEmployee_id(empno);
+						evo.setLast_name(lname);
+						evo.setJob_id(job);
+						evo.setEmail(email);
+						evo.setHire_date(hire);
+						evo.setDepartment_id(dptno);
+					*/
+					
+					EmpVO evo = getEmp(empno);
+					ed = new EmpDialog(EmpMain.this, evo);
+					ed.setData();
+	
+				}
+				
+			}
 		});
-		 
-		 
 	}
 	
-	private void addData(Map<String,EmpVO[]> list) {
+	/* 사번으로 사원 검색 기능 DB를 활용한 방법 */
+	
+	public EmpVO getEmp(String empno) {
 		
+		SqlSession session = factory.openSession();
+		
+		EmpVO evo = session.selectOne("emp.search_empno",empno);
+		
+		session.close();
+		
+		
+		return evo;
+		
+	}
+	
+	public void update2(Map<String,EmpVO> map) {
+		
+	}
+	
+	/* 사번을 조건으로 수정하는 기능 */
+	
+	public int updateEmp(Map<String,String> map) {
+		
+		System.out.println("Update Data : " + map);
+		
+		SqlSession session = factory.openSession(true);
+		
+		int update = session.update("emp.update",map);
+		
+		System.out.println("Update value : " +update);
+		
+		session.close();
+		return update;
 	}
 	
 	private void viewTable(List<EmpVO> list) {

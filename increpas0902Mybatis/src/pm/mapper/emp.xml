@@ -11,4 +11,56 @@ select * from employees
 
 </select>
 
+<!-- 사번으로 검색 -->
+
+<select id="search_empno" parameterType="String" resultType="pm.vo.EmpVO">
+
+select * from employees
+
+where employee_id = #{no}
+
+</select>
+
+<!-- 파라미터 타입을 pm.vo.EmpVO로 준다면  Mybatis 변수는 #{멤버변수} 로 줘야한다. -->
+<update id="update" parameterType="java.util.Map">
+
+UPDATE employees
+
+  <trim prefix="SET" suffixOverrides=",">
+  	<if test="last_name != null">
+  	
+	<!-- SET last_name = #{last_name} -->	
+		last_name = #{last_name},
+	</if>
+	
+	<if test="job_id != null">
+		<!-- SET job_id = #{job_id}  -->
+		job_id = #{job_id},
+	</if>
+	
+	<if test="email != null">
+		<!-- SET email = #{email}  -->
+		email = #{email},
+	</if>
+	
+	<if test="hire_date != null">
+	 	<!-- SET hire_date = #{hire_date} -->
+	 	hire_date = #{hire_date}, 
+	</if>
+	
+	<if test="department_id != null">
+		<!-- SET department_id = #{department_id}, -->
+		department_id = #{department_id},
+	</if>
+	
+	<if test="employee_id != null">
+		employee_id = #{employee_id}
+	</if>
+	
+
+</trim>
+
+	WHERE employee_id = #{employee_id}  
+</update>
+
 </mapper>
