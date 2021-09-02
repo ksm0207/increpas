@@ -107,8 +107,8 @@ public class Ex2_Frame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// factory 로부터 sqlSession을 얻어내기
-				SqlSession session = factory.openSession();
+				// factory 로부터 sqlSession을 얻어내기 - Result : emp.xml (mapper 사용하기)
+				SqlSession session = factory.openSession(); // 즉 SQL구문 매핑을 사용하겠다 라는 의미
 				
 				// 세션을 이용해서 사원의 전체 정보를 가져오기
 				List<EmpVO> list = session.selectList("emp.all");
@@ -142,7 +142,10 @@ public class Ex2_Frame extends JFrame {
 				SqlSession session = factory.openSession();
 				String emp_no = JOptionPane.showInputDialog(Ex2_Frame.this,"검색할 사번을 입력하세요");
 				
+				/* 단일 데이터만 조회해야 하니깐 selectOne 메소드를 사용하기 */
+				/* selectOne 메소드의 인자값은 Type이 온다 */
 				EmpVO evo = session.selectOne("emp.search_empno",emp_no);
+				
 				boolean check = false;
 				if(evo != null) {
 					
@@ -169,6 +172,8 @@ public class Ex2_Frame extends JFrame {
 				
 				if (name != null) {
 					SqlSession session = factory.openSession();
+					/* 이름은 여러명이 나올수도 있으니깐 selectList를 사용한다 */
+					/* 인자로는 List<> 를 받음 */
 					List<EmpVO> list2 = session.selectList("emp.search_name",name);
 					viewTable(list2);	
 					session.close();
@@ -193,6 +198,7 @@ public class Ex2_Frame extends JFrame {
 		try {
 			Reader reader = Resources.getResourceAsReader("am/config/config.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
+			/*SqlSessionFactoryBuilder는 SqlSessionFactory 인스턴스를 빌드하기 위한 것이다 */
 			reader.close();
 			setTitle("DB연결 완료");
 
