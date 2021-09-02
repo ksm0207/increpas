@@ -17,6 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
+			
 			// 1. 환경설정(config.xml) 파일과 연결되는 스트림을 생성하기.
 			Reader reader = Resources.getResourceAsReader("am/config/config.xml");
 			
@@ -34,7 +35,8 @@ public class Main {
 			
 			// 5. Sql Mapper - emp.xml
 			//'전체' 사원 즉 여러 데이터 확인할때는 List쓰기 , 인자값 확인
-			List<EmpVO> list = s_session.selectList("emp.all");
+//			List<EmpVO> list = s_session.selectList("emp.all");
+			
 			
 			// 6. Sql Mapper - emp.xml
 			// 여러데이터가 아닌 단일 데이터를 확인할때는 다음과 같이

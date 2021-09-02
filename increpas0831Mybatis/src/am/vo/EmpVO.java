@@ -1,7 +1,5 @@
 package am.vo;
 
-import java.io.Serializable;
-
 public class EmpVO {
 	
 	private String employee_id;
