@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- Result Map 예제 파일 -->
+
+<mapper namespace="emp">
+
+<!-- DB의 결과 레코드 중 employee_id 라는 컬럼의 값을 -->
+<resultMap type="am.vo.EmpVO" id="res1">
+	<result column="employee_id" property="empno"/>
+	<!-- EmpVO의 속성인 employee_id에 저장한다. -->
+</resultMap>
+
+<select id="all" 
+		resultMap="res1">
+select * from employees
+</select>
+
+
+</mapper>

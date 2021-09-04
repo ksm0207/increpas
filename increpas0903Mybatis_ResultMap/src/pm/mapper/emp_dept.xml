@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- Result Map 예제 파일 -->
+
+<mapper namespace="emp_dept">
+
+<!-- employees 테이블과 departments 테이블로부터 결과를 얻어보자 -->
+<!-- inner 조인법을 사용해서 하나의 객체로 얻어내보자 -->
+<select id="empDept" resultType="pm.vo.EmpDeptVO">
+
+SELECT e.*, d.* 
+FROM employees e , departments d
+WHERE e.department_id = d.department_id
+
+</select>
+
+<!-- 아래 resultMap은 EmpVO를 의미를 가진다
+     <association> 요소는 현재 1:1 관계의 속성을
+          지정하는 행위와 같다고 보면된다.
+          즉 EmpVo의 멤버들 중 dvo라는 멤버변수에 DeptVO객체의 주소를 넣어야
+          한다는 뜻이된다 DeptVO객체를 생성하여 주는 요소가 getDept라는 것을
+          지정하였고 지정한 이유는 DeptVO를 받기위해 getDept를 호출할 때
+     department_id의 값을 인자로 주면서 호출하라는 뜻을 담고있다    -->
+     
+<resultMap type="pm.vo.EmpVO" id="map1">
+	<!-- emp : dvo (1:1관계형)  -->
+	<association property="dvo" javaType="pm.vo.DeptVO"
+	             column="department_id" select="getDept" >
+	</association>
+</resultMap>
+
+<!-- 사원 전체 -->
+
+<select id="all" resultMap="map1">
+
+SELECT *
+FROM employees
+
+</select>
+
+<!-- 부서코드를 인자로 받은다음 부서정보를 반환하는 기능 -->
+<select id="getDept" 
+        resultType="pm.vo.DeptVO"
+        parameterType="String">
+
+SELECT * FROM departments
+WHERE department_id = #{dpt_no}        
+
+</select>
+
+
+
+
+</mapper>

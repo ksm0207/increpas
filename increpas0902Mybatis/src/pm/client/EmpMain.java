@@ -38,6 +38,10 @@ public class EmpMain extends JFrame {
 	private JMenuItem total_item;
 	private JMenuItem exit_item;
 	
+	
+	EmpVO evo;
+	int r_index;
+	
 	SqlSessionFactory factory;
 	EmpDialog ed;
 	String[] cname = {"사번","성씨","직종","이메일","입사일","부서코드"};
@@ -135,9 +139,9 @@ public class EmpMain extends JFrame {
 				if(click == 2) {
 					
 					/* 더블 클릭한 레코드의 행 번호를 얻어내기 */
-					int index = table.getSelectedRow();
+					r_index = table.getSelectedRow();
 					
-					String empno = (String)table.getValueAt(index, 0);
+					String empno = (String)table.getValueAt(r_index, 0);
 					/*
 						String lname = (String)table.getValueAt(index, 1);
 						String job = (String)table.getValueAt(index, 2);
@@ -180,13 +184,8 @@ public class EmpMain extends JFrame {
 		
 	}
 	
-	public void update2(Map<String,EmpVO> map) {
-		
-	}
-	
 	/* 사번을 조건으로 수정하는 기능 */
-	
-	public int updateEmp(Map<String,String> map) {
+	public int edit(Map<String,String> map) {
 		
 		System.out.println("Update Data : " + map);
 		
@@ -198,6 +197,18 @@ public class EmpMain extends JFrame {
 		
 		session.close();
 		return update;
+	}
+	
+	/* JTable 더블 클릭하고 내용 바꾸는 메소드 */
+	
+	public void editTable(EmpVO evo) {
+		
+		table.setValueAt(evo.getLast_name(), r_index, 1);
+		table.setValueAt(evo.getJob_id(), r_index, 2);
+		table.setValueAt(evo.getEmail(), r_index, 3);
+		table.setValueAt(evo.getHire_date(), r_index, 4);
+		table.setValueAt(evo.getDepartment_id(), r_index, 5);
+	
 	}
 	
 	private void viewTable(List<EmpVO> list) {

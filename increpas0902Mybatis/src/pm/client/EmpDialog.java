@@ -186,19 +186,27 @@ public class EmpDialog extends JDialog {
 					/* evo 객체를 비교해주기 */
 				
 					if(!evo.getLast_name().equals(lname)) {
-						map.put("last_name", lname);		
+						map.put("last_name", lname);
+						
+						/* evo.set .. 구문 추가 : 바뀐내용이 추가됨과 동시에 */
+						/* 새로운 값으로 바꾸기 위한 코드 */
+						evo.setLast_name(lname);
 					}
 					if(!evo.getJob_id().equals(job)) {
-						map.put("job_id", job);			
+						map.put("job_id", job);
+						evo.setJob_id(job);
 					}
 					if(!evo.getEmail().equals(email)) {
-						map.put("email", email);			
+						map.put("email", email);
+						evo.setEmail(email);
 					}
 					if(!evo.getHire_date().equals(hire)) {
-						map.put("hire_date",hire);			
+						map.put("hire_date",hire);
+						evo.setHire_date(hire);
 					}
 					if(!evo.getDepartment_id().equals(dptno)) {
-						map.put("department_id",dptno);			
+						map.put("department_id",dptno);
+						evo.setDepartment_id(dptno);
 					}
 					
 					System.out.println("Case 1 : " + !evo.getLast_name().equals(lname));
@@ -211,13 +219,20 @@ public class EmpDialog extends JDialog {
 					/* 조건 값인 사번은 따로 저장해준다.*/
 					map.put("employee_id",empno);
 					
+					/* 수정한 것이 하나도 없다면. (수정 성공시 값은 1로 넘어감) --> */
+					if(map.size() < 2)
+						
+						return;
 					
-					int status = main.updateEmp(map);
-					
-					if(status > 0)
-						JOptionPane.showMessageDialog(EmpDialog.this, "업데이트 성공 !");
-					else
+					int status = main.edit(map);
+					if(status > 0) {
+						main.editTable(evo); /* 수정된 내용을 editTable에 인자로  evo 넣어주기  */
+						JOptionPane.showMessageDialog(EmpDialog.this, "업데이트 성공 !");						
+					}
+					else {
 						JOptionPane.showMessageDialog(EmpDialog.this, "업데이트 실패 ...");
+					}
+						
 				}
 				
 			}

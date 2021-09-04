@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Result Map 예제 파일 -->
+
+<mapper namespace="dept">
+
+
+<resultMap type="pm.vo.DeptVO" id="m2">
+	<association property="lvo" javaType="pm.vo.LocVO"
+	             column="location_id" select="getLoc">
+	</association>
+</resultMap>
+
+<!-- 구현순서 : (1) 부서의 모든 정보를 가져오자. -->
+<select id="total" resultMap="m2">
+	SELECT *
+	FROM departments
+</select>
+
+
+<!-- 구현순서 : (2) 지역코드를 인자로 받아 지역정보를 객체를 반환하는 기능 만들기 -->
+<select id="getLoc"
+        resultType="pm.vo.LocVO"
+        parameterType="String">
+
+SELECT *
+FROM locations
+WHERE location_id = #{loc_id}        
+
+</select>
+
+
+</mapper>
+
