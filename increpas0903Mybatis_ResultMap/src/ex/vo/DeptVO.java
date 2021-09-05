@@ -1,6 +1,7 @@
 package ex.vo;
 
 public class DeptVO {
+	
 	private String department_id, department_name;
 	private LocVO lvo;
 	
@@ -21,5 +22,12 @@ public class DeptVO {
 	}
 	public void setLvo(LocVO lvo) {
 		this.lvo = lvo;
+	}
+	
+	public String getResult() {
+		
+		return this.department_id + " " + this.department_name
+			   + " " + this.lvo.getCity();
+		
 	}
 }

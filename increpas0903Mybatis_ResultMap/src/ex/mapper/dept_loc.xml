@@ -4,10 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dept_loc">
   
+  <!-- type : 매핑될 클래스명 -->
+  <!-- id : 외부에서 지정할 ID -->
   <resultMap type="ex.vo.DeptVO" id="res1">
-  	
+  	<!-- association : 테이블의 관계가 1 : 1 관계일때 사용하기 -->
   	<association property="lvo" javaType="ex.vo.LocVO"
   		select="getLoc" column="location_id"/>
+  <!-- property : 불러온 항목을 저장할 클래스 내의 멤버변수의 변수명  -->
+  <!-- javaType : 객체를 속성으로 가지고 있는 해당 객체 -->
+  <!-- select : 실행 할 쿼리  -->
+  <!-- column : 테이블의 컬럼명 -->
   </resultMap>
   
   <select id="all" resultMap="res1">
