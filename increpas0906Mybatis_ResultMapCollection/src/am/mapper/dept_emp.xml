@@ -4,9 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dept_emp">
 
-	
-  
-  
   <!-- ▼ id=all 쿼리문의 결과를 받는다 , ResultMap : DeptVO에 관련된 내용적기  -->
   <!-- type : 매핑될 클래스명 -->
   <resultMap type="am.vo.DeptVO" id="res">
@@ -15,7 +12,7 @@
        department_id가 DeptVO에 저장되지 않아 null 값이 나온다
        때문에 이를 처리하기 위한 다음과 같은 코드가 필요함 -->
   <id column="department_id" property="department_id"/>
-  <!-- 위 id는 기본키 값 -->
+  <!-- 위 id는 기본키를 담을때 적용된다. -->
   
   <!--  한 '부서'에 여러 명의 '사원'들이 존재하니깐 1:N의 집합구조를 지정하기 -->
   <!-- property : DevoVO 에서 정의한 멤버변수  -->

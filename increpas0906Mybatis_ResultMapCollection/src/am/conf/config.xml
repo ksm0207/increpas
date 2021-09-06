@@ -16,6 +16,7 @@
   </environments>
   <mappers>
     <mapper resource="am/mapper/dept_emp.xml"/>
+    <mapper resource="am/mapper/dept_loc.xml"/>
 	
   </mappers>
 </configuration>
