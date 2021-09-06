@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept_emp">
+
+	<!-- 부서코드를 인자로 받아 사원들을 검색하는 기능 만들기 -->
+  <select id="search_deptno"
+          parameterType="String" 
+  		  resultType="am.vo.EmpVO">
+  		  
+  		SELECT
+  		*  	
+  		FROM employees
+  		WHERE department_id = #{dept_no}
+  </select>
+  
+  
+  <!-- ▼ id=all 쿼리문의 결과를 받는다 , ResultMap : DeptVO에 관련된 내용적기  -->
+  <resultMap type="am.vo.DeptVO" id="res">
+  
+  <!--  한 '부서'에 여러 명의 '사원'들이 존재하니깐 1:N의 집합구조를 지정하기 -->
+  <!-- property : DevoVO 에서 정의한 멤버변수  -->
+  <!-- ofType : 컬렉션안에 들어있는 데이터 타입 -->
+  
+  <collection property="emp_list" ofType="am.vo.EmpVO" 
+              select="search_deptno" column="department_id">
+  </collection>
+  	
+  </resultMap>
+  
+  
+  <!-- 모든 부서들을 반환하는 기능 -->
+  <select id="all" resultMap="res">
+  
+  SELECT * FROM departments
+	  
+  </select>
+  
+</mapper>
