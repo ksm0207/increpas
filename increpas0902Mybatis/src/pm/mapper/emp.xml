@@ -27,6 +27,7 @@ where employee_id = #{no}
 UPDATE employees
 
   <trim prefix="SET" suffixOverrides=",">
+  
   	<if test="last_name != null">
   	
 	<!-- SET last_name = #{last_name} -->	

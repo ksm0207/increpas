@@ -110,6 +110,7 @@ public class MyFrame extends JFrame {
 				int cnt = e.getClickCount();
 				
 				if(cnt == 2) {//더블클릭을 구별했다.
+					
 					//선택된 행번호를 얻어낸다.
 					int r = table.getSelectedRow();
 					
