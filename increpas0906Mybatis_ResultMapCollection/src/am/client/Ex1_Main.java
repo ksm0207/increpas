@@ -18,10 +18,13 @@ public class Ex1_Main {
 			
 			Reader read = Resources.getResourceAsReader("am/conf/config.xml");
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(read);
+			
+			
 			read.close();
 			
 			SqlSession session = factory.openSession();
-			List<DeptVO> dept_list = session.selectList("dept_emp.total");
+			List<DeptVO> dept_list = session.selectList("dept_emp.all");
+			
 			
 			for(DeptVO dvo : dept_list) {
 				
@@ -42,7 +45,7 @@ public class Ex1_Main {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 	}
